@@ -1,13 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import EntriesOne from "../components/entries/EntriesOne.astro";
 const allPosts = await getCollection("posts");
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Subscribe from "../components/cta/Subscribe.astro";
+import EntriesTwo from "../components/entries/EntriesTwo.astro";
 import { AstroSeo } from "@astrolib/seo";
 ---
-
 <AstroSeo
-  title="blog 2"
+  title="Blog 2"
   description="Your site description goes here"
   canonical="https://www.lexingtonthemes.com"
   openGraph={{
@@ -41,26 +41,46 @@ import { AstroSeo } from "@astrolib/seo";
   }}
 />
 <BaseLayout>
-  <section>
-    <div class="px-8 md:px-12 mx-auto max-w-7xl py-12 lg:py-32">
-      <ul
-        class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-x-3 gap-y-24 lg:gap-x-6">
-        {
-          allPosts
-            .slice()
-            .map((post) => (
-              <EntriesOne
-                url={"/posts/" + post.slug}
-                title={post.data.title}
-                description={post.data.description}
-                alt={post.data.title}
-                pubDate={post.data.pubDate.toString().slice(0, 10)}
-                author={post.data.author}
-                image={post.data.image.url}
-              />
-            ))
-        }
-      </ul>
+  <section aria-labelledby="your-label" id="your-id">
+    <div
+      class="items-center 2xl:max-w-7xl max-w-6xl md:px-12 mx-auto px-8 pt-32">
+      <div class="border-b pb-5">
+        <div class="lg:inline-flex lg:items-center gap-12">
+          <img class="rounded-full" src="/a.jpg" alt="image" />
+          <div>
+            <p
+              class="text-black tracking-tight font-display text-4xl font-semibold">
+              Welcome to my blog!
+            </p><p class="text-slate-600 mt-4 text-lg tracking-tight">
+              Advice, Strategies, Insights and Stories for the success of
+              companies, schools and start-ups.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+  <section aria-labelledby="your-label" id="your-id">
+    <div
+      class="items-center 2xl:max-w-7xl max-w-6xl md:px-12 mx-auto px-8 py-32">
+      <div
+        class="grid gap-12 grid-cols-1 lg:gap-10 lg:space-y-0 sm:grid-cols-2 lg:grid-cols-2">
+        {
+          allPosts.map((post) => (
+            <EntriesTwo
+              url={"/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.image.url}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  
+  <Subscribe />
 </BaseLayout>
