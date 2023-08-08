@@ -90,19 +90,7 @@ module.exports = {
       }),
        colors: {
         black: "#273846",
-
-        accent: {
-          50: "#EDE5FF",
-          100: "#DACCFF",
-          200: "#B699FF",
-          300: "#9166FF",
-          400: "#6D33FF",
-          500: "#4901FF",
-          600: "#3A00CC",
-          700: "#2B0099",
-          800: "#1D0066",
-          900: "#0E0033",
-        },
+        
         wood: {
           50: "#FFFFFF",
           100: "#FEFDFB",
@@ -162,7 +150,6 @@ module.exports = {
 	plugins: [
 		 require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
 		require('@tailwindcss/aspect-ratio'),
 	],
 }
