@@ -6,28 +6,29 @@ const { title, url, description, pubDate, author, image } = Astro.props;
   ><article class="h-full flex-1">
     <div class="w-full block lg:col-span-2">
       <img
-        class="h-full object-cover aspect-[384/246] bg-center"
+        class="h-full object-cover aspect-[384/246] bg-center "
         src={image}
         alt={title}
       />
     </div>
     <div
-      class="w-full flex flex-col flex-1 items-start justify-between -mt-12 p-4">
-      <div class="w-full p-4 bg-wood-100">
+      class="w-full flex flex-col  items-start justify-between -mt-20 p-4"
+    >
+      <div class="w-full p-4 lg:p-8  bg-wood-100    h-full flex flex-col justify-between text-balance">
         <div>
-          <p class="font-medium text-black">{title}</p>
-        </div><p class="text-slate-600 line-clamp-2 font-serif mt-2 text-sm">
-          {description}
-        </p>
-      </div><footer class="px-4">
-        <div class="items-center inline-flex mt-8 space-x-1">
+          <p class="font-medium text-black uppercase text-xl font-serif">{title}</p>
+          <p class="text-slate-600 line-clamp-2 mt-12 text-sm">
+            {description}
+          </p>
+        </div>
+        <div class="items-center inline-flex mt-1 space-x-1">
           <p class="font-medium text-gray-900 text-xs">{author}</p><span
             aria-hidden="true">·</span
           ><div class="flex text-gray-500 text-xs">
             <time datetime={pubDate}>{pubDate}</time>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   </article></a
 >
