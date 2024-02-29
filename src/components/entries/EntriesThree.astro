@@ -2,11 +2,11 @@
 const { title, url, description, image, author, pubDate } = Astro.props;
 ---
 
-<a href={url} title={title} class="group"
+<a href={url} title={title} aria-label={description} class="group"
   ><article class="h-full grid grid-cols-1 lg:grid-cols-2">
     <div>
       <img
-        class="h-full object-cover bg-center aspect-[4/2]     "
+        class="h-full object-cover bg-center aspect-[4/2]"
         src={image}
         alt={title}
       />
@@ -17,7 +17,7 @@ const { title, url, description, image, author, pubDate } = Astro.props;
       <div>
         <div>
           <p
-            class="font-medium text-black uppercase text-base font-serif lg:text-4xl"
+            class="font-medium text-black uppercase text-wood-500 font-serif lg:text-4xl"
           >
             {title}
           </p>

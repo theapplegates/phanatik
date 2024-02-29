@@ -24,19 +24,18 @@
   }
 }
 :root {
-  --astro-code-color-text: #536479;
-  --astro-code-color-background: #faf4ed;
-  --astro-code-token-constant: #3c63a680;
-  --astro-code-token-string: #3c63a660;
-  --astro-code-token-comment: #92a0a5;
-  --astro-code-token-keyword: #c8342a;
-  --astro-code-token-parameter: #ffffff;
-  --astro-code-token-function: #82b0a0;
-  --astro-code-token-string-expression: #3c63a6;
-  --astro-code-token-punctuation: #ffffff;
-  --astro-code-token-link: #ffffff;
+    --astro-code-color-text: theme('colors.black');
+  --astro-code-color-background: theme('colors.wood.500');
+  --astro-code-token-constant: theme('colors.red.500');
+  --astro-code-token-string: theme('colors.teal.500');
+  --astro-code-token-comment: theme('colors.slate.400');
+  --astro-code-token-keyword: theme('colors.mist.700');
+  --astro-code-token-parameter: theme('colors.red.900');
+  --astro-code-token-function: theme('colors.salmon.600');
+  --astro-code-token-string-expression: theme('colors.mist.500');
+  --astro-code-token-punctuation: theme('colors.salmon.500');
+  --astro-code-token-link: theme('colors.mist.800');
 }
-
 .prose-styles {
-  @apply font-serif first-letter:float-left first-letter:font-bold first-letter:mr-3 first-letter:text-7xl first-letter:text-slate-900 first-line:tracking-widest first-line:uppercase prose prose-blockquote:border-l-salmon-500 prose-headings:font-sans prose-headings:text-black prose-li:marker:text-salmon-500 prose-slate ;
+  @apply font-serif  prose prose-blockquote:border-l-salmon-500 prose-headings:font-sans prose-headings:text-black prose-li:marker:text-salmon-500 prose-slate ;
 }
