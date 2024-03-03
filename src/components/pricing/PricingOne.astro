@@ -11,8 +11,8 @@
           class="inline-flex w-full border rounded-full mt-6 overflow-hidden  p-0.5 z-0"
         >
           <button
-            class="font-medium rounded-full transition w-full py-2 block px-8 text-xs text-wood-500 bg-mist-500  "
-            :class="{ 'bg-mist-500  text-black ': !annual, 'text-slate-400 ': annual }"
+            class="font-medium rounded-full transition w-full py-2 block px-8 text-xs  bg-mist-500  "
+            :class="{ 'bg-mist-500  text-wood-500 ': !annual, 'text-slate-400 ': annual }"
             @click="annual = false"
             type="button"
           >
@@ -20,7 +20,7 @@
           </button>
           <button
             class="font-medium rounded-full transition w-full py-2 block px-8 text-xs text-slate-400 "
-            :class="{ 'bg-mist-500  text-black ': annual, 'text-slate-400 ': !annual }"
+            :class="{ 'bg-mist-500  text-wood-500 ': annual, 'text-slate-400 ': !annual }"
             @click="annual = true"
             type="button"
           >
@@ -134,14 +134,14 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col overflow-hidden bg-mist-500 text-wood-500">
+      <div class="flex flex-col overflow-hidden bg-mist-500 ">
         <div class="px-6 py-8 sm:p-10 sm:pb-6">
           <div
             class="grid items-end justify-center w-full grid-cols-1 text-left"
           >
             <div class="mt-6">
               <h2
-                class="text-lg lg:text-4xl text-black font-semibold font-serif"
+                class="text-lg lg:text-4xl text-wood-500 font-semibold font-serif"
               >
                 Premium
               </h2>
@@ -149,7 +149,7 @@
                 Premium information every sunday
               </p>
               <ul
-                class="space-y-3 font-normal list-inside list-disc mt-3 text-black"
+                class="space-y-3 font-normal list-inside list-disc mt-3 text-wood-500"
                 role="list"
               >
                 <li>Access to premium posts</li>
