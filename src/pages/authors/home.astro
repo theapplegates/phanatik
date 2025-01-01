@@ -4,26 +4,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import AuthorEntries from "../../components/authors/AuthorEntries.astro";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("authors");
-
 ---
 
-
 <BaseLayout>
-
   <section>
-    <div class="px-8 md:px-12 max-w-6xl mx-auto py-32 2xl:max-w-7xl items-center">
+    <div
+      class="px-8 md:px-12 max-w-6xl mx-auto py-32 2xl:max-w-7xl items-center"
+    >
       <div class="max-w-xl mx-auto text-center">
         <p
-          class="text-black font-serif text-4xl lg:text-8xl uppercase font-semibold"
+          class="text-tarawera font-serif text-4xl lg:text-8xl uppercase font-semibold"
         >
           The Authors
         </p>
       </div>
       <div class="prose-styles mx-auto text-center text-balance mt-12">
         <p>
-          Our team has led and delivered large-scale software and design projects
-          in multiple startups and high-growth environments like Uber, Airbnb and
-          Coinwood-500.
+          Our team has led and delivered large-scale software and design
+          projects in multiple startups and high-growth environments like Uber,
+          Airbnb and Coinwood-500.
         </p>
       </div>
       <div>

@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 ---
+
 <BaseLayout>
   <section>
     <div
@@ -9,12 +10,12 @@ const { frontmatter } = Astro.props;
     >
       <div class="max-w-xl mx-auto">
         <img
-          class="object-cover size-16 rounded-full  lg:h-20 lg:w-20"
+          class="object-cover size-16 rounded-full lg:h-20 lg:w-20"
           src={frontmatter.image.url}
           alt={frontmatter.image.alt}
         />
         <p
-          class="text-black font-serif text-4xl mt-12 lg:text-8xl uppercase font-semibold"
+          class="text-tarawera font-serif text-4xl mt-12 lg:text-8xl uppercase font-semibold"
         >
           {frontmatter.title}
         </p>
