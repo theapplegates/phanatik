@@ -6,6 +6,7 @@ import Navigation from "@/components/global/Navigation.astro";
 import Footer from "@/components/global/Footer.astro";
 // Scripts
 import AudioPlayerScript from "@/components/fundations/scripts/AudioPlayerScript.astro";
+import FuseJS from "@/components/fundations/scripts/FuseJS.astro";
 
 ---
 
@@ -17,6 +18,8 @@ import AudioPlayerScript from "@/components/fundations/scripts/AudioPlayerScript
     <Navigation />
     <main class="grow"><slot /></main>
     <Footer />
+    <FuseJS />
+
     <AudioPlayerScript />
   </body>
 </html>
