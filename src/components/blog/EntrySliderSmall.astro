@@ -85,38 +85,44 @@ const formattedAuthor = formatAuthorName(author);
 
 <script type="module">
   import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
-  // Autoplay plugin
-  const autoplay = (slider) => {
-    let timeout;
-    let mouseOver = false;
-    function clearNextTimeout() {
-      clearTimeout(timeout);
-    }
-    function nextTimeout() {
-      clearTimeout(timeout);
-      if (mouseOver) return;
-      timeout = setTimeout(() => {
-        slider.next();
-      }, 3000); // Adjust time if needed
-    }
-    slider.on("created", () => {
-      slider.container.addEventListener("mouseover", () => {
-        mouseOver = true;
-        clearNextTimeout();
-      });
-      slider.container.addEventListener("mouseout", () => {
-        mouseOver = false;
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const autoplay = (slider) => {
+      let timeout;
+      let mouseOver = false;
+      function clearNextTimeout() {
+        clearTimeout(timeout);
+      }
+      function nextTimeout() {
+        clearTimeout(timeout);
+        if (mouseOver) return;
+        timeout = setTimeout(() => {
+          slider.next();
+        }, 3000);
+      }
+      slider.on("created", () => {
+        slider.container.addEventListener("mouseover", () => {
+          mouseOver = true;
+          clearNextTimeout();
+        });
+        slider.container.addEventListener("mouseout", () => {
+          mouseOver = false;
+          nextTimeout();
+        });
         nextTimeout();
       });
-      nextTimeout();
-    });
-    slider.on("dragStarted", clearNextTimeout);
-    slider.on("animationEnded", nextTimeout);
-    slider.on("updated", nextTimeout);
-  };
-  const keenSlider = new KeenSlider(
-    "#keen-slider",
-    {
+      slider.on("dragStarted", clearNextTimeout);
+      slider.on("animationEnded", nextTimeout);
+      slider.on("updated", nextTimeout);
+    };
+
+    const sliderEl = document.getElementById("keen-slider");
+    if (!sliderEl) {
+      console.warn("Slider element not found");
+      return;
+    }
+
+    const keenSlider = new KeenSlider(sliderEl, {
       loop: true,
       defaultAnimation: {
         duration: 1500,
@@ -135,16 +141,17 @@ const formattedAuthor = formatAuthorName(author);
         "(min-width: 1024px)": {
           slides: {
             origin: "auto",
-            // perView: 1,
             spacing: 24,
           },
         },
       },
-    },
-    [autoplay] //  Add autoplay plugin here
-  );
-  const keenSliderPrevious = document.getElementById("keen-slider-previous");
-  const keenSliderNext = document.getElementById("keen-slider-next");
-  keenSliderPrevious.addEventListener("click", () => keenSlider.prev());
-  keenSliderNext.addEventListener("click", () => keenSlider.next());
+    }, [autoplay]);
+
+    const keenSliderPrevious = document.getElementById("keen-slider-previous");
+    const keenSliderNext = document.getElementById("keen-slider-next");
+
+    keenSliderPrevious?.addEventListener("click", () => keenSlider.prev());
+    keenSliderNext?.addEventListener("click", () => keenSlider.next());
+  });
 </script>
+
