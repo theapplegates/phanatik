@@ -1,16 +1,35 @@
 ---
-const { title, url, description, image } = Astro.props;
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+const { url, name, image, role } = {
+  url: "/authors/" + Astro.props.post.slug,
+  name: Astro.props.post.data.name,
+  role: Astro.props.post.data.role,
+  image: Astro.props.post.data.image.url,
+};
 ---
 
-<a href={url} title={title} aria-label={description}>
-  <div class="flex flex-col items-center gap-4 text-center">
-    <img
-      class="object-cover w-16 h-16 rounded-full lg:h-20 lg:w-20"
-      src={image}
-      alt={title}
-    />
-    <span class="text-lg font-semibold leading-6 text-tarawera font-serif">
-      {title}
-    </span>
+<div class="relative">
+  <a href={url} name={name} aria-label={name} class="absolute inset-0 z-10">
+  </a>
+  <Image
+    width="800"
+    height="800"
+    src={image}
+    alt={name}
+    class="object-cover w-full aspect-12/8 rounded-xl"
+  />
+
+  <div class="mt-2">
+    <Text
+      tag="h3"
+      variant="textBase"
+      class="text-base-900 font-display group-hover:underline">{name}</Text
+    >
+    <Text tag="p" variant="textSM" class="tracking-tight text-base-500"
+      >{role}</Text
+    >
   </div>
-</a>
+</div>

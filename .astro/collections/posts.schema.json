@@ -51,6 +51,21 @@
             "type": "string"
           }
         },
+        "isBreaking": {
+          "type": "boolean"
+        },
+        "isTopStory": {
+          "type": "boolean"
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "isBrief": {
+          "type": "boolean"
+        },
+        "isLocked": {
+          "type": "boolean"
+        },
         "$schema": {
           "type": "string"
         }

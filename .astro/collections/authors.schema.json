@@ -4,7 +4,13 @@
     "authors": {
       "type": "object",
       "properties": {
-        "title": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "bio": {
           "type": "string"
         },
         "image": {
@@ -23,12 +29,30 @@
           ],
           "additionalProperties": false
         },
+        "socials": {
+          "type": "object",
+          "properties": {
+            "twitter": {
+              "type": "string"
+            },
+            "website": {
+              "type": "string"
+            },
+            "linkedin": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
         "$schema": {
           "type": "string"
         }
       },
       "required": [
-        "title",
+        "name",
         "image"
       ],
       "additionalProperties": false

@@ -1,98 +1,200 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/elements/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ShareButtons from "@/components/fundations/elements/ShareButtons.astro";
+// Sections
+import AdvertAside from "@/components/advert/AdvertAside.astro";
+import AsidePost from "@/components/blog/AsidePost.astro";
+// Entries
+import EntryMedium from "@/components/blog/EntryMedium.astro";
 const { frontmatter } = Astro.props;
-import Subscribe from "@/components/cta/Subscribe.astro";
+import { getEntry } from "astro:content";
+const author = await getEntry("authors", frontmatter.author);
+// Get all posts and filter by tag
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+const relatedPosts = allPosts.filter((post) =>
+  post.data.tags.some((tag) => frontmatter.tags.includes(tag))
+);
+
 ---
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const headings = document.querySelectorAll(
-      ".prose-styles h2,.prose-styles  h3"
-    );
-    const tocContainer = document.getElementById("table-of-contents");
-    if (tocContainer && headings.length > 0) {
-      const tocList = document.createElement("ul");
-      tocList.classList.add("space-y-3", "text-xs");
-      headings.forEach((heading) => {
-        const listItem = document.createElement("li");
-        const link = document.createElement("a");
-        link.textContent = heading.textContent;
-        link.href = `#${heading.id}`;
-        link.classList.add("text-tarawera ", "hover:underline");
-        listItem.appendChild(link);
-        tocList.appendChild(listItem);
-      });
-      tocContainer.appendChild(tocList);
-      tocContainer.classList.remove("hidden");
-    }
-  });
-</script>
 <BaseLayout>
   <section>
-    <div
-      class="mx-auto 2xl:max-w-screen-2xl md:px-12 px-8 grid py-12 space-y-6"
-    >
-      <img
-        class="w-full aspect-video h-full object-cover"
-        src={frontmatter.image.url}
-        alt={frontmatter.image.alt}
-      />
-    </div>
-  </section>
-  <div
-    class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl px-8 md:px-12 mx-auto pb-24"
-  >
-    <div class="lg:col-span-3 hidden lg:block">
-      <div id="table-of-contents" class="sticky top-48"></div>
-    </div>
-    <section
-      class="relative bg-wood-100 lg:-mt-96 lg:p-8 overflow-hidden lg:col-span-9"
-    >
-      <div class="grid grid-cols-1 gap-10 xl:gap-24">
-        <div class="mx-auto bg-wood-100">
-          <div>
-            <h1
-              class="text-tarawera font-serif font-bold lg:text-4xl text-xl uppercase"
-            >
-              {frontmatter.title}
-            </h1>
-          </div>
-          <div class="items-center inline-flex mt-10">
-            <div class="items-center inline-flex space-x-1">
-              <p class="font-medium text-gray-900 text-sm">
-                {frontmatter.author}
-              </p><span aria-hidden="true">·</span>
-              <div class="flex text-gray-500 text-sm">
-                <time datetime={frontmatter.pubDate.toString().slice(0, 10)}
-                  >{frontmatter.pubDate.toString().slice(0, 10)}</time
-                >
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap-3 mt-6">
+    <Wrapper variant="standard" class="py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-0">
+        <div class="lg:col-span-3 lg:pr-8">
+          <div class="flex gap-2">
             {
               frontmatter.tags.map((tag) => (
-                <span class="bg-wood-500  px-3 py-1.5 text-xs    h-8 text-tarawera  items-center flex">
-                  <a href={`/tags/${tag}`}>{tag} </a>{" "}
-                </span>
+                <Text
+                  tag="a"
+                  variant="textXS"
+                  title={tag}
+                  aria-label={tag}
+                  href={`/blog/tags/${tag}`}
+                  class="text-blue-500 uppercase font-medium"
+                >
+                  {tag}
+                </Text>
               ))
             }
           </div>
-        </div>
-        <div>
-          <p>
-            <em class="font-medium text-tarawera font-serif text-2xl uppercase"
-              >{frontmatter.description}</em
+          <div
+            class="mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
+          >
+            <Text
+              tag="h1"
+              variant="displaySM"
+              class="text-base-900 font-medium font-display lg:col-span-2 text-balance"
             >
-          </p>
+              {frontmatter.title}
+            </Text>
+            <div class="mt-2">
+              {
+                author && (
+                  <a
+                    href={`/authors/${author.slug}`}
+                    class="flex items-center gap-3 hover:opacity-80 transition "
+                  >
+                    {author?.data?.image?.url && (
+                      <Image
+                        width={100}
+                        height={100}
+                        src={author.data.image.url}
+                        alt={author.data.image.alt}
+                        class="inline-block size-10 object-cover rounded-lg object-center"
+                      />
+                    )}
+                    <Text tag="p" variant="textXS" class="text-base-500 ">
+                      <span class="">
+                        Written in
+                        <span class="italic font-medium text-base-600">
+                          <time
+                            datetime={new Date(
+                              frontmatter.pubDate
+                            ).toISOString()}
+                          >
+                            {new Date(frontmatter.pubDate).toLocaleDateString(
+                              "en-US",
+                              {
+                                year: "numeric",
+                                month: "long",
+                                day: "2-digit",
+                              }
+                            )}
+                          </time>
+                        </span>
+                      </span>
+                      <span class="">
+                        by
+                        <span class="italic font-medium text-base-600">
+                          {author.data.name}
+                        </span>
+                      </span>
+                      <span class="block"> {author.data.role}</span>
+                    </Text>
+                  </a>
+                )
+              }
+            </div>
+            <div class="mt-8">
+              <Image
+                width={1000}
+                height={800}
+                src={frontmatter.image.url}
+                alt={frontmatter.image.url}
+                class="w-full aspect-12/6 object-cover col-span-full rounded-xl"
+              />
+              <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 mt-4">
+                <div>
+                  <ShareButtons
+                    contentType="blog"
+                    description={frontmatter.description}
+                  />
+                </div>
+                <div class="lg:col-span-3">
+                  <Text tag="h3" variant="texSM" class="text-base-500">
+                    {frontmatter.description}
+                  </Text>
+
+                  {
+                    frontmatter.isLocked ? (
+                      <div class="mt-10 ">
+                        <div class="bg-base-50 p-8 rounded-xl text-center py-20">
+                          <Text
+                            tag="h4"
+                            variant="textXL"
+                            class="text-base-900 font-medium text-balance"
+                          >
+                            This post is for subscribers only. Unlock premium
+                            insights by becoming a member.
+                          </Text>
+                          <div class="flex justify-center mt-8 flex-wrap gap-2">
+                            <Link
+                              size="sm"
+                              variant="muted"
+                              href="/pricing/membership"
+                            >
+                              Log in
+                            </Link>
+                            <Link
+                              size="sm"
+                              variant="default"
+                              href="/pricing/membership"
+                            >
+                              Subscribe Now
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Wrapper
+                        variant="prose"
+                        class=" relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-12 "
+                      >
+                        <slot />
+                      </Wrapper>
+                    )
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="prose-styles">
-            <slot />
+        <div
+          class="lg:pl-8 lg:relative lg:before:absolute lg:after:absolute lg:before:bg-base-950 lg:after:bg-base-950/10 lg:before:top-0 lg:before:left-0 lg:before:h-6 lg:before:w-px lg:after:top-8 lg:after:bottom-0 lg:after:left-0 after:w-px"
+        >
+          <div class="lg:sticky lg:top-10 lg:z-40">
+            <AsidePost />
+            <AdvertAside />
           </div>
         </div>
       </div>
-    </section>
-  </div>
-  <Subscribe />
+    </Wrapper>
+  </section>
+  {
+    relatedPosts.length > 0 && (
+      <section>
+        <Wrapper variant="standard" class="py-8">
+          <Text
+            tag="h2"
+            variant="textSM"
+            class="text-base-900 uppercase font-medium"
+          >
+            Related posts
+          </Text>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2">
+            {relatedPosts.slice(0, 3).map((post) => (
+              <EntryMedium post={post} />
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+    )
+  }
 </BaseLayout>

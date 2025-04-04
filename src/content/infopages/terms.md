@@ -2,22 +2,95 @@
 page: Terms
 pubDate: 2024-00-00
 ---
-All the terms that you agree to when you sign up for a Lexington product.
--------------------------------------------------------------------------
 
-From everyone at Lexington, thank you for using our products! We build them to help you do your best work. There are millions of people using Lexington products every day. Because we don’t know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
+### Welcome to Phanatik!
 
-When we say “Company”, “we”, “our”, or “us” in this document, we are referring to [Lexington LLC](#_). We spun off Highrise HQ, LLC in the past, but it has since rejoined Lexington LLC.
+First, a big thank you from all of us here at **Phanatik** for using our products! Our mission is simple: to build tools that help you do your best work. Millions of people use **Phanatik** products every day to help them connect, create, and share. While we may not know every user personally, these terms are a way to ensure everything runs smoothly for everyone. So buckle up, grab your coffee, and let’s dive in!
 
-When we say “Services”, we mean our websites, including Lexington.com, hey.com, and Lexington.com, and any product created and maintained by Lexington LLC. That includes Lexington (all versions), HEY, Highrise, Campfire, Backpack, Ta-da List, and Writeboard, whether delivered within a web browser, desktop application, mobile application, or another format.
+---
 
-When we say “You” or “your”, we are referring to the people or organizations that own an account with one or more of our Services. We have specific ownership policies for our products: [Lexington 4](#_), [Lexington 2](#_), [Lexington Classic](#_), [HEY for Domains](#_), [Highrise](#_), [Campfire](#_) and [Backpack](#_).
+### **What We Mean:**
+- **"We", "Our", "Us"** refers to **Phanatik LLC** (yep, that’s us).
+- **"Services"** means our products: websites, apps, and everything else we create, like **Phanatik**, **HEY**, **Highrise**, **Campfire**, and more (they all fall under the **Phanatik** umbrella).
+- **"You", "Your"** refers to the awesome people and organizations who use our Services. That’s you! We appreciate your trust.
 
-We may update these Terms of Service ("Terms") in the future. You can track all changes made since mid-2018 [on GitHub](#_). Typically these changes have been to clarify some of these terms by linking to an expanded related policy. Whenever we make a significant change to our policies, we will refresh the date at the top of this page and take any other appropriate steps to notify account holders.
+---
 
-When you use our Services, now or in the future, you are agreeing to the latest Terms. There may be times where we do not exercise or enforce a right or provision of the Terms; however, that does not mean we are waiving that right or provision. **These Terms do contain a limitation of our liability.**
+### **Account Terms**
 
-If you violate any of the Terms, we may terminate your account. That’s a broad statement and it means you need to place a lot of trust in us. We do our best to deserve that trust by being open about [who we are](#_), [how we work](#_), and keeping an open door to [your feedback](#_).
+1. You are responsible for maintaining the security of your account and password, and for ensuring your users do the same. Phanatik can’t be held liable for any loss or damage due to a security breach. Pro-tip: Set up [two-factor authentication](#_).
+2. Don't use the Services for purposes listed in our [Use Restrictions policy](#_).
+3. You’re responsible for everything under your account, including user-generated content and activity.
+4. You must be a human. Robots need not apply.
+
+---
+
+### **Payment, Refunds, and Plan Changes**
+
+1. Free stuff stays free! We don’t ask for your credit card or sell your data. 
+2. For paid Services that offer a free trial, enjoy the trial while it lasts. Once it’s over, pay up! If you don’t, your account will be frozen. Don’t worry though, we’ll give you a heads-up.
+3. If you upgrade from free to paid, you’ll be charged immediately. If you switch plans, the new price will kick in at your next billing cycle.
+4. Prices don't include taxes. You're responsible for paying any applicable taxes or levies.
+5. Refunds are based on our [Fair Refund policy](#_).
+
+---
+
+### **Cancellation and Termination**
+
+1. You can cancel your account at any time. It’s easy! Just use the cancellation link. If you need help, our [Support team](#_) is here for you.
+2. Upon cancellation, your content is gone. We don’t mess around with it—deleted forever after 30 days.
+3. If you cancel in the middle of a paid month, we don’t prorate. No refunds for unused time.
+4. We reserve the right to terminate or suspend your account for any reason. If you violate the rules, we’ll terminate your account. No second chances.
+5. If you’re abusive (threats, physical or verbal violence), your account will be terminated immediately.
+
+---
+
+### **Modifications to the Service and Prices**
+
+1. We will support our Services **until the end of the Internet**. That’s our promise! But sometimes we might have to retire old features or adjust pricing.
+2. If we increase prices for existing customers, we’ll give you at least 30 days’ notice. You’ll get an email (hopefully it’s not going to spam!).
+
+---
+
+### **Uptime, Security, and Privacy**
+
+1. We provide our Services “as is” — no promises about perfection, but we’re working hard to make it as reliable as possible. For status updates, visit [37status](#_).
+2. If your usage exceeds the average, we may temporarily disable your account. We’ll give you a shout before doing anything drastic.
+3. We take your data seriously and protect it with encryption, backups, and redundancies. Learn more about our [Security Overview](#_).
+4. By using our Services, you trust us with your data. We process your data for specific purposes—just as outlined in our [Privacy Policy](#_). Your data is safe, and we’ll never sell it. 
+
+---
+
+### **Copyright and Content Ownership**
+
+1. You own the content you post. We just help you manage it. But we do need a limited license to provide the Services.
+2. We reserve the right to remove any content that doesn’t comply with our standards.
+3. We own all rights to our Services, including intellectual property. Don’t go copying our code or designs without our permission.
+
+---
+
+### **Features and Bugs**
+
+We try to create the best tools, but let's be honest—no software is flawless. We make no guarantees, but we work hard to fix bugs, especially the ones that affect security.
+
+---
+
+### **Liability**
+
+**_Disclaimer: Phanatik shall not be liable for any damages (direct, indirect, or consequential) resulting from the use or inability to use our Services._**
+
+In simple terms: We do our best, but if things go wrong, that’s on you. Using our Services means you’re betting on us.
+
+---
+
+### **API Terms**
+
+We offer APIs, but be mindful—excessive use or abuse may result in your account being suspended.
+
+---
+
+If you have questions or concerns about these Terms, don’t hesitate to [contact our Support team](#_).
+
 
 Account Terms
 -------------

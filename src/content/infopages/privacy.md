@@ -3,90 +3,59 @@ page: Privacy
 pubDate: 2024-00-00
 ---
 
-California Resident Notice at Collection
-========================================
 
-If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act of 2020 (“**CCPA**”), requires us to provide some additional information to California residents. This Section only applies to you if you are a California resident, although please note that this information and the rights afforded herein are the same as offered to our other users in our main Privacy Policy. This Section does not apply to personal information we collect from our employees and job applicants in their capacity as employees and job applicants, as such information practices are described in separate policies.
+## California Resident Notice at Collection
 
-The following chart details these activities:
+If you're a California resident, the **California Consumer Privacy Act (CCPA)**, as amended by the **California Privacy Rights Act (CPRA)** of 2020, requires us to provide additional details on how we handle your personal information. This notice applies only to California residents. While the rights provided here align with the rights extended to all users in our general Privacy Policy, this section is specifically for California residents.
 
-**Category of personal information**
+This section **does not apply** to personal information we collect from our employees or job applicants.
 
-**Purposes of use**
+### Information We Collect and How We Use It
 
-**Categories of Third Parties Information**
+Below is a summary of the types of personal information we collect and how we use it:
 
-**Categories of Third Parties**
+| **Category of Personal Information**            | **Purposes of Use**                                                                                      | **Categories of Third Parties**                          | **Categories of Third Parties**              |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------------------------------------------------------|--------------------------------------------|
+| **Contact Information** (e.g., name, phone, email)  | Provide Services, communicate with you, analyze and improve Services, comply with law, security/fraud prevention | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Customer Service Interaction** (e.g., surveys, requests) | Provide Services, communicate with you, improve Services, comply with law, security/fraud prevention     | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Product Interaction Information**               | Provide Services, communicate with you, improve Services, comply with law, security/fraud prevention       | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Network and Device Information** (e.g., IP address, mobile data) | Provide Services, analyze use, improve Services, comply with law, security/fraud prevention              | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Login Information** (e.g., username, password)   | Provide Services, comply with law, security/fraud prevention, legal rights enforcement                    | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Professional/Employment Information** (e.g., company name, job title) | Provide Services, communicate with you, analyze use, improve Services, comply with law, security/fraud prevention | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
+| **Other Information** (e.g., profile pictures)    | Provide Services, communicate with you, analyze use, improve Services, comply with law, security/fraud prevention | Affiliated entities, Service providers, Legal purposes   | We do not share or sell                    |
 
-Contact information (such as your full name, phone number, email address)
+For more details on each category and the third parties to which we disclose personal information, refer to the **"What We Collect and Why"** and **"When We Access or Disclose Your Information"** sections of our Privacy Policy.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+---
 
-Affiliated entities; Service providers; Entities for legal purposes
+### Your Choices Regarding “Sharing” and “Selling”
 
-We do not share/sell
+As per the CCPA, you have the right to opt-out of the sale or sharing of your personal information for online analytics and advertising. **We do not sell or share your data**, and we have not done so in the past 12 months.
 
-Customer service interaction information (including optional surveys and when you ask for help)
+If we were ever to offer financial incentives in exchange for your personal information, we would provide you with relevant details about those incentives.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+The CCPA also allows you to limit the use or disclosure of your "sensitive personal information" if it is used for certain purposes. **We do not use or disclose sensitive personal information** other than for business purposes, which cannot be opted out of under the CCPA.
 
-Affiliated entities; Service providers; Entities for legal purposes
+Please refer to the **"Your Rights with Respect to Your Information"** section of our Privacy Policy for more information on how to exercise your rights under California law.
 
-We do not share/sell
+---
 
-Product interaction information
+### Retention of Your Personal Information
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+Please refer to the **"Retention of Your Information"** section in our Privacy Policy for details on how long we keep your personal information.
 
-Affiliated entities; Service providers; Entities for legal purposes
+---
 
-We do not share/sell
+### Shine the Light Disclosure
 
-Internet network and device information (such as mobile device information, IP address, and information about your interaction with the services)
+The **California Shine the Light law** allows California residents to request details on how we disclose personal information to third parties for direct marketing purposes. 
 
-Provide the Services; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+Currently, we do **not** share your personal information with third parties for their direct marketing purposes.
 
-Affiliated entities; Service providers; Entities for legal purposes;
+---
 
-We do not share/sell
+### Contact Us
 
-Login information (such as your username and password)
+If you have any questions or concerns about our privacy practices or would like to exercise your rights under the CCPA, please [contact our Support team](#_).
 
-Provide the Services; Comply with law or defend our legal rights; Security/fraud prevention; Comply with law or defend our legal rights
-
-Affiliated entities; Service providers; Entities for legal purposes
-
-We do not share/sell
-
-Professional or employment information (such as the name and address of the company you work for and your title)
-
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
-
-Affiliated entities; Service providers; Entities for legal purposes;
-
-We do not share/sell
-
-Other information (any other information you choose to provide directly to us, including optional profile photos)
-
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
-
-Affiliated entities; Service providers; Entities for legal purposes;
-
-We do not sell/share
-
-For more information about each category of personal information, purpose of use, and third parties to which we disclose personal information, please see the "What we collect and why," and "When we access or disclose you information" sections of our Privacy Policy.
-
-**Your Choices Regarding “Sharing” and “Selling”**: You have the right to opt out of our sale/sharing of your personal information for purposes of online analytics and advertising. Currently, we do not sell or share your data as defined by the CCPA and we have not done so over the past 12 months from the effective date of this Privacy Policy.
-
-**Other CCPA Rights.** If we ever offer any financial incentives in exchange for your personal information, we will provide you with appropriate information about such incentives.
-
-The CCPA also allows you to limit the use or disclosure of your “sensitive personal information” (as defined in the CCPA) if your sensitive personal information is used for certain purposes. Please note that we do not use or disclose sensitive personal information other than for business purposes for which you cannot opt out under the CCPA.
-
-Please see the “Your rights with respect to your information” section of our Policy above for information about the additional rights you have with respect to your personal information under California law and how to exercise them.
-
-Retention of Your Personal Information. Please see the “Retention Of Your Information” section belowof our Privacy Policy for more information.
-
-Shine the Light Disclosure
---------------------------
-
-The California "Shine the Light" law gives residents of California the right under certain circumstances to request information from us regarding the manner in which we disclose certain categories of personal information (as defined in the Shine the Light law) with third parties for their direct marketing purposes. We currently do not disclose your personal information to third parties for their own direct marketing purposes.
+Thank you for trusting us with your data. We take your privacy seriously.
