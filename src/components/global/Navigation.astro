@@ -8,7 +8,10 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import BlogSearch from "@/components/blog/BlogSearch.astro";
 import EntryBrief from "@/components/blog/EntryBrief.astro";
 import EntryTicker from "@/components/blog/EntryTicker.astro";
+import PodcastBrief from "@/components/podcast/PodcastBrief.astro";
 import { getCollection } from "astro:content";
+
+// Get all podcasts
 const allPodcasts = await getCollection("podcast");
 allPodcasts.sort((a, b) => {
   const dateA = new Date(a.data.pubDate).getTime(); // Convert to timestamp
@@ -72,7 +75,7 @@ const sections = [
 <section id="navigation" class="overflow-hidden">
   <Wrapper variant="standard" class="pb-1 pt-4">
     <div class="bg-white">
-      <div class="grid w-full grid-cols-3 gap-4 lg:gap-12 lg:h-10 items-center">
+      <div class="grid w-full grid-cols-3 gap-4 lg:gap-12 l items-center">
         <Text tag="p" variant="textXS" class="text-base-500 dark:textbase-400">
           <span id="clock"> </span>
         </Text>
@@ -158,145 +161,146 @@ const sections = [
           <div class=""><BlogSearch /></div>
         </div>
       </div>
-      <div class="bg-white mt-2 py-2">
-        <!-- Ticker element to be conditionally hidden -->
-        <div id="tickerElement" class="bg-white mt-2 py-2">
-          <div
-            class="relative flex snap-x snap-proximity items-center gap-2 px-2 overflow-x-scroll scrollbar-hide animate-marquee w-max pause-on-hover"
-          >
-            {
-              latestPosts.map((post, index) => (
-                <>
-                  {index > 0 && <span class="text-black">•</span>}
-                  <EntryTicker post={post} />
-                </>
-              ))
-            }
-          </div>
-        </div>
-      </div>
+
       <nav
         id="menu"
         role="navigation"
         aria-labelledby="menubutton"
-        class="relative overflow-hidden bg-base-50 rounded-xl shadow mb-4"
+        class="bg-base-50 rounded-xl shadow mt-4 overflow-hidden relative"
       >
-        <div
-          class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5 p-8 lg:p-8"
-        >
-          <div class="grid gap-4 lg:gap-8 grid-cols-2 lg:grid-cols-1">
-            {
-              sections.map((section) => (
-                <div>
-                  <Text
-                    tag="h3"
-                    variant="textXS"
-                    class="flex gap-x-2 text-base-900 justify-between uppercase font-medium"
-                  >
-                    {section.title}
-                  </Text>
-                  <ul
-                    role="list"
-                    class="mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
-                  >
-                    {section.links.map((link) => (
-                      <li>
-                        <Text
-                          tag="a"
-                          variant="textXS"
-                          class="text-base-500 hover:underline capitalize"
-                          href={link.url}
-                        >
-                          {link.name}
-                        </Text>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))
-            }
-          </div>
-          <div class="lg:col-span-2">
-            <Text
-              tag="h2"
-              variant="textXS"
-              class="text-base-900 uppercase font-medium"
-            >
-              Top Stories
-            </Text>
-            <div
-              class="flex flex-col gap-4 mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
-            >
+        <div>
+          <div
+            class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5 p-8 lg:p-8 pb-0"
+          >
+            <div class="grid gap-4 lg:gap-8 grid-cols-2 lg:grid-cols-1">
               {
-                allPosts
-                  .filter((post) => post.data.isTopStory)
-                  .slice(0, 3)
-                  .map((post) => <EntryBrief post={post} />)
+                sections.map((section) => (
+                  <div>
+                    <Text
+                      tag="h3"
+                      variant="textXS"
+                      class="flex gap-x-2 text-base-900 justify-between uppercase font-medium"
+                    >
+                      {section.title}
+                    </Text>
+                    <ul
+                      role="list"
+                      class="mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
+                    >
+                      {section.links.map((link) => (
+                        <li>
+                          <Text
+                            tag="a"
+                            variant="textXS"
+                            class="text-base-500 hover:underline capitalize"
+                            href={link.url}
+                          >
+                            {link.name}
+                          </Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
               }
             </div>
-          </div>
-          <div class="lg:col-span-2">
-            <Text
-              tag="h2"
-              variant="textXS"
-              class="text-base-900 uppercase font-medium"
-            >
-              Latest episodes
-            </Text>
-            <div
-              class="flex flex-col gap-4 mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
-            >
-              {
-                allPodcasts
-                  .filter((post) => post.data.isFeatured)
-                  .slice(0, 3)
-                  .map((post) => <EntryBrief post={post} />)
-              }
+            <div class="lg:col-span-2">
+              <Text
+                tag="h2"
+                variant="textXS"
+                class="text-base-900 uppercase font-medium"
+              >
+                Top Stories
+              </Text>
+              <div
+                class="flex flex-col gap-4 mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
+              >
+                {
+                  allPosts
+                    .filter((post) => post.data.isTopStory)
+                    .slice(0, 3)
+                    .map((post) => <EntryBrief post={post} />)
+                }
+              </div>
+            </div>
+            <div class="lg:col-span-2">
+              <Text
+                tag="h2"
+                variant="textXS"
+                class="text-base-900 uppercase font-medium"
+              >
+                Latest episodes
+              </Text>
+              <div
+                class="flex flex-col gap-4 mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
+              >
+                {
+                  allPodcasts
+                    .filter((post) => post.data.isFeatured)
+                    .slice(0, 3)
+                    .map((post) => <PodcastBrief post={post} />)
+                }
+              </div>
             </div>
           </div>
         </div>
       </nav>
+
+      <!-- Ticker element to be conditionally hidden -->
+      <div id="tickerElement" class="bg-white mt-2">
+        <div
+          class="relative flex snap-x snap-proximity items-center gap-2 px-2 overflow-x-scroll scrollbar-hide animate-marquee w-max pause-on-hover"
+        >
+          {
+            latestPosts.map((post, index) => (
+              <>
+                {index > 0 && <span class="text-black">•</span>}
+                <EntryTicker post={post} />
+              </>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </Wrapper>
-</section>
-<script type="module">
-  document.addEventListener("DOMContentLoaded", function () {
-    // Get the current page's path
-    const currentPage = window.location.pathname;
-    // Define the paths where you want to hide the ticker (including subpaths)
-    const hiddenPages = [
-      "/404", // Explicit /404 page
-      "/forms/", // Explicit /forms page
-      "/about", // Explicit /about page
-      "/about/", // All subpages under /about/
-      "/system", // All paths starting with /system/
-      "/system/", // All subpaths under /system/
-      "/podcast", // All paths starting with /podcast/
-      "/podcast/", // All All subpaths under /podcast/
-      "/blog", // All paths starting with /blog/
-      "/blog", // All paths starting with /blog/
-      "/blog/", // All subpaths under /blog/
-      "/authors", // All paths starting with /authors/
-      "/authors/", // All subpaths under /authors/
-      "/infopages", // All paths starting with /infopages/
-      "/infopages/", // All subpaths under /infopages/
-      "/jobs", // All paths starting with /jobs/
-      "/jobs/", // All subpaths under /jobs/
-      "/pricing/", // All paths starting with /advertise
-      "/helpcenter", // All paths starting with /helpcenter/
-      "/helpcenter/", // All subpaths under /helpcenter/
-      
-    ];
-    // Check if the current page starts with any of the hiddenPages or exactly matches
-    const shouldHideTicker = hiddenPages.some(
-      (page) => currentPage.startsWith(page) || currentPage === page
-    );
-    // If the current page matches one of the hidden pages, hide the ticker
-    if (shouldHideTicker) {
-      const tickerElement = document.getElementById("tickerElement");
-      if (tickerElement) {
-        tickerElement.style.display = "none"; // Hide the ticker
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the current page's path
+      const currentPage = window.location.pathname;
+      // Define the paths where you want to hide the ticker (including subpaths)
+      const hiddenPages = [
+        "/404", // Explicit /404 page
+        "/forms/", // Explicit /forms page
+        "/about", // Explicit /about page
+        "/about/", // All subpages under /about/
+        "/system", // All paths starting with /system/
+        "/system/", // All subpaths under /system/
+        "/podcast", // All paths starting with /podcast/
+        "/podcast/", // All All subpaths under /podcast/
+        "/blog", // All paths starting with /blog/
+        "/blog", // All paths starting with /blog/
+        "/blog/", // All subpaths under /blog/
+        "/authors", // All paths starting with /authors/
+        "/authors/", // All subpaths under /authors/
+        "/infopages", // All paths starting with /infopages/
+        "/infopages/", // All subpaths under /infopages/
+        "/jobs", // All paths starting with /jobs/
+        "/jobs/", // All subpaths under /jobs/
+        "/pricing/", // All paths starting with /advertise
+        "/helpcenter", // All paths starting with /helpcenter/
+        "/helpcenter/", // All subpaths under /helpcenter/
+      ];
+      // Check if the current page starts with any of the hiddenPages or exactly matches
+      const shouldHideTicker = hiddenPages.some(
+        (page) => currentPage.startsWith(page) || currentPage === page
+      );
+      // If the current page matches one of the hidden pages, hide the ticker
+      if (shouldHideTicker) {
+        const tickerElement = document.getElementById("tickerElement");
+        if (tickerElement) {
+          tickerElement.style.display = "none"; // Hide the ticker
+        }
       }
-    }
-  });
-</script>
+    });
+  </script>
+</section>
