@@ -263,44 +263,5 @@ const sections = [
       </div>
     </div>
   </Wrapper>
-  <script type="module">
-    document.addEventListener("DOMContentLoaded", function () {
-      // Get the current page's path
-      const currentPage = window.location.pathname;
-      // Define the paths where you want to hide the ticker (including subpaths)
-      const hiddenPages = [
-        "/404", // Explicit /404 page
-        "/forms/", // Explicit /forms page
-        "/about", // Explicit /about page
-        "/about/", // All subpages under /about/
-        "/system", // All paths starting with /system/
-        "/system/", // All subpaths under /system/
-        "/podcast", // All paths starting with /podcast/
-        "/podcast/", // All All subpaths under /podcast/
-        "/blog", // All paths starting with /blog/
-        "/blog", // All paths starting with /blog/
-        "/blog/", // All subpaths under /blog/
-        "/authors", // All paths starting with /authors/
-        "/authors/", // All subpaths under /authors/
-        "/infopages", // All paths starting with /infopages/
-        "/infopages/", // All subpaths under /infopages/
-        "/jobs", // All paths starting with /jobs/
-        "/jobs/", // All subpaths under /jobs/
-        "/pricing/", // All paths starting with /advertise
-        "/helpcenter", // All paths starting with /helpcenter/
-        "/helpcenter/", // All subpaths under /helpcenter/
-      ];
-      // Check if the current page starts with any of the hiddenPages or exactly matches
-      const shouldHideTicker = hiddenPages.some(
-        (page) => currentPage.startsWith(page) || currentPage === page
-      );
-      // If the current page matches one of the hidden pages, hide the ticker
-      if (shouldHideTicker) {
-        const tickerElement = document.getElementById("tickerElement");
-        if (tickerElement) {
-          tickerElement.style.display = "none"; // Hide the ticker
-        }
-      }
-    });
-  </script>
+ 
 </section>

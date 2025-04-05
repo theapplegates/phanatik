@@ -5,9 +5,9 @@ import BaseHead from "@/components/fundations/head/BaseHead.astro";
 import Navigation from "@/components/global/Navigation.astro";
 import Footer from "@/components/global/Footer.astro";
 // Scripts
-import AudioPlayerScript from "@/components/fundations/scripts/AudioPlayerScript.astro";
 import FuseJS from "@/components/fundations/scripts/FuseJS.astro";
-
+import TabsScript from "@/components/fundations/scripts/TabsScript.astro";
+import AudioPlayerScript from "@/components/fundations/scripts/AudioPlayerScript.astro";
 ---
 
 <html lang="en">
@@ -19,7 +19,8 @@ import FuseJS from "@/components/fundations/scripts/FuseJS.astro";
     <main class="grow"><slot /></main>
     <Footer />
     <FuseJS />
-
+    <!-- Scripts -->
+    <TabsScript />
     <AudioPlayerScript />
   </body>
 </html>
