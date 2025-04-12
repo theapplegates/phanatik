@@ -16,9 +16,12 @@ import EntryMedium from "@/components/blog/EntryMedium.astro";
 import { getCollection } from "astro:content";
 // Content
 const allPosts = await getCollection("posts");
-// Filter posts by this author (match slug, not name!)
+// Get the author slug from the URL
+const authorSlug = Astro.url.pathname.split("/").filter(Boolean).pop();
+
+// Filter posts by this author (based on slug)
 const relatedPosts = allPosts.filter(
-  (post) => post.data.author === Astro.url.pathname.split("/").pop()
+  (post) => post.data.author === authorSlug
 );
 
 const { frontmatter } = Astro.props;
@@ -123,7 +126,7 @@ const { frontmatter } = Astro.props;
                 variant="textXS"
                 class="text-base-900 uppercase font-medium"
               >
-                More articles from {frontmatter.name}
+                More articles from {authorSlug}
               </Text>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2">
                 {relatedPosts.map((post) => (
