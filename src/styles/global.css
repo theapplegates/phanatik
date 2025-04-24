@@ -3,6 +3,12 @@
 @plugin "@tailwindcss/forms";
 @plugin "tailwind-scrollbar-hide";
 @layer utilities {
+  html {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .pause-on-hover:hover {
     animation-play-state: paused;
   }
@@ -71,10 +77,7 @@
 
 }
 @theme {
-  /* Typography*/
-  --font-sans: "Inter", sans-serif;
-  --font-display: "InterDisplay", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+ 
   /* Colors */
   /* accent */
   --color-accent-50: oklch(92.98% 0.035 285.7);
@@ -126,7 +129,7 @@
   }
 }
 :root {
-  font-family: Inter, sans-serif;
+ 
   font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
    /* Shiki  code styles */
    --astro-code-color-text: theme(colors.zinc.900);
