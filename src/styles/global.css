@@ -3,10 +3,7 @@
 @plugin "@tailwindcss/forms";
 @plugin "tailwind-scrollbar-hide";
 @layer utilities {
-  .keen-slider:not(.initialized) {
-    visibility: hidden;
-    opacity: 0;
-  }
+
   
   .pause-on-hover:hover {
     animation-play-state: paused;
