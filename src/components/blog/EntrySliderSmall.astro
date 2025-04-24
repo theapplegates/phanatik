@@ -26,7 +26,7 @@ const formattedAuthor = formatAuthorName(author);
 ---
 
 <article
-  class="relative grid grid-cols-1 md:grid-cols-3 gap-8 w-full keen-slider__slide group"
+  class="relative grid grid-cols-1 md:grid-cols-3 gap-8 w-full group"
 >
   <a href={url} title={title} class="absolute inset-0 z-10"> </a>
   <div class="flex flex-col h-full justify-between gap-2">
@@ -85,7 +85,7 @@ const formattedAuthor = formatAuthorName(author);
   />
 </article>
 
-<script type="module">
+<!-- <script type="module">
   import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
 
   window.addEventListener("DOMContentLoaded", () => {
@@ -155,4 +155,4 @@ const formattedAuthor = formatAuthorName(author);
     keenSliderPrevious?.addEventListener("click", () => keenSlider.prev());
     keenSliderNext?.addEventListener("click", () => keenSlider.next());
   });
-</script>
+</script> -->
