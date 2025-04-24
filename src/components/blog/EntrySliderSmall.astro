@@ -79,6 +79,7 @@ const formattedAuthor = formatAuthorName(author);
     width="100"
     height="800"
     alt={title}
+    loading="eager"
     class="object-cover w-full aspect-16/11 md:col-span-2 rounded-xl order-first md:order-last"
   />
 </article>
@@ -125,5 +126,3 @@ const formattedAuthor = formatAuthorName(author);
     keenSliderNext?.addEventListener("click", () => keenSlider.next());
   });
 </script>
-
-
