@@ -8,12 +8,11 @@ bio: |
 
   Maya's work is dedicated to capturing the energy and transformation taking place in women’s sports, from grassroots initiatives to international tournaments. Her coverage is both informative and inspiring, offering fresh perspectives on the games, the athletes, and the fans.
 image:
-  url: "/images/authors/5.jpeg"
+  url: "/src/images/authors/5.jpeg"
   alt: "Maya Lombardi"
 socials:
   twitter: "#_"
   website: "#_"
   linkedin: "#_"
   email: "#_"
-
 ---

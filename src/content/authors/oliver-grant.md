@@ -8,12 +8,11 @@ bio: |
 
   As an advocate for financial education, Oliver also emphasizes the importance of financial literacy, offering actionable advice for readers to take control of their financial futures. His work aims to simplify complex financial concepts and empower individuals to make informed decisions about their wealth-building journey.
 image:
-  url: "/images/authors/6.jpeg"
+  url: "/src/images/authors/6.jpeg"
   alt: "Oliver Grant"
 socials:
   twitter: "#_"
   website: "#_"
   linkedin: "#_"
   email: "#_"
-
 ---

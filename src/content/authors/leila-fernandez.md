@@ -8,12 +8,11 @@ bio: |
 
   With a keen eye on the future of health, Leila’s reporting aims to inform readers about the transformative changes happening in healthcare, making complex medical topics more accessible to the general public.
 image:
-  url: "/images/authors/3.jpeg"
+  url: "/src/images/authors/3.jpeg"
   alt: "Leila Fernandez"
 socials:
   twitter: "#_"
   website: "#_"
   linkedin: "#_"
   email: "#_"
-
 ---

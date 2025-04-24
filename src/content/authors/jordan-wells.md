@@ -6,7 +6,7 @@ bio: |
   In his work, Jordan explores the intersection of technology, entertainment, and sports, shedding light on how new technologies like virtual reality, streaming, and AI are transforming how fans engage with their favorite teams and athletes.
   Whether discussing the latest in eSports or the rise of interactive fan experiences, Jordan provides insightful commentary on the ever-changing landscape of sports and its relationship with technology.
 image:
-  url: "/images/authors/1.jpeg"
+  url: "/src/images/authors/1.jpeg"
   alt: "Jordan Wells"
 socials:
   twitter: "#_"
