@@ -79,6 +79,7 @@
   /* Typography*/
   --font-sans: "Inter", sans-serif;
   --font-display: "InterDisplay", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
   /* Colors */
   /* accent */
   --color-accent-50: oklch(92.98% 0.035 285.7);
