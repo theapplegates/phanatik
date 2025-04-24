@@ -26,7 +26,7 @@ const formattedAuthor = formatAuthorName(author);
 ---
 
 <article
-  class="relative grid grid-cols-1 md:grid-cols-3 gap-8 w-full keen-slider__slide group "
+  class="relative grid grid-cols-1 md:grid-cols-3 gap-8 w-full keen-slider__slide group"
 >
   <a href={url} title={title} class="absolute inset-0 z-10"> </a>
   <div class="flex flex-col h-full justify-between gap-2">
@@ -76,11 +76,9 @@ const formattedAuthor = formatAuthorName(author);
   </div>
   <Image
     src={image}
-   width="800" 
-   height="450"
+    width="800"
+    height="450"
     alt={title}
-    loading="eager"
-    decoding="async"
     class="object-cover w-full aspect-16/11 md:col-span-2 rounded-xl order-first md:order-last"
   />
 </article>
