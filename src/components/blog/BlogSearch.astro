@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const posts = await Promise.all(
   (await getCollection("posts")).map(async (post) => ({
     slug: post.slug,
-    image: post.data.image,
+    
     tags: post.data.tags,
     title: post.data.title,
     pubDate: post.data.pubDate,
@@ -37,7 +37,7 @@ const posts = await Promise.all(
       >
       </div>
       <div
-        class="inline-block w-full max-w-2xl px-8 mb-8 mt-12 lg:mt-48 p-8 bg-base-50 rounded-xl text-left align-middle transition-all transform"
+        class="inline-block w-full max-w-2xl px-8 mb-8 mt-12 lg:mt-48 p-8 bg-base-50 rounded-xl text-left align-middle transition-all transform relative"
       >
         <div class="hidden">
           <button
@@ -120,7 +120,7 @@ const posts = await Promise.all(
       if (results.length === 0) {
         searchResults.innerHTML = `
         <div>
-          <h3 class="font-medium text-base text-base-900 p-8 font-medium">
+          <h3 class="font-medium text-base text-base-900 p-4 font-medium">
             There's nothing here,...
           </h3>
         </div>
@@ -132,37 +132,33 @@ const posts = await Promise.all(
       searchResults.innerHTML = results
         .map((result, index) => {
           return `
-          <a href="/blog/posts/${result.item.slug}" class="block p-4 duration-300 hover:bg-base-100 rounded-xl 4 focus:ring-accent-500 focus:bg-base-5 grid grid-cols-3 gap-4 items-center" id="result-${index}">
-            <img src="${result.item.image?.url || "/default-image.jpg"}" alt="${result.item.image?.alt || "No image available"}" 
-            class="object-cover aspect-12/8 w-full rounded-lg object-top">
-            <div class="col-span-2 flex flex-col">
+          <a href="/blog/posts/${result.item.slug}" class="flex flex-col p-4 duration-300 hover:bg-base-100 rounded-xl focus:ring-accent-500 focus:bg-base-5 " id="result-${index}">
+            <div class="flex items-center gap-1">
               <div class="flex items-center gap-1">
-                <div class="flex items-center gap-1">
-                  ${
-                    result.item.tags
-                      ? result.item.tags
-                          .map(
-                            (cat) =>
-                              `<span class="text-xs capitalize text-base-500">${cat}</span>`
-                          )
-                          .join(" , ")
-                      : ""
-                  }
-                </div>
-                <span>·</span>
-                <p class="text-xs text-base-500 block">
-                  ${new Date(result.item.pubDate).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  })}
-                </p>
+                ${
+                  result.item.tags
+                    ? result.item.tags
+                        .map(
+                          (cat) =>
+                            `<span class="text-xs capitalize text-base-500">${cat}</span>`
+                        )
+                        .join(" , ")
+                    : ""
+                }
               </div>
-              <h3 class="font-medium text-xs md:text-xl lg:text-2xl lg:text-balance font-display mt-2 text-base-900 block">
-                ${result.item.title}
-              </h3>
-             
+              <span>·</span>
+              <p class="text-xs text-base-500 block">
+                ${new Date(result.item.pubDate).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                })}
+              </p>
             </div>
+            <h3 class="font-medium text-xs md:text-xl lg:text-2xl lg:text-balance font-display mt-2 text-base-900 block">
+              ${result.item.title}
+            </h3>
+           
           </a>
         `;
         })
