@@ -37,7 +37,25 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
 Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
-gi
+----
+Updated on 21st Aug 2025
+### Optional CMS with pagesCMS
+
+This theme includes a ready-to-use [PagesCMS](https://pagescms.org) config file (`.pages.yml`).
+- Optional — delete the file if you don’t want CMS.  But you could keep in case you want to in the future, it won't affect the theme.
+- Zero dependencies — it does not add anything to your code, build or installs.  
+- Instant setup — if you want simple content editing, the config is already there. 
+
+### Getting Started
+1. Push your project to GitHub, GitLab, or Bitbucket.  
+2. Go to [PagesCMS](https://pagescms.org/) and connect your repository.  
+3. Your content (Markdown, images, etc.) will be editable through the CMS.  
+
+Learn more:  
+- [PagesCMS homepage](https://pagescms.org/)  
+- [Configuration docs](https://pagescms.org/docs/configuration/)  
+
+----
 Updated on 30th December 2024
 
 ## This update includes:
