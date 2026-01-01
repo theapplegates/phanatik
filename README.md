@@ -38,7 +38,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
 
-Updated on 01st Dec 2026
+Updated on 01st Jan 2026
 
 ## This update includes:
 
@@ -49,7 +49,6 @@ Updated on 01st Dec 2026
 - New fonts
 - New color palette
 - Cleaned up navigation
-
 ---
 
 Updated on 21st Aug 2025
