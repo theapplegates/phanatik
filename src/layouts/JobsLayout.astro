@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import JobsEntry from "@/components/jobs/JobsEntry.astro";
@@ -31,7 +31,7 @@ const relatedJobs = allJobs.filter(
             <div
               class="relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2"
             >
-              <Text tag="p" variant="textSM" class="text-base-500">
+              <Text tag="p" variant="textSM" class="text-base-600">
                 {frontmatter.description}
               </Text>
 
@@ -47,35 +47,35 @@ const relatedJobs = allJobs.filter(
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                   ><span class="font-medium text-base-900">Salary:</span>
                   {frontmatter.salaryRange}</Text
                 >
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                   ><span class="font-medium text-base-900">Location:</span>
                   {frontmatter.location}</Text
                 >
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                   ><span class="font-medium text-base-900">Company:</span>
                   {frontmatter.company}</Text
                 >
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                   ><span class="font-medium text-base-900">Category:</span>
                   {frontmatter.category}</Text
                 >
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                 >
                   <span class="font-medium text-base-900"
                     >Employment Status:</span
@@ -85,14 +85,14 @@ const relatedJobs = allJobs.filter(
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                   ><span class="font-medium text-base-900">Job Level:</span>
                   {frontmatter.jobLevel}</Text
                 >
                 <Text
                   tag="p"
                   variant="textSM"
-                  class="text-base-500 flex items-center justify-between py-2"
+                  class="text-base-600 flex items-center justify-between py-2"
                 >
                   <span class="font-medium text-base-900"
                     >Application Deadline:</span
@@ -116,9 +116,9 @@ const relatedJobs = allJobs.filter(
               </div>
 
               <div class="mt-8 flex">
-                <Link href="/jobs/apply" size="xs" variant="accent">
+                <Button isLink href="/jobs/apply" size="xs" variant="accent">
                   Apply Now
-                </Link>
+                </Button>
               </div>
             </div>
           </div>

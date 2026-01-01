@@ -2,7 +2,7 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 // Entries
-import EntrySimple from "@/components/podcast/PodcastSimple.astro";
+import BlogCard5 from "@/components/podcast/PodcastCard5.astro";
 // Get all posts
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("podcast");
@@ -12,6 +12,7 @@ allPosts.sort((a, b) => {
   return dateB - dateA; // Compare timestamps
 });
 ---
+
 <Text tag="h2" variant="textXS" class="text-base-900 uppercase font-medium">
   Podcast Series
 </Text>
@@ -21,7 +22,7 @@ allPosts.sort((a, b) => {
   {
     allPosts
       .filter((post) => post.data.isSeries)
-     
-      .map((post) => <EntrySimple post={post} />)
+
+      .map((post) => <BlogCard5 post={post} />)
   }
 </div>

@@ -2,7 +2,7 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 // Components
-import EntrySimple from "@/components/blog/EntrySimple.astro";
+import BlogCard5 from "@/components/blog/BlogCard5.astro";
 // Get all posts
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("posts");
@@ -23,9 +23,8 @@ allPosts.sort((a, b) => {
     {
       allPosts
         .filter((post) => post.data.isFeatured)
-        .slice(0,4)
-        .map((post) => <EntrySimple post={post} />)
+        .slice(0, 4)
+        .map((post) => <BlogCard5 post={post} />)
     }
   </div>
-  
 </div>

@@ -1,6 +1,6 @@
 ---
 // Entries
-import EntryBrief from "@/components/blog/EntryBrief.astro";
+import BlogCard1 from "@/components/blog/BlogCard1.astro";
 // Get all posts
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("posts");
@@ -30,7 +30,7 @@ allPosts.sort((a, b) => {
       </button>
     </li>
   </ul>
-  <div class="py-4 pt-4 text-left text-base-500 content">
+  <div class="py-4 pt-4 text-left text-base-600 content">
     <!-- Tab Content -->
     <div id="health" class="tab-content">
       <section>
@@ -39,7 +39,7 @@ allPosts.sort((a, b) => {
             allPosts
               .filter((post) => post.data.tags.includes("health")) // "health" should be a string
               .slice(0, 6)
-              .map((post) => <EntryBrief post={post} />)
+              .map((post) => <BlogCard1 post={post} />)
           }
         </div>
       </section>
@@ -51,7 +51,7 @@ allPosts.sort((a, b) => {
             allPosts
               .filter((post) => post.data.tags.includes("sports")) // "health" should be a string
               .slice(0, 6)
-              .map((post) => <EntryBrief post={post} />)
+              .map((post) => <BlogCard1 post={post} />)
           }
         </div>
       </section>

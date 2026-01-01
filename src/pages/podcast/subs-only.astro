@@ -5,13 +5,13 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import Subscribe from "@/components/cta/Subscribe.astro";
-import EpisodeCard from "@/components/podcast/EpisodeCard.astro";
+import PodcastCard1 from "@/components/podcast/PodcastCard11.astro";
 
 // Content
 const allPodcasts = await getCollection("podcast");
 import { getCollection } from "astro:content";
 // Sections
-import AsideEpisode from "@/components/podcast/AsideEpisode.astro";
+import PodcastAside from "@/components/podcast/PodcastAside.astro";
 import AdvertAside from "@/components/advert/AdvertAside.astro";
 // Sort posts by date
 allPodcasts.sort((a, b) => {
@@ -20,6 +20,7 @@ allPodcasts.sort((a, b) => {
   return dateB - dateA; // Compare timestamps
 });
 ---
+
 <BaseLayout>
   <section>
     <Wrapper variant="standard" class="py-12">
@@ -30,7 +31,7 @@ allPodcasts.sort((a, b) => {
             variant="textXS"
             class="text-base-900 uppercase font-medium"
           >
-           Subscribers only
+            Subscribers only
           </Text>
           <div
             class="relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2"
@@ -38,9 +39,8 @@ allPodcasts.sort((a, b) => {
             {
               allPodcasts
                 .filter((post) => post.data.isLocked)
-                .map((post) => <EpisodeCard post={post} />)
+                .map((post) => <PodcastCard1 post={post} />)
             }
-
           </div>
           <Subscribe />
         </div>
@@ -51,7 +51,7 @@ allPodcasts.sort((a, b) => {
         lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-50">
-            <AsideEpisode />
+            <PodcastAside />
             <AdvertAside />
           </div>
         </div>

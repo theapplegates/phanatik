@@ -2,7 +2,7 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 // Entries
-import EntrySliderSmall from "@/components/blog/EntrySliderSmall.astro";
+import BlogCard7 from "@/components/blog/BlogCard7.astro";
 
 // Get all posts
 import { getCollection } from "astro:content";
@@ -21,13 +21,13 @@ allPosts.sort((a, b) => {
   <div
     class="mt-2 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
   >
-    <div class=" relative">
+    <div class="relative">
       {
         allPosts
           .filter((post) => post.data.isFeatured)
           .slice(0, 1)
-          .map((post) => <EntrySliderSmall post={post} />)
+          .map((post) => <BlogCard7 post={post} />)
       }
     </div>
-   </div>
+  </div>
 </div>

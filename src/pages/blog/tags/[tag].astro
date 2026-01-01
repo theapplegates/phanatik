@@ -4,10 +4,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Sections
-import AsidePost from "@/components/blog/AsidePost.astro";
+import BlogAside from "@/components/blog/BlogAside.astro";
 // Components
-import EntryMedium from "@/components/blog/EntryMedium.astro";
-import EntryCard from "@/components/blog/EntryCard.astro";
+import BlogCard3 from "@/components/blog/BlogCard3.astro";
+import BlogCard2 from "@/components/blog/BlogCard2.astro";
 import AdvertAside from "@/components/advert/AdvertAside.astro";
 // Content
 import { getCollection } from "astro:content";
@@ -45,11 +45,11 @@ const { posts } = Astro.props;
       >
         <div class="lg:col-span-3 lg:pr-8">
           <div>
-            {posts.slice(0, 1).map((post) => <EntryCard post={post} />)}
+            {posts.slice(0, 1).map((post) => <BlogCard2 post={post} />)}
             <div
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
             >
-              {posts.slice(1).map((post) => <EntryMedium post={post} />)}
+              {posts.slice(1).map((post) => <BlogCard3 post={post} />)}
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ const { posts } = Astro.props;
         lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-20">
-            <AsidePost />
+            <BlogAside />
             <AdvertAside />
           </div>
         </div>

@@ -4,13 +4,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import EpisodeMedium from "@/components/podcast/EpisodeMedium.astro";
-import EpisodeCard from "@/components/podcast/EpisodeCard.astro";
+import PodcastCard2 from "@/components/podcast/PodcastCard2.astro";
+import PodcastCard1 from "@/components/podcast/PodcastCard11.astro";
 // Content
 const allPodcasts = await getCollection("podcast");
 import { getCollection } from "astro:content";
 // Sections
-import AsideEpisode from "@/components/podcast/AsideEpisode.astro";
+import PodcastAside from "@/components/podcast/PodcastAside.astro";
 import AdvertAside from "@/components/advert/AdvertAside.astro";
 // Sort posts by date
 allPodcasts.sort((a, b) => {
@@ -19,6 +19,7 @@ allPodcasts.sort((a, b) => {
   return dateB - dateA; // Compare timestamps
 });
 ---
+
 <BaseLayout>
   <section>
     <Wrapper variant="standard" class="py-12">
@@ -31,13 +32,15 @@ allPodcasts.sort((a, b) => {
           >
             Featured podcasts
           </Text>
-          <div class="relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2">
-              {
-                allPodcasts
-                  .filter((post) => post.data.isFeatured)
-                  .slice(0, 1)
-                  .map((post) => <EpisodeCard post={post} />)
-              }
+          <div
+            class="relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2"
+          >
+            {
+              allPodcasts
+                .filter((post) => post.data.isFeatured)
+                .slice(0, 1)
+                .map((post) => <PodcastCard1 post={post} />)
+            }
           </div>
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
@@ -46,7 +49,7 @@ allPodcasts.sort((a, b) => {
               allPodcasts
                 .filter((post) => post.data.isFeatured)
                 .slice(1)
-                .map((post) => <EpisodeMedium post={post} />)
+                .map((post) => <PodcastCard2 post={post} />)
             }
           </div>
         </div>
@@ -57,7 +60,7 @@ allPodcasts.sort((a, b) => {
         lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-50">
-            <AsideEpisode />
+            <PodcastAside />
             <AdvertAside />
           </div>
         </div>

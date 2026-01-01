@@ -21,7 +21,9 @@ const tagCounts = allPodcasts.reduce((acc, post) => {
 const tags = Object.keys(tagCounts);
 // Function to get the image for a specific tag
 function getTagImage(tag) {
-  const filteredPosts = allPodcasts.filter((post) => post.data.tags.includes(tag));
+  const filteredPosts = allPodcasts.filter((post) =>
+    post.data.tags.includes(tag)
+  );
   if (filteredPosts.length > 0) {
     return filteredPosts[0].data.image.url; // Return the image of the first post with that tag
   }
@@ -58,7 +60,7 @@ function getTagImage(tag) {
                   class="flex items-start capitalize font-medium justify-between gap-4 mt-1 text-base-900 group-hover:underline font-display"
                 >
                   {tag}
-                  <Text tag="span" variant="textXS" class="text-base-500">
+                  <Text tag="span" variant="textXS" class="text-base-600">
                     ({tagCounts[tag]})
                   </Text>
                 </Text>

@@ -11,7 +11,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import EntryMedium from "@/components/blog/EntryMedium.astro"; 
+import BlogCard3 from "@/components/blog/BlogCard3.astro";
 // Load all posts
 import { getCollection } from "astro:content";
 // Content
@@ -20,9 +20,7 @@ const allPosts = await getCollection("posts");
 const authorSlug = Astro.url.pathname.split("/").filter(Boolean).pop();
 
 // Filter posts by this author (based on slug)
-const relatedPosts = allPosts.filter(
-  (post) => post.data.author === authorSlug
-);
+const relatedPosts = allPosts.filter((post) => post.data.author === authorSlug);
 
 const { frontmatter } = Astro.props;
 ---
@@ -35,7 +33,7 @@ const { frontmatter } = Astro.props;
       </Text>
       {
         frontmatter.role && (
-          <Text tag="p" variant="textSM" class="tracking-tight text-base-500">
+          <Text tag="p" variant="textSM" class="tracking-tight text-base-600">
             {frontmatter.role}
           </Text>
         )
@@ -49,7 +47,7 @@ const { frontmatter } = Astro.props;
               frontmatter.bio && (
                 <div class="flex flex-col gap-2">
                   {frontmatter.bio.split("\n").map((paragraph) => (
-                    <Text tag="p" variant="textSM" class="text-base-500">
+                    <Text tag="p" variant="textSM" class="text-base-600">
                       {paragraph}
                     </Text>
                   ))}
@@ -130,7 +128,7 @@ const { frontmatter } = Astro.props;
               </Text>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2">
                 {relatedPosts.map((post) => (
-                  <EntryMedium post={post} />
+                  <BlogCard3 post={post} />
                 ))}
               </div>
             </div>
@@ -139,5 +137,4 @@ const { frontmatter } = Astro.props;
       </div>
     </Wrapper>
   </section>
-
 </BaseLayout>

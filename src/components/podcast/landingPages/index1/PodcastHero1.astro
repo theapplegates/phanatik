@@ -5,7 +5,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ChevronLeft from "@/components/fundations/icons/ChevronLeft.astro";
 import ChevronRight from "@/components/fundations/icons/ChevronRight.astro";
 // Components
-import EpisodeSliderBig from "@/components/podcast/EpisodeSliderBig.astro";
+import PodcastCard3 from "@/components/podcast/PodcastCard3.astro";
 // Get all posts
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("podcast");
@@ -26,7 +26,7 @@ allPosts.sort((a, b) => {
         {
           allPosts
             .filter((post) => post.data.isSeries)
-            .map((post) => <EpisodeSliderBig post={post} />)
+            .map((post) => <PodcastCard3 post={post} />)
         }
       </div>
       <div class="flex mt-4">

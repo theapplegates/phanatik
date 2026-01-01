@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ShareButtons from "@/components/fundations/elements/ShareButtons.astro";
 // Icons
@@ -15,9 +15,9 @@ import RewindBackwards10s from "@/components/fundations/icons/RewindBackwards10s
 import RewindForward10S from "@/components/fundations/icons/RewindForward10s.astro";
 // Sections
 import AdvertAside from "@/components/advert/AdvertAside.astro";
-import AsideEpisode from "@/components/podcast/AsideEpisode.astro";
+import PodcastAside from "@/components/podcast/PodcastAside.astro";
 // Entries
-import EpisodeMedium from "@/components/podcast/EpisodeMedium.astro";
+import PodcastCard2 from "@/components/podcast/PodcastCard2.astro";
 // Content
 const { frontmatter } = Astro.props;
 import { getEntry } from "astro:content";
@@ -70,14 +70,16 @@ const relatedPosts = allPosts.filter((post) =>
                   >
                     {author?.data?.image?.url && (
                       <Image
-                        width={100}
-                        height={100}
+                        width={800}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
                         src={author.data.image.url}
                         alt={author.data.image.alt}
                         class="inline-block size-10 object-cover rounded-lg object-center"
                       />
                     )}
-                    <Text tag="p" variant="textXS" class="text-base-500">
+                    <Text tag="p" variant="textXS" class="text-base-600">
                       <span class="">
                         Written in
                         <span class="italic font-medium text-base-600">
@@ -126,7 +128,7 @@ const relatedPosts = allPosts.filter((post) =>
                       </button>
                       <button
                         id="playPauseBtn"
-                        class="rounded-lg bg-white p-1.5 text-base-500 shadow-xs hover:bg-base-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-base-400 cursor-pointer focus:outline-2 focus:outline-inset"
+                        class="rounded-lg bg-white p-1.5 text-base-600 shadow-xs hover:bg-base-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-base-400 cursor-pointer focus:outline-2 focus:outline-inset"
                       >
                         <Play id="playIcon" class="size-5 " />
                         <Pause id="pauseIcon" class="size-5 hidden" />
@@ -139,7 +141,12 @@ const relatedPosts = allPosts.filter((post) =>
                         <RewindForward10S class="size-4 " />
                       </button>
                       <audio id="audioElement" src={frontmatter.audioSrc} />
-                      <span class="text-xs text-base-500 hidden sm:flex" id="currentTime">00:00</span>
+                      <span
+                        class="text-xs text-base-600 hidden sm:flex"
+                        id="currentTime"
+                      >
+                        00:00
+                      </span>
                       <input
                         type="range"
                         id="seekBar"
@@ -148,7 +155,12 @@ const relatedPosts = allPosts.filter((post) =>
                         min="0"
                         class=" hidden sm:flex w-full"
                       />
-                      <span class="text-xs text-base-500 hidden sm:flex" id="duration">00:00</span>
+                      <span
+                        class="text-xs text-base-600 hidden sm:flex"
+                        id="duration"
+                      >
+                        00:00
+                      </span>
                       <button
                         id="muteBtn"
                         class="rounded-lg bg-white p-1.5 text-base-600 shadow-xs hover:bg-base-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-base-400 cursor-pointer focus:outline-2 focus:outline-inset"
@@ -169,7 +181,7 @@ const relatedPosts = allPosts.filter((post) =>
                   />
                 </div>
                 <div class="lg:col-span-3">
-                  <Text tag="h3" variant="texSM" class="text-base-500">
+                  <Text tag="h3" variant="texSM" class="text-base-600">
                     {frontmatter.description}
                   </Text>
                   {
@@ -185,20 +197,22 @@ const relatedPosts = allPosts.filter((post) =>
                             insights by becoming a member.
                           </Text>
                           <div class="flex justify-center mt-8 flex-wrap gap-2">
-                            <Link
+                            <Button
+                              isLink
                               size="sm"
                               variant="muted"
                               href="/pricing/membership"
                             >
                               Log in
-                            </Link>
-                            <Link
+                            </Button>
+                            <Button
+                              isLink
                               size="sm"
                               variant="default"
                               href="/pricing/membership"
                             >
                               Subscribe Now
-                            </Link>
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -220,7 +234,7 @@ const relatedPosts = allPosts.filter((post) =>
           class="lg:pl-8 lg:relative lg:before:absolute lg:after:absolute lg:before:bg-base-950 lg:after:bg-base-950/10 lg:before:top-0 lg:before:left-0 lg:before:h-6 lg:before:w-px lg:after:top-8 lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-50">
-            <AsideEpisode />
+            <PodcastAside />
             <AdvertAside />
           </div>
         </div>
@@ -240,7 +254,7 @@ const relatedPosts = allPosts.filter((post) =>
           </Text>
           <div class="relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {relatedPosts.slice(0, 3).map((post) => (
-              <EpisodeMedium post={post} />
+              <PodcastCard2 post={post} />
             ))}
           </div>
         </Wrapper>

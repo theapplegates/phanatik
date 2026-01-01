@@ -4,9 +4,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Sections
-import AsideEpisode from "@/components/podcast/AsideEpisode.astro";
+import PodcastAside from "@/components/podcast/PodcastAside.astro";
 // Components
-import EpisodeCard from "@/components/podcast/EpisodeCard.astro";
+import PodcastCard1 from "@/components/podcast/PodcastCard11.astro";
 import AdvertAside from "@/components/advert/AdvertAside.astro";
 // Content
 import { getCollection } from "astro:content";
@@ -44,7 +44,7 @@ const { posts } = Astro.props;
       >
         <div class="lg:col-span-3 lg:pr-8">
           <div>
-            {posts.map((post) => <EpisodeCard post={post} />)}
+            {posts.map((post) => <PodcastCard1 post={post} />)}
           </div>
         </div>
         <div
@@ -54,7 +54,7 @@ const { posts } = Astro.props;
         lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-20">
-            <AsideEpisode />
+            <PodcastAside />
             <AdvertAside />
           </div>
         </div>

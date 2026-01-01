@@ -3,14 +3,14 @@ import { Image } from "astro:assets";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/elements/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ShareButtons from "@/components/fundations/elements/ShareButtons.astro";
 // Sections
 import AdvertAside from "@/components/advert/AdvertAside.astro";
-import AsidePost from "@/components/blog/AsidePost.astro";
+import BlogAside from "@/components/blog/BlogAside.astro";
 // Entries
-import EntryMedium from "@/components/blog/EntryMedium.astro";
+import BlogCard3 from "@/components/blog/BlogCard3.astro";
 const { frontmatter } = Astro.props;
 import { getEntry } from "astro:content";
 const author = await getEntry("authors", frontmatter.author);
@@ -62,14 +62,16 @@ const relatedPosts = allPosts.filter((post) =>
                   >
                     {author?.data?.image?.url && (
                       <Image
-                        width={100}
-                        height={100}
+                        width={800}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
                         src={author.data.image.url}
                         alt={author.data.image.alt}
                         class="inline-block size-10 object-cover rounded-lg object-center"
                       />
                     )}
-                    <Text tag="p" variant="textXS" class="text-base-500 ">
+                    <Text tag="p" variant="textXS" class="text-base-600 ">
                       <span class="">
                         Written in
                         <span class="italic font-medium text-base-600">
@@ -117,7 +119,7 @@ const relatedPosts = allPosts.filter((post) =>
                   />
                 </div>
                 <div class="lg:col-span-3">
-                  <Text tag="h3" variant="texSM" class="text-base-500">
+                  <Text tag="h3" variant="texSM" class="text-base-600">
                     {frontmatter.description}
                   </Text>
 
@@ -134,20 +136,22 @@ const relatedPosts = allPosts.filter((post) =>
                             insights by becoming a member.
                           </Text>
                           <div class="flex justify-center mt-8 flex-wrap gap-2">
-                            <Link
+                            <Button
+                              isLink
                               size="sm"
                               variant="muted"
-                              href="/forms/sign-in"
+                              href="/sign-in"
                             >
                               Log in
-                            </Link>
-                            <Link
+                            </Button>
+                            <Button
+                              isLink
                               size="sm"
                               variant="default"
                               href="/pricing/membership"
                             >
                               Subscribe Now
-                            </Link>
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -169,7 +173,7 @@ const relatedPosts = allPosts.filter((post) =>
           class="lg:pl-8 lg:relative lg:before:absolute lg:after:absolute lg:before:bg-base-950 lg:after:bg-base-950/10 lg:before:top-0 lg:before:left-0 lg:before:h-6 lg:before:w-px lg:after:top-8 lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-40">
-            <AsidePost />
+            <BlogAside />
             <AdvertAside />
           </div>
         </div>
@@ -189,7 +193,7 @@ const relatedPosts = allPosts.filter((post) =>
           </Text>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4 mt-2">
             {relatedPosts.slice(0, 3).map((post) => (
-              <EntryMedium post={post} />
+              <BlogCard3 post={post} />
             ))}
           </div>
         </Wrapper>

@@ -4,8 +4,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import EntryCard from "@/components/blog/EntryCard.astro";
-import EntryMedium from "@/components/blog/EntryMedium.astro";
+import BlogCard2 from "@/components/blog/BlogCard2.astro";
+import BlogCard3 from "@/components/blog/BlogCard3.astro";
 
 // Content
 const allPosts = await getCollection("posts");
@@ -40,7 +40,7 @@ allPosts.sort((a, b) => {
               allPosts
                 .filter((post) => post.data.isFeatured)
                 .slice(0, 1)
-                .map((post) => <EntryCard post={post} />)
+                .map((post) => <BlogCard2 post={post} />)
             }
           </div>
           <div
@@ -50,7 +50,7 @@ allPosts.sort((a, b) => {
               allPosts
                 .filter((post) => post.data.isFeatured)
                 .slice(1)
-                .map((post) => <EntryMedium post={post} />)
+                .map((post) => <BlogCard3 post={post} />)
             }
           </div>
         </div>

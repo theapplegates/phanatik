@@ -9,7 +9,7 @@ const { frontmatter } = Astro.props;
 // Breadcrumbs Data
 const breadcrumbs = [
   { label: "Home", href: "/" },
-  { label: "Help Center", href: "/helpcenter/home" },
+  { label: "Help Center", href: "/helpcenter" },
   { label: frontmatter.title, href: "#" },
 ];
 ---
@@ -53,7 +53,7 @@ const breadcrumbs = [
       >
         {frontmatter.title}
       </Text>
-      <Text tag="p" variant="textXS" class="text-base-500">
+      <Text tag="p" variant="textXS" class="text-base-600">
         Content updated on<time
           datetime={new Date(frontmatter.pubDate).toISOString()}
         >

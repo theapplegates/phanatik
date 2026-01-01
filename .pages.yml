@@ -17,15 +17,15 @@ media:
 
   - name: blog_thumbs
     label: Blog Thumbnails
-    input: src/images/blogThumbnails
-    output: src/images/blogThumbnails
+    input: src/images/blog
+    output: src/images/blog
     path: ""
     extensions: [png, jpg, jpeg, webp, svg]
 
   - name: podcast_thumbs
     label: Podcast Thumbnails
-    input: src/images/podcastThumbnails
-    output: src/images/podcastThumbnails
+    input: src/images/podcast
+    output: src/images/podcast
     path: ""
     extensions: [png, jpg, jpeg, webp, svg]
 

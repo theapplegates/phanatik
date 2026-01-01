@@ -2,7 +2,7 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 // Entries
-import EntryBrief from "@/components/blog/EntryBrief.astro";
+import BlogCard1 from "@/components/blog/BlogCard1.astro";
 // Get all posts
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("posts");
@@ -13,7 +13,7 @@ allPosts.sort((a, b) => {
 });
 ---
 
-<div >
+<div>
   <Text
     tag="h2"
     variant="textXS"
@@ -29,7 +29,7 @@ allPosts.sort((a, b) => {
       allPosts
         .filter((post) => post.data.isBrief)
         .slice(0, 3)
-        .map((post) => <EntryBrief post={post} />)
+        .map((post) => <BlogCard1 post={post} />)
     }
   </div>
 </div>

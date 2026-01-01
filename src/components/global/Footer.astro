@@ -21,10 +21,10 @@ const sections = [
     title: "Company",
     links: [
       { name: "About", url: "/about" },
-      { name: "Carriers", url: "/jobs/home" },
-      { name: "Authors", url: "/authors/home" },
+      { name: "Carriers", url: "/jobs" },
+      { name: "Authors", url: "/authors" },
       { name: "Advertise", url: "/pricing/advertise" },
-      { name: "Contact", url: "/forms/contact" },
+      { name: "Contact", url: "/contact" },
     ],
   },
   {
@@ -49,48 +49,44 @@ const sections = [
 ];
 ---
 
-<footer class="bg-base-50 border-t-2  border-accent-500">
+<footer class="bg-base-950">
   <Wrapper variant="standard" class="py-12">
-    <div class="grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-12 lg:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-12">
       <div class="lg:col-span-2 order-last">
         <Text
           tag="h3"
           variant="textBase"
-          class="text-base-900 font-display font-medium"
+          class="text-white font-display font-medium"
           >Subscribe to <Logo /></Text
         >
-        <Text tag="p" variant="textXS" class="text-base-500 mt-2">
+        <Text tag="p" variant="textXS" class="text-base-400 mt-2">
           Stay in the loop with Phanatik! We bring you the latest buzz in
           business, tech, sports, and more—because who has time for FOMO? Get it
           straight to your inbox, faster than you can say ‘breaking news!
         </Text>
         <form class="flex w-full items-end md:w-auto mt-4 gap-2">
           <div class="flex flex-col w-full">
-            <label for="email" class="text-xs text-base-500">Email address</label>
-           <div class="mt-1">
+            <label for="email" class="text-xs text-base-400"
+              >Email address</label
+            >
+            <div class="mt-1">
               <input
                 type="email"
                 id="email"
                 required
                 aria-label="Email address"
-               
                 autocomplete="email"
-                class="block w-full h-9 px-4 py-2 text-sm text-accent-700 border border-transparent rounded-lg appearance-none duration-300 bg-white placeholder-base-400 focus:bg-transparent focus:outline-none focus:ring-accent-500 focus:ring-offset-2 focus:ring-2 focus:ring-offset-base-200"
+                class="block w-full h-9 px-4 py-2 text-sm text-white border border-transparent rounded-lg appearance-none duration-300 bg-white/10 placeholder-base-400 focus:bg-white/5 focus:outline-none focus:ring-white/10 focus:ring-2 focus:ring-offset-base-950"
               />
-           </div>
+            </div>
           </div>
-
-          <Button size="xs" variant="accent" type="submit" class="flex"
+          <Button size="sm" variant="muted" type="submit" class="flex"
             >Subscribe</Button
           >
         </form>
-        <Text
-      tag="p"
-      variant="textXS"
-      class="mt-1 text-base-500"
-    >
-      We won't spam you on weekdays, only on weekends.
-    </Text>
+        <Text tag="p" variant="textXS" class="mt-1 text-base-400">
+          We won't spam you on weekdays, only on weekends.
+        </Text>
       </div>
       <div
         class="grid gap-4 lg:gap-8 grid-cols-2 lg:grid-cols-4 lg:col-span-4 gap-y-12"
@@ -101,7 +97,7 @@ const sections = [
               <Text
                 tag="h3"
                 variant="textXS"
-                class="flex gap-x-2 text-base-900 justify-between uppercase font-medium"
+                class="flex gap-x-2 text-white justify-between uppercase font-medium"
               >
                 {section.title}
               </Text>
@@ -114,7 +110,7 @@ const sections = [
                     <Text
                       tag="a"
                       variant="textXS"
-                      class="text-base-500 hover:underline capitalize"
+                      class="text-base-400 hover:underline capitalize"
                       href={link.url}
                     >
                       {link.name}
@@ -128,15 +124,11 @@ const sections = [
       </div>
     </div>
     <div
-      class="mt-12 relative before:absolute after:absolute before:bg-base-950 after:bg-base-950/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
+      class="mt-42 lg:mt-62 relative before:absolute after:absolute before:bg-white after:bg-white/10 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px pt-4"
     >
-      <Text tag="p" variant="textXS" class="text-base-500">
-        © Copyright Lexington Themes <span id="year"></span>
+      <Text tag="p" variant="textXS" class="text-base-600">
+        © Copyright Lexington Themes {new Date().getFullYear()}
       </Text>
     </div>
   </Wrapper>
 </footer>
-
-<script type="module">
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>

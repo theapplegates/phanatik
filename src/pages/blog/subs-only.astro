@@ -5,12 +5,12 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import Subscribe from "@/components/cta/Subscribe.astro";
-import EntryCard from "@/components/blog/EntryCard.astro";
+import BlogCard2 from "@/components/blog/BlogCard2.astro";
 // Content
 const allPosts = await getCollection("posts");
 import { getCollection } from "astro:content";
 // Sections
-import AsidePost from "@/components/blog/AsidePost.astro";
+import BlogAside from "@/components/blog/BlogAside.astro";
 import AdvertAside from "@/components/advert/AdvertAside.astro";
 // Sort posts by date
 allPosts.sort((a, b) => {
@@ -38,7 +38,7 @@ allPosts.sort((a, b) => {
             {
               allPosts
                 .filter((post) => post.data.isLocked)
-                .map((post) => <EntryCard post={post} />)
+                .map((post) => <BlogCard2 post={post} />)
             }
           </div>
           <Subscribe />
@@ -50,7 +50,7 @@ allPosts.sort((a, b) => {
         lg:after:bottom-0 lg:after:left-0 after:w-px"
         >
           <div class="lg:sticky lg:top-10 lg:z-50">
-            <AsidePost />
+            <BlogAside />
             <AdvertAside />
           </div>
         </div>
