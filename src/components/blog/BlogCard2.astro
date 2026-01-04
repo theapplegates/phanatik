@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
+import readingTime from "reading-time";
+
 const { url, title, description, pubDate, image, author, tags } = {
   url: "/blog/posts/" + Astro.props.post.slug,
   tags: Astro.props.post.data.tags,
@@ -14,6 +16,9 @@ const { url, title, description, pubDate, image, author, tags } = {
     day: "2-digit",
   }),
 };
+
+// Calculate reading time
+const stats = readingTime(Astro.props.post.body);
 
 // Format the author name by replacing hyphens with spaces.
 const formatAuthorName = (slug) => {
@@ -66,6 +71,8 @@ const formattedAuthor = formatAuthorName(author);
 
       <Text tag="p" variant="textXS">
         <time datetime={pubDate}>{pubDate}</time>
+        <span aria-hidden="true">·</span>
+        {stats.text}
       </Text>
     </div>
   </div>

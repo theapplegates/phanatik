@@ -35,12 +35,12 @@ settings:
 
 content:
   # ---------------------
-  # INFO PAGES
+  # Legal
   # ---------------------
-  - name: infopages
-    label: Info Pages
+  - name: legal
+    label: Legal
     type: collection
-    path: src/content/infopages
+    path: src/content/legal
     filename: "{year}{month}{day}-{hour}{minute}{second}.md"
     view:
       primary: page

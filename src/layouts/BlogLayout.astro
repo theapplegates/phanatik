@@ -11,7 +11,7 @@ import AdvertAside from "@/components/advert/AdvertAside.astro";
 import BlogAside from "@/components/blog/BlogAside.astro";
 // Entries
 import BlogCard3 from "@/components/blog/BlogCard3.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, readingTime } = Astro.props;
 import { getEntry } from "astro:content";
 const author = await getEntry("authors", frontmatter.author);
 // Get all posts and filter by tag
@@ -97,7 +97,11 @@ const relatedPosts = allPosts.filter((post) =>
                           {author.data.name}
                         </span>
                       </span>
-                      <span class="block"> {author.data.role}</span>
+                      <span class="block">
+                        {author.data.role}
+                        <span aria-hidden="true">·</span>
+                        {readingTime}
+                      </span>
                     </Text>
                   </a>
                 )

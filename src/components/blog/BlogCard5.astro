@@ -1,5 +1,7 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
+import readingTime from "reading-time";
+
 const { url, title, pubDate, tags } = {
   url: "/blog/posts/" + Astro.props.post.slug,
   title: Astro.props.post.data.title,
@@ -10,6 +12,9 @@ const { url, title, pubDate, tags } = {
     day: "2-digit",
   }),
 };
+
+// Calculate reading time
+const stats = readingTime(Astro.props.post.body);
 ---
 
 <article class="relative w-full pb-4 group overflow-hidden">
@@ -45,6 +50,8 @@ const { url, title, pubDate, tags } = {
       <span>·</span>
       <Text tag="p" variant="textXS">
         <time datetime={pubDate}>{pubDate}</time>
+        <span aria-hidden="true">·</span>
+        {stats.text}
       </Text>
     </div>
   </div>

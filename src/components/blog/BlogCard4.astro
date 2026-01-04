@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
+import readingTime from "reading-time";
+
 const { url, title, pubDate, image } = {
   url: "/blog/posts/" + Astro.props.post.slug,
   title: Astro.props.post.data.title,
@@ -11,6 +13,9 @@ const { url, title, pubDate, image } = {
     day: "2-digit",
   }),
 };
+
+// Calculate reading time
+const stats = readingTime(Astro.props.post.body);
 ---
 
 <article class="relative flex flex-col group overflow-hidden rounded-xl">
@@ -34,6 +39,8 @@ const { url, title, pubDate, image } = {
   <div class="absolute bottom-0 left-0 right-0 z-20 p-4">
     <Text tag="p" variant="textXS" class="text-base-200">
       <time datetime={pubDate}>{pubDate}</time>
+      <span aria-hidden="true">·</span>
+      {stats.text}
     </Text>
     <Text
       tag="h3"
