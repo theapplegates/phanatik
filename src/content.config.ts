@@ -1,18 +1,24 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
+import { glob } from "astro/loaders";
+
 const legal = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/legal" }),
   schema: z.object({
     page: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
   }),
 });
+
 const authors = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/authors" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
       role: z.string().optional(),
       bio: z.string().optional(),
       image: z.object({
-        url: image(), // ← Astro's image helper for optimization
+        url: image(),
         alt: z.string(),
       }),
       socials: z
@@ -27,14 +33,15 @@ const authors = defineCollection({
 });
 
 const posts = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      pubDate: z.date(),
+      pubDate: z.coerce.date(),
       description: z.string(),
       author: z.string(),
       image: z.object({
-        url: image(), // ← use the helper here
+        url: image(),
         alt: z.string(),
       }),
       tags: z.array(z.string()),
@@ -47,14 +54,15 @@ const posts = defineCollection({
 });
 
 const podcast = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/podcast" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      pubDate: z.date(),
+      pubDate: z.coerce.date(),
       description: z.string(),
       author: z.string(),
       image: z.object({
-        url: image(), // ← Use Astro's image helper
+        url: image(),
         alt: z.string(),
       }),
       episodeNumber: z.number().optional(),
@@ -69,9 +77,10 @@ const podcast = defineCollection({
 });
 
 const jobs = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/jobs" }),
   schema: z.object({
     title: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     jobType: z.string(),
     company: z.string(),
     location: z.string(),
@@ -92,23 +101,26 @@ const jobs = defineCollection({
     perks: z.array(z.string()).optional(),
     skills: z.array(z.string()).optional(),
     workEnvironment: z.string().optional(),
-    applicationDeadline: z.date().optional(),
+    applicationDeadline: z.coerce.date().optional(),
     mediaLinks: z.array(z.string()).optional(),
     applicationInstructions: z.string().optional(),
   }),
 });
+
 const helpCenter = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/helpCenter" }),
   schema: z.object({
     title: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     description: z.string(),
   }),
 });
+
 export const collections = {
-authors,
-legal,
-posts,
-podcast,
-jobs,
-helpCenter,
+  authors,
+  legal,
+  posts,
+  podcast,
+  jobs,
+  helpCenter,
 };

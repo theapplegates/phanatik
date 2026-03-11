@@ -1,6 +1,6 @@
 ---
 const { post } = Astro.props;
-const url = `/blog/posts/${post.slug}`;
+const url = `/blog/posts/${post.id}`;
 const fullTitle = post.data.title;
 const shortTitle =
   fullTitle.length > 60 ? fullTitle.slice(0, 57) + "..." : fullTitle;

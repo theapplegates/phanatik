@@ -1,7 +1,7 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
 const { url, title, jobType, location, salaryRange, pubDate, category } = {
-  url: "/jobs/" + Astro.props.post.slug,
+  url: "/jobs/" + Astro.props.post.id,
   title: Astro.props.post.data.title,
   jobType: Astro.props.post.data.jobType,
   location: Astro.props.post.data.location,

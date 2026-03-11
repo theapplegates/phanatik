@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 const { url, title, pubDate, image, tags, duration, episodeNumber } = {
-  url: "/podcast/episodes/" + Astro.props.post.slug,
+  url: "/podcast/episodes/" + Astro.props.post.id,
   tags: Astro.props.post.data.tags,
   title: Astro.props.post.data.title,
   image: Astro.props.post.data.image.url,

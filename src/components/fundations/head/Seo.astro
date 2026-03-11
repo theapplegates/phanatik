@@ -1,5 +1,6 @@
 ---
-import { AstroSeo } from "@astrolib/seo";
+// @ts-expect-error - AstroSeo is exported from .astro; package types are partial
+import { AstroSeo } from "@lexingtonthemes/seo";
 ---
 
 <AstroSeo

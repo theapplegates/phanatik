@@ -12,7 +12,7 @@ const {
   duration,
   episodeNumber,
 } = {
-  url: "/podcast/episodes/" + Astro.props.post.slug,
+  url: "/podcast/episodes/" + Astro.props.post.id,
   tags: Astro.props.post.data.tags,
   title: Astro.props.post.data.title,
   author: Astro.props.post.data.author,

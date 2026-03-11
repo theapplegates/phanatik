@@ -7,24 +7,24 @@ import SearchIcon from "@/components/fundations/icons/Search.astro";
 import { getCollection } from "astro:content";
 const posts = await Promise.all(
   (await getCollection("posts")).map(async (post) => ({
-    slug: post.slug,
+    slug: post.id,
     tags: post.data.tags,
     title: post.data.title,
     pubDate: post.data.pubDate,
     description: post.data.description,
     type: "article",
-    url: `/blog/posts/${post.slug}`,
+    url: `/blog/posts/${post.id}`,
   }))
 );
 const podcasts = await Promise.all(
   (await getCollection("podcast")).map(async (podcast) => ({
-    slug: podcast.slug,
+    slug: podcast.id,
     tags: podcast.data.tags,
     title: podcast.data.title,
     pubDate: podcast.data.pubDate,
     description: podcast.data.description,
     type: "podcast",
-    url: `/podcast/episodes/${podcast.slug}`,
+    url: `/podcast/episodes/${podcast.id}`,
   }))
 );
 const searchItems = [...posts, ...podcasts];

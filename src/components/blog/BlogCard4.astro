@@ -4,7 +4,7 @@ import Text from "@/components/fundations/elements/Text.astro";
 import readingTime from "reading-time";
 
 const { url, title, pubDate, image } = {
-  url: "/blog/posts/" + Astro.props.post.slug,
+  url: "/blog/posts/" + Astro.props.post.id,
   title: Astro.props.post.data.title,
   image: Astro.props.post.data.image.url,
   pubDate: new Date(Astro.props.post.data.pubDate).toLocaleDateString("en-US", {

@@ -1,7 +1,7 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
 const { url, title, pubDate, tags } = {
-  url: "/podcast/episodes/" + Astro.props.post.slug,
+  url: "/podcast/episodes/" + Astro.props.post.id,
   title: Astro.props.post.data.title,
   tags: Astro.props.post.data.tags,
   pubDate: new Date(Astro.props.post.data.pubDate).toLocaleDateString("en-US", {
