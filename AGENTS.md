@@ -3,6 +3,7 @@
 **Phanatik** is a multipage Astro theme for a **newsroom / media-style product**: a homepage with breaking stories, top stories, briefs, and categories; full **blog** and **podcast** experiences with tags, featured lists, and subscriber-only-style routes; plus **jobs**, **help center**, **legal**, **authors**, membership/advertise flows, and auth-style pages (`sign-in`, `sign-up`, `reset`). Primary use case: **publisher or SaaS marketing site** around editorial content and audio.
 
 **Publisher:** [Lexington Themes](https://lexingtonthemes.com/) · **Package:** `@lexington/phanatik` (see `package.json`).
+**Design rules:** [.cursor/skills/phanatik-design/SKILL.md](./.cursor/skills/phanatik-design/SKILL.md) - read before creating or changing any UI.  
 
 ---
 
