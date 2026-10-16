@@ -8,6 +8,7 @@ import SectionHeader from "@/components/landing/SectionHeader.astro";
 import StoryCard from "@/components/stories/StoryCard.astro";
 import ScoresList from "@/components/stories/ScoresList.astro";
 import MostRead from "@/components/stories/MostRead.astro";
+import AdSidebar from "@/components/ads/AdSidebar.astro";
 // Content
 import { getEntry } from "astro:content";
 import { getStories } from "@/lib/stories";
@@ -60,6 +61,7 @@ const desk = (await Promise.all(writerIds.map((id) => getEntry("writers", id))))
           </ul>
         </div>
         <MostRead />
+        <AdSidebar />
       </aside>
     </div>
   </Wrapper>

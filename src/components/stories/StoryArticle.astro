@@ -8,6 +8,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import SectionHeader from "@/components/landing/SectionHeader.astro";
 import StoryCard from "@/components/stories/StoryCard.astro";
 import MostRead from "@/components/stories/MostRead.astro";
+import AdSidebar from "@/components/ads/AdSidebar.astro";
 // Content
 import { getEntry, type CollectionEntry } from "astro:content";
 import { formatDate } from "@/lib/format";
@@ -103,6 +104,7 @@ const latest = (await getStories()).filter((item) => item.data.sport === sport &
           )
         }
         <MostRead exclude={story.id} />
+        <AdSidebar />
       </aside>
     </div>
   </Wrapper>
