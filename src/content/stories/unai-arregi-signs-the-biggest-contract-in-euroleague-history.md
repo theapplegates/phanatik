@@ -5,8 +5,8 @@ description: "The Spanish guard stays in Europe for five more years and turns do
 sport: "Basketball"
 writer: iker-salaberri
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A point guard driving to the basket"
+  url: "/src/images/stories/basketball-drive.webp"
+  alt: "A point guard in green driving past a defender in white"
 placement: featured
 ---
 

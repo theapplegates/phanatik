@@ -5,8 +5,8 @@ description: "He was fourth with ten laps to go. A crash ahead changed everythin
 sport: "Formula 1"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A race car crossing the finish line"
+  url: "/src/images/stories/f1-car.webp"
+  alt: "A black and white race car at speed on a sunny circuit"
 placement: standard
 ---
 

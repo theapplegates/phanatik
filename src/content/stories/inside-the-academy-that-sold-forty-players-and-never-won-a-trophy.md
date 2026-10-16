@@ -5,8 +5,8 @@ description: "A small club on the Basque coast has built its business on letting
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Teenage players training on a pitch by the sea"
+  url: "/src/images/stories/football-striker.webp"
+  alt: "A young striker in white striking the ball on a rainy night"
 placement: standard
 members: true
 ---

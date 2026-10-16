@@ -5,8 +5,8 @@ description: "The new rules cut 30 kilograms. Engineers say the batteries make t
 sport: "Formula 1"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Engineers working on a car in a factory"
+  url: "/src/images/stories/f1-car.webp"
+  alt: "A race car on track with the background blurred by speed"
 placement: standard
 ---
 

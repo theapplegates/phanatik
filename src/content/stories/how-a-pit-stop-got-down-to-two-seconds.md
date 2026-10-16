@@ -5,8 +5,8 @@ description: "Twenty mechanics, four wheels and years of practice."
 sport: "Formula 1"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Mechanics changing tyres during a pit stop"
+  url: "/src/images/stories/f1-pitstop.webp"
+  alt: "Mechanics in grey changing all four tyres in the pit lane"
 placement: standard
 members: true
 ---

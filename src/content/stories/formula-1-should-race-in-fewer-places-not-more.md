@@ -5,7 +5,7 @@ description: "Twenty-four races is too many for the teams, the drivers and the p
 sport: "Opinion"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/portrait.webp"
+  url: "/src/images/writers/davide-moretti.webp"
   alt: "Portrait of Davide Moretti"
 placement: standard
 ---

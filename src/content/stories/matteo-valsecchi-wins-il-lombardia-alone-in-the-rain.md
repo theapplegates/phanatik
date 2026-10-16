@@ -5,8 +5,8 @@ description: "He attacked on the last climb, 18 kilometres from Bergamo, and nob
 sport: "Cycling"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A cyclist riding alone through rain on a mountain road"
+  url: "/src/images/stories/cycling-rain.webp"
+  alt: "A rider climbing alone on a wet mountain road in the rain"
 placement: featured
 ---
 

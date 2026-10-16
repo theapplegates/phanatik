@@ -5,8 +5,8 @@ description: "One season in Formula 2 was enough to earn a seat."
 sport: "Formula 1"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A young driver in the garage with his helmet off"
+  url: "/src/images/stories/f1-pitstop.webp"
+  alt: "A driver waiting in the cockpit during a pit stop"
 placement: standard
 ---
 

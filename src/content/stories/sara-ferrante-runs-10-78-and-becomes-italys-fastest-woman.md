@@ -5,8 +5,8 @@ description: "She took a tenth off a record that had stood for 22 years."
 sport: "Athletics"
 writer: chiara-benassi
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A sprinter crossing the line with arms raised"
+  url: "/src/images/stories/athletics-sprint.webp"
+  alt: "A sprinter in blue crossing the line with her arms raised"
 placement: standard
 ---
 

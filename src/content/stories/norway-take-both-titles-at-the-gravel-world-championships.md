@@ -5,8 +5,8 @@ description: "Ingrid Vold and Ola Brekken won on the same afternoon in Belgium."
 sport: "Cycling"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Riders on a gravel road between fields"
+  url: "/src/images/stories/cycling-gravel.webp"
+  alt: "Four riders on a dusty gravel road between wheat fields"
 placement: standard
 ---
 

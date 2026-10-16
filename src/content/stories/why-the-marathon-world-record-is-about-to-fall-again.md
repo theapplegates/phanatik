@@ -5,8 +5,8 @@ description: "New shoes, new pacing and a fast course in December."
 sport: "Athletics"
 writer: chiara-benassi
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Runners crossing a bridge in a city marathon"
+  url: "/src/images/stories/athletics-marathon.webp"
+  alt: "A lead group of marathon runners crossing a city bridge at sunrise"
 placement: standard
 ---
 

@@ -5,8 +5,8 @@ description: "Every minute from Turin, where Italy need a win to stay top of the
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Players lining up in a floodlit stadium before kick-off"
+  url: "/src/images/stories/football-referee.webp"
+  alt: "The referee listening to his earpiece as players wait under the floodlights"
 placement: standard
 live: true
 ---

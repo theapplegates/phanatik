@@ -5,8 +5,8 @@ description: "Elena Rojas has no stadium near home, so she throws in a supermark
 sport: "Athletics"
 writer: chiara-benassi
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A javelin thrower at the moment of release"
+  url: "/src/images/stories/athletics-marathon.webp"
+  alt: "Runners training together on a bridge in the early morning"
 placement: standard
 members: true
 ---

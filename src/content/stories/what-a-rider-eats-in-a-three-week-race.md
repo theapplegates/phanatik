@@ -5,8 +5,8 @@ description: "Up to 7,000 calories a day, most of it on the bike."
 sport: "Cycling"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Rice cakes and bottles on a team car table"
+  url: "/src/images/stories/cycling-gravel.webp"
+  alt: "Riders in red and white kits on a gravel road in late sun"
 placement: standard
 members: true
 ---

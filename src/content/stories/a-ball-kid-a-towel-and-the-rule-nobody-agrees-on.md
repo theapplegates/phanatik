@@ -5,8 +5,8 @@ description: "Players now fetch their own towels. Some of them hate it."
 sport: "Tennis"
 writer: nuria-castell
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A ball kid crouched at the back of the court"
+  url: "/src/images/stories/tennis-court.webp"
+  alt: "A ball kid crouched at the back of the court holding a towel"
 placement: standard
 ---
 

@@ -5,8 +5,8 @@ description: "Mattia Rinaldi, 19, was on the bench until the 85th minute."
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A goalkeeper diving to his right"
+  url: "/src/images/stories/football-goalkeeper.webp"
+  alt: "A goalkeeper in orange diving to push a penalty wide of the post"
 placement: standard
 ---
 

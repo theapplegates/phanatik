@@ -5,8 +5,8 @@ description: "The Norwegian has not dropped a set all week. Ferraro saved four m
 sport: "Tennis"
 writer: nuria-castell
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A player serving under the lights"
+  url: "/src/images/stories/tennis-serve.webp"
+  alt: "A fair haired player in white tossing the ball to serve under the lights"
 placement: standard
 live: true
 ---

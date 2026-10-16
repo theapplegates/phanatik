@@ -5,8 +5,8 @@ description: "Next summer's route has six mountain finishes and only one time tr
 sport: "Cycling"
 writer: davide-moretti
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "The peloton climbing a mountain pass"
+  url: "/src/images/stories/cycling-rain.webp"
+  alt: "Hairpin bends on a misty mountain pass with a rider climbing"
 placement: standard
 ---
 

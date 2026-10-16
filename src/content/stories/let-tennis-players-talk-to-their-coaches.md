@@ -5,7 +5,7 @@ description: "Coaching from the box is already happening. The rule only punishes
 sport: "Opinion"
 writer: nuria-castell
 image:
-  url: "/src/images/placeholders/portrait.webp"
+  url: "/src/images/writers/nuria-castell.webp"
   alt: "Portrait of Nuria Castell"
 placement: standard
 ---

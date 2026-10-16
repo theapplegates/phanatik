@@ -5,8 +5,8 @@ description: "Last season his team conceded the most points. This season they co
 sport: "Basketball"
 writer: iker-salaberri
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A coach drawing on a whiteboard during a timeout"
+  url: "/src/images/stories/basketball-coach.webp"
+  alt: "A coach drawing a play on a whiteboard as his players lean in"
 placement: standard
 ---
 

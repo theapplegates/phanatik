@@ -5,8 +5,8 @@ description: "Four people in a room in Vitoria decide where every shot should co
 sport: "Basketball"
 writer: iker-salaberri
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Screens with shot charts in a dark room"
+  url: "/src/images/stories/basketball-coach.webp"
+  alt: "A whiteboard of arrows and crosses in a timeout huddle"
 placement: standard
 members: true
 ---

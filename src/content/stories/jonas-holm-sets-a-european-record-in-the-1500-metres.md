@@ -5,8 +5,8 @@ description: "The Dane ran the last lap in 53 seconds and finished three metres 
 sport: "Athletics"
 writer: chiara-benassi
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Middle distance runners on the last bend"
+  url: "/src/images/stories/athletics-sprint.webp"
+  alt: "Runners crossing the finish line in a floodlit stadium"
 placement: standard
 ---
 

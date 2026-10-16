@@ -5,8 +5,8 @@ description: "Fewer tournaments means fewer chances to earn ranking points, and 
 sport: "Tennis"
 writer: nuria-castell
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "An empty court after a match"
+  url: "/src/images/stories/tennis-court.webp"
+  alt: "A quiet stadium court with empty seats in the upper tier"
 placement: standard
 ---
 

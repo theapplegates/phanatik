@@ -1,7 +1,7 @@
 ---
 // Assets
 import { Image } from "astro:assets";
-import newsroom from "@/images/placeholders/story.webp";
+import newsroom from "@/images/stories/football-celebration.webp";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
@@ -15,7 +15,7 @@ const facts = [
 
 <section>
   <Wrapper variant="standard" class="py-12">
-    <Image src={newsroom} alt="The Absurdist desk in a small office above a bar in Valencia" width={1800} height={1200} loading="eager" class="object-cover w-full rounded-xl aspect-21/9" />
+    <Image src={newsroom} alt="Spain players celebrating a shoot-out win under the floodlights" width={1800} height={1200} loading="eager" class="object-cover w-full rounded-xl aspect-21/9" />
     <div class="grid grid-cols-1 gap-12 mt-12 lg:grid-cols-12">
       <div class="flex flex-col gap-6 lg:col-span-8">
         <Text tag="p" variant="textXL" class="font-medium tracking-tight text-foreground text-pretty">

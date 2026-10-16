@@ -5,8 +5,8 @@ description: "Two goals in the last eleven minutes, then penalties in Lisbon. Lu
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Spanish players running towards the goalkeeper after the winning penalty"
+  url: "/src/images/stories/football-celebration.webp"
+  alt: "Spain players in red running towards their goalkeeper after the winning penalty"
 placement: lead
 ---
 

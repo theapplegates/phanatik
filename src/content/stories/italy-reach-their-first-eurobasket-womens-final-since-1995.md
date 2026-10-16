@@ -5,8 +5,8 @@ description: "A 19 point comeback against France, led by a bench player who scor
 sport: "Basketball"
 writer: iker-salaberri
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "Italian players celebrating on court"
+  url: "/src/images/stories/basketball-drive.webp"
+  alt: "A guard in green dribbling towards the basket on a wooden court"
 placement: standard
 ---
 

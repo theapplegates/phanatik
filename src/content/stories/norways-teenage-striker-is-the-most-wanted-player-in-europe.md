@@ -5,8 +5,8 @@ description: "Sindre Haugland is 18, has scored 21 goals this season and has not
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A young striker shooting across a wet pitch"
+  url: "/src/images/stories/football-striker.webp"
+  alt: "A young fair haired striker in white shooting across a wet pitch"
 placement: featured
 ---
 

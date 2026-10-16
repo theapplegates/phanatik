@@ -5,8 +5,8 @@ description: "Three sets, three hours and her first title at this level, at 29."
 sport: "Tennis"
 writer: nuria-castell
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A tennis player lifting a trophy"
+  url: "/src/images/stories/tennis-serve.webp"
+  alt: "A player serving on a blue hard court at night"
 placement: featured
 ---
 

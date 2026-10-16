@@ -5,7 +5,7 @@ description: "The fans in the stadium matter more than the audience on the other
 sport: "Opinion"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/portrait.webp"
+  url: "/src/images/writers/marta-quiroga.webp"
   alt: "Portrait of Marta Quiroga"
 placement: standard
 ---

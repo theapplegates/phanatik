@@ -5,8 +5,8 @@ description: "From January, the referee will announce every overturned decision 
 sport: "Football"
 writer: marta-quiroga
 image:
-  url: "/src/images/placeholders/story.webp"
-  alt: "A referee holding a hand to his earpiece"
+  url: "/src/images/stories/football-referee.webp"
+  alt: "A referee in black holding a hand to his earpiece"
 placement: standard
 ---
 
