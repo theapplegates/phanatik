@@ -18,10 +18,12 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
           height={667}
           class="object-cover w-full h-full rounded-lg aspect-3/2 md:col-span-5"
         />
-        <div class="flex flex-col justify-center gap-4 p-6 md:col-span-7">
-          <p class="max-w-lg text-3xl font-medium leading-tight tracking-tight text-balance">Last night's results before your coffee</p>
-          <p class="max-w-md text-base text-background/70 text-pretty">The morning briefing, weekdays at 7:00. Free, and one click to leave.</p>
-          <div class="flex pt-2">
+        <div class="flex flex-col justify-between gap-8 p-6 md:col-span-7">
+          <div class="flex flex-col gap-4">
+            <p class="max-w-lg text-3xl font-medium leading-tight tracking-tight text-balance">Last night's results before your coffee</p>
+            <p class="max-w-md text-base text-background/70 text-pretty">The morning briefing, weekdays at 7:00. Free, and one click to leave.</p>
+          </div>
+          <div class="flex">
             <Button isLink href="/newsletters" size="sm" variant="muted">Get the briefing</Button>
           </div>
         </div>
