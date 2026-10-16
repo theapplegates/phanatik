@@ -7,21 +7,25 @@ interface Props {
   intro?: string;
 }
 const { title, intro } = Astro.props;
+const hasAction = Astro.slots.has("action");
 ---
 
 <section>
   <Wrapper variant="standard" class="pt-12">
-    <div class="flex flex-col gap-4 pb-8 border-b border-muted">
-      <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground">
-        {title}
-      </Text>
-      {
-        intro && (
-          <Text tag="p" variant="textLG" class="max-w-xl text-muted-foreground text-pretty">
-            {intro}
-          </Text>
-        )
-      }
+    <div class="flex flex-col gap-6 pb-8 border-b border-muted lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex flex-col gap-4">
+        <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground">
+          {title}
+        </Text>
+        {
+          intro && (
+            <Text tag="p" variant="textLG" class="max-w-xl text-muted-foreground text-pretty">
+              {intro}
+            </Text>
+          )
+        }
+      </div>
+      {hasAction && <div class="flex shrink-0"><slot name="action" /></div>}
     </div>
   </Wrapper>
 </section>

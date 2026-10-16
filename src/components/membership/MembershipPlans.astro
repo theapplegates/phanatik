@@ -39,21 +39,6 @@ const billing = ["monthly", "yearly"] as const;
 
 <section>
   <Wrapper variant="standard" class="py-12">
-    <div data-billing="monthly" class="flex flex-col gap-12">
-      <div role="group" aria-label="Billing period" class="flex self-start gap-1 p-1 rounded-lg bg-muted">
-        {
-          billing.map((period) => (
-            <button
-              type="button"
-              data-billing-option={period}
-              aria-pressed={period === "monthly" ? "true" : "false"}
-              class="h-8 px-4 text-sm font-medium capitalize duration-300 rounded-sm text-muted-foreground hover:text-foreground aria-pressed:bg-background aria-pressed:text-foreground"
-            >
-              {period}
-            </button>
-          ))
-        }
-      </div>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
         {
           plans.map((plan) => (
@@ -92,20 +77,5 @@ const billing = ["monthly", "yearly"] as const;
           ))
         }
       </div>
-    </div>
   </Wrapper>
 </section>
-
-<script>
-  document.querySelectorAll<HTMLElement>("[data-billing]").forEach((root) => {
-    const options = root.querySelectorAll<HTMLButtonElement>("[data-billing-option]");
-    const panels = root.querySelectorAll<HTMLElement>("[data-billing-panel]");
-    options.forEach((option) => {
-      option.addEventListener("click", () => {
-        const period = option.dataset.billingOption;
-        options.forEach((item) => item.setAttribute("aria-pressed", String(item === option)));
-        panels.forEach((panel) => (panel.hidden = panel.dataset.billingPanel !== period));
-      });
-    });
-  });
-</script>

@@ -3,12 +3,15 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 // Components
 import PageHeader from "@/components/global/PageHeader.astro";
+import BillingToggle from "@/components/membership/BillingToggle.astro";
 import MembershipPlans from "@/components/membership/MembershipPlans.astro";
 import MembershipFaq from "@/components/membership/MembershipFaq.astro";
 ---
 
 <BaseLayout>
-  <PageHeader title="Membership" intro="The news stays free. Members pay for the long reads, and for the trains and flights behind them." />
+  <PageHeader title="Membership" intro="The news stays free. Members pay for the long reads, and for the trains and flights behind them.">
+    <BillingToggle slot="action" />
+  </PageHeader>
   <MembershipPlans />
   <MembershipFaq />
 </BaseLayout>
