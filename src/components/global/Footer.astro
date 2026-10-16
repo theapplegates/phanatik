@@ -35,17 +35,17 @@ const columns = [
 ];
 ---
 
-<footer class="border-t border-muted">
+<footer class="bg-foreground text-background">
   <Wrapper variant="standard" class="py-16">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
       <div class="flex flex-col gap-6 lg:col-span-5">
-        <a href="/" aria-label="The Absurdist home" class="text-foreground"><Logo /></a>
-        <Text tag="p" variant="textSM" class="max-w-sm text-muted-foreground text-pretty">
+        <a href="/" aria-label="The Absurdist home" class="text-background"><Logo /></a>
+        <Text tag="p" variant="textSM" class="max-w-sm text-background/60 text-pretty">
           World sports, every day. Football, basketball, tennis, cycling,
           Formula 1 and athletics, reported by people who were there.
         </Text>
         <form class="flex flex-col gap-2 max-w-sm" onsubmit="return false">
-          <label for="footer-email" class="text-sm font-medium text-foreground">The morning briefing</label>
+          <label for="footer-email" class="text-sm font-medium text-background">The morning briefing</label>
           <div class="flex gap-2">
             <input
               id="footer-email"
@@ -53,9 +53,9 @@ const columns = [
               required
               autocomplete="email"
               placeholder="you@absurdist.test"
-              class="w-full h-9 px-3 text-sm bg-background border rounded-lg border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10"
+              class="w-full h-9 px-3 text-sm bg-transparent border rounded-lg border-background/20 text-background placeholder:text-background/50 focus:border-background/40 focus:ring-3 focus:ring-background/10"
             />
-            <Button type="submit" size="sm" variant="default">Subscribe</Button>
+            <Button type="submit" size="sm" variant="muted">Subscribe</Button>
           </div>
         </form>
       </div>
@@ -63,11 +63,11 @@ const columns = [
         {
           columns.map((column) => (
             <div>
-              <h2 class="text-sm font-semibold text-foreground">{column.title}</h2>
+              <h2 class="text-sm font-semibold text-background">{column.title}</h2>
               <ul class="flex flex-col gap-2 mt-4">
                 {column.links.map((link) => (
                   <li>
-                    <a href={link.href} class="text-sm text-muted-foreground duration-300 hover:text-foreground">
+                    <a href={link.href} class="text-sm text-background/60 duration-300 hover:text-background">
                       {link.label}
                     </a>
                   </li>
@@ -78,8 +78,8 @@ const columns = [
         }
       </div>
     </div>
-    <div class="pt-8 mt-16 border-t border-muted">
-      <Text tag="p" variant="textXS" class="text-muted-foreground">
+    <div class="pt-8 mt-16 border-t border-background/15">
+      <Text tag="p" variant="textXS" class="text-background/60">
         © {new Date().getFullYear()} The Absurdist. All rights reserved.
       </Text>
     </div>
