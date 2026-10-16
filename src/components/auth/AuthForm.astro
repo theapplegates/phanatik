@@ -4,7 +4,12 @@ import Logo from "@/components/assets/Logo.astro";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import StoryCard from "@/components/stories/StoryCard.astro";
+// Icons
+import Check from "@/components/fundations/icons/Check.astro";
+// Content
+import { getStories } from "@/lib/stories";
 interface Props {
   mode: "signin" | "signup";
 }
@@ -27,58 +32,143 @@ const copy = isSignup
       switchLabel: "Create an account",
       switchHref: "/signup",
     };
+const stories = await getStories();
+const [lead, ...latest] = stories.filter((story) => story.data.sport !== "Opinion");
+const benefits = [
+  "Every news story, match report and live score",
+  "The morning briefing, every weekday at 7:00",
+  "Three members stories a month, on us",
+  "Follow your sports and writers",
+];
 const field =
-  "w-full px-3 text-sm border rounded-lg h-9 bg-background border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10";
+  "w-full px-3 text-sm border rounded-lg h-10 bg-background border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10";
+const year = new Date().getFullYear();
 ---
 
 <section>
-  <Wrapper variant="standard" class="py-24">
-    <div class="flex flex-col w-full max-w-sm gap-8 mx-auto">
-      <a href="/" class="text-foreground">
+  <div class="grid grid-cols-1 min-h-svh lg:grid-cols-2">
+    <div class="flex flex-col gap-12 px-4 py-8 lg:px-8">
+      <a href="/" class="self-start text-foreground">
         <Logo />
       </a>
-      <div class="flex flex-col gap-2">
-        <Text tag="h1" variant="displaySM" class="font-semibold tracking-tight text-foreground">
-          {copy.title}
-        </Text>
-        <Text tag="p" variant="textSM" class="text-muted-foreground text-pretty">
-          {copy.intro}
-        </Text>
-      </div>
-      <form action="#_" class="flex flex-col gap-4">
-        {
-          isSignup && (
-            <div class="flex flex-col gap-2">
-              <label for="name" class="text-sm font-medium text-foreground">Name</label>
-              <input id="name" name="name" type="text" required autocomplete="name" placeholder="Lucía Ortega" class={field} />
+      <div class="flex flex-col justify-center w-full max-w-sm gap-8 mx-auto grow">
+        <div class="flex flex-col gap-2">
+          <Text tag="h1" variant="displayMD" class="font-semibold tracking-tight text-foreground">
+            {copy.title}
+          </Text>
+          <Text tag="p" variant="textBase" class="text-muted-foreground text-pretty">
+            {copy.intro}
+          </Text>
+        </div>
+        <form action="#_" class="flex flex-col gap-5">
+          {
+            isSignup && (
+              <div class="flex flex-col gap-2">
+                <label for="name" class="text-sm font-medium text-foreground">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" placeholder="Lucía Ortega" class={field} />
+              </div>
+            )
+          }
+          <div class="flex flex-col gap-2">
+            <label for="email" class="text-sm font-medium text-foreground">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@absurdist.test" class={field} />
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="flex items-baseline justify-between gap-4">
+              <label for="password" class="text-sm font-medium text-foreground">Password</label>
+              {!isSignup && <a href="#_" class="text-sm text-muted-foreground duration-300 hover:text-foreground">Forgot it?</a>}
             </div>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              autocomplete={isSignup ? "new-password" : "current-password"}
+              placeholder="At least 8 characters"
+              class={field}
+            />
+          </div>
+          <label for="remember" class="flex items-start gap-3 text-sm cursor-pointer text-muted-foreground">
+            <input
+              id="remember"
+              name={isSignup ? "briefing" : "remember"}
+              type="checkbox"
+              checked
+              class="mt-0.5 rounded size-4 border-muted text-foreground focus:ring-foreground/20"
+            />
+            {isSignup ? "Send me the morning briefing on weekdays" : "Keep me signed in on this device"}
+          </label>
+          <Button type="submit" size="base" variant="default" class="w-full">{copy.submit}</Button>
+          {
+            isSignup && (
+              <p class="text-xs text-muted-foreground text-pretty">
+                By creating an account you agree to our
+                <a href="/legal/terms" class="text-foreground duration-300 hover:text-muted-foreground">terms</a>
+                and
+                <a href="/legal/privacy" class="text-foreground duration-300 hover:text-muted-foreground">privacy policy</a>.
+              </p>
+            )
+          }
+        </form>
+        <p class="flex flex-wrap gap-1 text-sm text-muted-foreground">
+          <span>{copy.switchText}</span>
+          <a href={copy.switchHref} class="font-medium text-foreground duration-300 hover:text-muted-foreground">{copy.switchLabel}</a>
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-between gap-4 text-xs text-muted-foreground">
+        <span>&copy; {year} The Absurdist</span>
+        <span class="flex gap-4">
+          <a href="/legal/privacy" class="duration-300 hover:text-foreground">Privacy</a>
+          <a href="/legal/terms" class="duration-300 hover:text-foreground">Terms</a>
+          <a href="/contact" class="duration-300 hover:text-foreground">Help</a>
+        </span>
+      </div>
+    </div>
+    <div class="hidden px-8 py-8 lg:flex lg:flex-col lg:justify-center lg:border-l lg:border-muted">
+      <div class="flex flex-col w-full max-w-md gap-8 mx-auto">
+        {
+          isSignup ? (
+            <>
+              <div class="flex flex-col gap-2">
+                <Text tag="h2" variant="displayXS" class="font-semibold tracking-tight text-foreground">
+                  What a free account gets you
+                </Text>
+                <Text tag="p" variant="textSM" class="text-muted-foreground text-pretty">
+                  No card, no trial that turns into a bill. Membership is there when you want more.
+                </Text>
+              </div>
+              <ul class="flex flex-col gap-3">
+                {benefits.map((benefit) => (
+                  <li class="flex items-start gap-3 text-base text-foreground">
+                    <Check size="sm" class="mt-1 shrink-0 text-muted-foreground" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              <figure class="flex flex-col gap-4 pt-4">
+                <blockquote class="text-lg font-medium tracking-tight text-foreground text-pretty">
+                  I signed up for the scores and stayed for the writing. It is the only sports site I read to the end.
+                </blockquote>
+                <figcaption class="text-sm text-muted-foreground">Ingrid Halvorsen, member since 2021</figcaption>
+              </figure>
+            </>
+          ) : (
+            <>
+              <Text tag="h2" variant="displayXS" class="font-semibold tracking-tight text-foreground">
+                While you were away
+              </Text>
+              {lead && <StoryCard story={lead} />}
+              <ul class="flex flex-col divide-y divide-muted">
+                {latest.slice(0, 3).map((story) => (
+                  <li class="py-4">
+                    <StoryCard story={story} size="row" />
+                  </li>
+                ))}
+              </ul>
+            </>
           )
         }
-        <div class="flex flex-col gap-2">
-          <label for="email" class="text-sm font-medium text-foreground">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@absurdist.test" class={field} />
-        </div>
-        <div class="flex flex-col gap-2">
-          <div class="flex items-baseline justify-between gap-4">
-            <label for="password" class="text-sm font-medium text-foreground">Password</label>
-            {!isSignup && <a href="#_" class="text-sm text-muted-foreground duration-300 hover:text-foreground">Forgot it?</a>}
-          </div>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            required
-            autocomplete={isSignup ? "new-password" : "current-password"}
-            placeholder="At least 8 characters"
-            class={field}
-          />
-        </div>
-        <Button type="submit" size="sm" variant="default" class="w-full">{copy.submit}</Button>
-      </form>
-      <p class="text-sm text-muted-foreground">
-        {copy.switchText}
-        <a href={copy.switchHref} class="font-medium text-foreground duration-300 hover:text-muted-foreground">{copy.switchLabel}</a>
-      </p>
+      </div>
     </div>
-  </Wrapper>
+  </div>
 </section>
