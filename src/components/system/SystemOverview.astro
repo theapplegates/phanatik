@@ -1,0 +1,99 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const groups = [
+  {
+    title: "Static",
+    columns: [
+      {
+        category: "Pages",
+        links: [
+          { text: "Home", href: "/" },
+          { text: "About", href: "/about" },
+          { text: "Membership", href: "/membership" },
+          { text: "Newsletters", href: "/newsletters" },
+          { text: "404", href: "/404" },
+        ],
+      },
+      {
+        category: "Forms",
+        links: [
+          { text: "Contact", href: "/contact" },
+          { text: "Sign in", href: "/signin" },
+          { text: "Sign up", href: "/signup" },
+        ],
+      },
+      {
+        category: "System",
+        links: [
+          { text: "Colors", href: "/system/colors" },
+          { text: "Links", href: "/system/link" },
+          { text: "Buttons", href: "/system/buttons" },
+          { text: "Typography", href: "/system/typography" },
+        ],
+      },
+      {
+        category: "Resources",
+        links: [
+          { text: "License", href: "https://lexingtonthemes.com/legal/license" },
+          { text: "Documentation", href: "https://lexingtonthemes.com/documentation" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Content collections",
+    columns: [
+      {
+        category: "News",
+        links: [
+          { text: "Sport", href: "/sports/football" },
+          { text: "Story", href: "/stories/spain-come-back-from-two-down-to-win-the-nations-league-final" },
+          { text: "RSS", href: "/rss.xml" },
+        ],
+      },
+      {
+        category: "Writers",
+        links: [
+          { text: "Writers", href: "/writers" },
+          { text: "Writer", href: "/writers/marta-quiroga" },
+        ],
+      },
+      {
+        category: "Legal",
+        links: [{ text: "Legal page", href: "/legal/privacy" }],
+      },
+    ],
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="flex flex-col gap-16">
+      {
+        groups.map((group) => (
+          <div class="flex flex-col gap-6">
+            <h2 class="text-xl font-semibold tracking-tight text-foreground">{group.title}</h2>
+            <div class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+              {group.columns.map((column) => (
+                <div class="flex flex-col gap-3">
+                  <h3 class="text-sm font-medium text-muted-foreground">{column.category}</h3>
+                  <ul class="flex flex-col gap-2">
+                    {column.links.map((link) => (
+                      <li>
+                        <a href={link.href} class="text-base text-foreground duration-300 hover:text-muted-foreground">
+                          {link.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Wrapper>
+</section>

@@ -1,58 +1,12 @@
 ---
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Text from "@/components/fundations/elements/Text.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import PageHeader from "@/components/global/PageHeader.astro";
+import SystemTypography from "@/components/system/SystemTypography.astro";
 ---
 
 <BaseLayout>
-  <Wrapper variant="standard" class="py-12 lg:py-24">
-    <Text tag="h2" variant="displaySM" class="font-medium text-foreground"
-      >Typography
-    </Text>
-
-    <div
-      class="flex flex-col mt-12 font-medium text-foreground divide-y divide-muted"
-    >
-      <div class="py-4">
-        <Text tag="p" variant="textXS"> Text XS </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="textSM"> Text SM </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="textBase"> Text Base </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="textLG"> Text LG </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="textXL"> Text XL </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="displayXS"> Display XS </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="displaySM"> Display SM </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="displayMD"> Display MD </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="displayLG"> Display LG </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="displayXL"> Display XL </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="display2XL"> Display 2XL </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="display3XL"> Display 3XL </Text>
-      </div>
-      <div class="py-4">
-        <Text tag="p" variant="display4XL"> Display 4XL </Text>
-      </div>
-    </div>
-  </Wrapper>
+  <PageHeader title="Typography" intro="Switzer at every size of the Text component. Display sizes are set semibold with tight tracking." />
+  <SystemTypography />
 </BaseLayout>

@@ -1,0 +1,29 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const colors = [
+  { name: "Background", token: "--color-background", value: "oklch(1 0 0)", class: "bg-background ring-1 ring-inset ring-muted" },
+  { name: "Foreground", token: "--color-foreground", value: "oklch(0.17 0.005 265)", class: "bg-foreground" },
+  { name: "Muted", token: "--color-muted", value: "oklch(0.93 0.003 265)", class: "bg-muted" },
+  { name: "Muted foreground", token: "--color-muted-foreground", value: "oklch(0.52 0.01 265)", class: "bg-muted-foreground" },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <ul class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+      {
+        colors.map((color) => (
+          <li class="flex flex-col gap-4">
+            <div class:list={["aspect-4/3 rounded-xl", color.class]} />
+            <div class="flex flex-col gap-1">
+              <span class="text-base font-medium text-foreground">{color.name}</span>
+              <span class="text-sm text-muted-foreground">{color.token}</span>
+              <span class="text-sm text-muted-foreground">{color.value}</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Wrapper>
+</section>

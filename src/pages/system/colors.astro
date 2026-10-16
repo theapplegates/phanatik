@@ -1,37 +1,12 @@
 ---
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Text from "@/components/fundations/elements/Text.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-const colors = [
-  { name: "Background", token: "--color-background", class: "bg-background ring-1 ring-muted" },
-  { name: "Foreground", token: "--color-foreground", class: "bg-foreground" },
-  { name: "Muted", token: "--color-muted", class: "bg-muted" },
-  { name: "Muted foreground", token: "--color-muted-foreground", class: "bg-muted-foreground" },
-];
+// Components
+import PageHeader from "@/components/global/PageHeader.astro";
+import SystemColors from "@/components/system/SystemColors.astro";
 ---
 
 <BaseLayout>
-  <section>
-    <Wrapper variant="standard" class="py-24">
-      <Text tag="h1" variant="displaySM" class="font-medium text-foreground">
-        Colors
-      </Text>
-      <div class="grid grid-cols-2 mt-12 gap-2 gap-y-8 lg:grid-cols-5">
-        {
-          colors.map((color) => (
-            <div class="flex flex-col gap-2">
-              <div class={`aspect-square rounded-md ${color.class}`} />
-              <Text tag="span" variant="textSM" class="text-foreground">
-                {color.name}
-              </Text>
-              <Text tag="span" variant="textXS" class="text-muted-foreground">
-                {color.token}
-              </Text>
-            </div>
-          ))
-        }
-      </div>
-    </Wrapper>
-  </section>
+  <PageHeader title="Colors" intro="Four tokens, set in src/styles/colors.css. No accent: the photography brings the colour." />
+  <SystemColors />
 </BaseLayout>

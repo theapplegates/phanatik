@@ -1,0 +1,44 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const styles = [
+  { name: "Display 4XL", variant: "display4XL" },
+  { name: "Display 3XL", variant: "display3XL" },
+  { name: "Display 2XL", variant: "display2XL" },
+  { name: "Display XL", variant: "displayXL" },
+  { name: "Display LG", variant: "displayLG" },
+  { name: "Display MD", variant: "displayMD" },
+  { name: "Display SM", variant: "displaySM" },
+  { name: "Display XS", variant: "displayXS" },
+  { name: "Text XL", variant: "textXL" },
+  { name: "Text LG", variant: "textLG" },
+  { name: "Text Base", variant: "textBase" },
+  { name: "Text SM", variant: "textSM" },
+  { name: "Text XS", variant: "textXS" },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <ul class="flex flex-col divide-y divide-muted">
+      {
+        styles.map((style) => (
+          <li class="grid grid-cols-1 gap-4 py-6 lg:grid-cols-12">
+            <span class="pt-2 text-sm text-muted-foreground lg:col-span-3">{style.name}</span>
+            <Text
+              tag="p"
+              variant={style.variant}
+              class:list={[
+                "text-foreground truncate lg:col-span-9",
+                style.variant.startsWith("display") && "font-semibold tracking-tight",
+              ]}
+            >
+              Spain win in Lisbon
+            </Text>
+          </li>
+        ))
+      }
+    </ul>
+  </Wrapper>
+</section>
