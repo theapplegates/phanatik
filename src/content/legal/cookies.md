@@ -24,4 +24,4 @@ We may update this Cookie Notice from time to time to reflect changes in technol
 
 ## Contact
 If you have questions or concerns about our use of cookies, contact us at  
-[privacy@example.com](mailto:privacy@example.com).
+[privacy@absurdist.test](#_).

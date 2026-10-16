@@ -45,4 +45,4 @@ These terms are governed by the laws of our principal place of business, unless 
 
 ## Contact
 Questions about these terms can be sent to  
-[support@example.com](mailto:support@example.com).
+[support@absurdist.test](#_).

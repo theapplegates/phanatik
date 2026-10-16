@@ -39,4 +39,4 @@ We may update this Privacy Policy from time to time. The publication date above 
 
 ## Contact
 If you have questions or concerns about this Privacy Policy, contact us at  
-[privacy@example.com](mailto:privacy@example.com).
+[privacy@absurdist.test](#_).
