@@ -1,0 +1,23 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import StoryArticle from "@/components/stories/StoryArticle.astro";
+import AdBanner from "@/components/ads/AdBanner.astro";
+import RelatedStories from "@/components/stories/RelatedStories.astro";
+// Content
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  id: string;
+  frontmatter: CollectionEntry<"stories">["data"];
+}
+const { id, frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <StoryArticle id={id} frontmatter={frontmatter}>
+    <slot />
+  </StoryArticle>
+  <AdBanner />
+  <RelatedStories sport={frontmatter.sport} />
+</BaseLayout>

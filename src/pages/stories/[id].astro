@@ -1,10 +1,6 @@
 ---
 // Fundations
-import BaseLayout from "@/layouts/BaseLayout.astro";
-// Components
-import StoryArticle from "@/components/stories/StoryArticle.astro";
-import AdBanner from "@/components/ads/AdBanner.astro";
-import RelatedStories from "@/components/stories/RelatedStories.astro";
+import StoryLayout from "@/layouts/StoryLayout.astro";
 // Content
 import { getCollection, render } from "astro:content";
 export async function getStaticPaths() {
@@ -15,10 +11,6 @@ const { story } = Astro.props;
 const { Content } = await render(story);
 ---
 
-<BaseLayout>
-  <StoryArticle story={story}>
-    <Content />
-  </StoryArticle>
-  <AdBanner />
-  <RelatedStories story={story} />
-</BaseLayout>
+<StoryLayout id={story.id} frontmatter={story.data}>
+  <Content />
+</StoryLayout>

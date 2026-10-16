@@ -1,0 +1,21 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import PageHeader from "@/components/global/PageHeader.astro";
+import LegalArticle from "@/components/legal/LegalArticle.astro";
+// Content
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  id: string;
+  frontmatter: CollectionEntry<"legal">["data"];
+}
+const { id, frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <PageHeader title={frontmatter.page} />
+  <LegalArticle id={id} frontmatter={frontmatter}>
+    <slot />
+  </LegalArticle>
+</BaseLayout>

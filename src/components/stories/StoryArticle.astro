@@ -16,12 +16,13 @@ import { getStories } from "@/lib/stories";
 import { sportSlug } from "@/lib/sports";
 import { writerHref } from "@/lib/writers";
 interface Props {
-  story: CollectionEntry<"stories">;
+  id: string;
+  frontmatter: CollectionEntry<"stories">["data"];
 }
-const { story } = Astro.props;
-const { title, description, sport, pubDate, image, live, members } = story.data;
-const writer = await getEntry(story.data.writer);
-const latest = (await getStories()).filter((item) => item.data.sport === sport && item.id !== story.id).slice(0, 4);
+const { id, frontmatter } = Astro.props;
+const { title, description, sport, pubDate, image, live, members } = frontmatter;
+const writer = await getEntry(frontmatter.writer);
+const latest = (await getStories()).filter((item) => item.data.sport === sport && item.id !== id).slice(0, 4);
 ---
 
 <section>
@@ -103,7 +104,7 @@ const latest = (await getStories()).filter((item) => item.data.sport === sport &
             </div>
           )
         }
-        <MostRead exclude={story.id} />
+        <MostRead exclude={id} />
         <AdSidebar />
       </aside>
     </div>

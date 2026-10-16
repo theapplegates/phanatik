@@ -1,9 +1,6 @@
 ---
 // Fundations
-import BaseLayout from "@/layouts/BaseLayout.astro";
-// Components
-import PageHeader from "@/components/global/PageHeader.astro";
-import LegalArticle from "@/components/legal/LegalArticle.astro";
+import LegalLayout from "@/layouts/LegalLayout.astro";
 // Content
 import { getCollection, render } from "astro:content";
 export async function getStaticPaths() {
@@ -14,9 +11,6 @@ const { page } = Astro.props;
 const { Content } = await render(page);
 ---
 
-<BaseLayout>
-  <PageHeader title={page.data.page} />
-  <LegalArticle page={page}>
-    <Content />
-  </LegalArticle>
-</BaseLayout>
+<LegalLayout id={page.id} frontmatter={page.data}>
+  <Content />
+</LegalLayout>

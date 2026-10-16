@@ -1,16 +1,16 @@
 ---
 // Fundations
-import BaseLayout from "@/layouts/BaseLayout.astro";
-// Components
-import WriterProfile from "@/components/writers/WriterProfile.astro";
+import WriterLayout from "@/layouts/WriterLayout.astro";
 // Content
-import { getWriters } from "@/lib/writers";
+import { getCollection, render } from "astro:content";
 export async function getStaticPaths() {
-  return (await getWriters()).map((writer) => ({ params: { id: writer.id }, props: { writer } }));
+  const writers = await getCollection("writers");
+  return writers.map((writer) => ({ params: { id: writer.id }, props: { writer } }));
 }
 const { writer } = Astro.props;
+const { Content } = await render(writer);
 ---
 
-<BaseLayout>
-  <WriterProfile writer={writer} />
-</BaseLayout>
+<WriterLayout id={writer.id} frontmatter={writer.data}>
+  <Content />
+</WriterLayout>

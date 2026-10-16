@@ -5,9 +5,10 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { formatDate } from "@/lib/format";
 interface Props {
-  page: CollectionEntry<"legal">;
+  id: string;
+  frontmatter: CollectionEntry<"legal">["data"];
 }
-const { page } = Astro.props;
+const { id, frontmatter } = Astro.props;
 const pages = await getCollection("legal");
 ---
 
@@ -16,7 +17,7 @@ const pages = await getCollection("legal");
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
       <aside class="flex flex-col gap-4 lg:col-span-4">
         <p class="text-sm text-muted-foreground">
-          Updated on <time datetime={page.data.pubDate.toISOString()}>{formatDate(page.data.pubDate)}</time>
+          Updated on <time datetime={frontmatter.pubDate.toISOString()}>{formatDate(frontmatter.pubDate)}</time>
         </p>
         <ul class="flex flex-col gap-2">
           {
@@ -24,7 +25,7 @@ const pages = await getCollection("legal");
               <li>
                 <a
                   href={`/legal/${item.id}`}
-                  aria-current={item.id === page.id ? "page" : undefined}
+                  aria-current={item.id === id ? "page" : undefined}
                   class="text-base text-muted-foreground duration-300 hover:text-foreground current:font-medium current:text-foreground"
                 >
                   {item.data.page}

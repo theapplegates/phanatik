@@ -8,11 +8,11 @@ import StoryCard from "@/components/stories/StoryCard.astro";
 import type { CollectionEntry } from "astro:content";
 import { getStories } from "@/lib/stories";
 interface Props {
-  story: CollectionEntry<"stories">;
+  sport: CollectionEntry<"stories">["data"]["sport"];
 }
-const { story } = Astro.props;
+const { sport } = Astro.props;
 const related = (await getStories())
-  .filter((item) => item.data.sport !== story.data.sport && item.data.sport !== "Opinion")
+  .filter((item) => item.data.sport !== sport && item.data.sport !== "Opinion")
   .slice(0, 4);
 ---
 
