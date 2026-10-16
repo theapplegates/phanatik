@@ -2,8 +2,6 @@
 // Fundations
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Components
-import SectionHeader from "@/components/landing/SectionHeader.astro";
 const desks = [
   { name: "News tips", email: "tips@absurdist.test", note: "Something we should know. We protect our sources." },
   { name: "Corrections", email: "corrections@absurdist.test", note: "We got something wrong. We will fix it and say so." },
@@ -18,7 +16,7 @@ const field =
   <Wrapper variant="standard" class="py-12">
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
       <div class="lg:col-span-5">
-        <SectionHeader title="Desks" />
+        <h2 class="text-xl font-semibold tracking-tight text-foreground">Desks</h2>
         <ul class="flex flex-col mt-2 divide-y divide-muted">
           {
             desks.map((desk) => (
@@ -32,7 +30,7 @@ const field =
         </ul>
       </div>
       <div class="lg:col-span-7">
-        <SectionHeader title="Write to us" />
+        <h2 class="text-xl font-semibold tracking-tight text-foreground">Write to us</h2>
         <form action="#_" class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2">
           <div class="flex flex-col gap-2">
             <label for="name" class="text-sm font-medium text-foreground">Name</label>
