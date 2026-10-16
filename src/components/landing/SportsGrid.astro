@@ -4,10 +4,10 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import SectionHeader from "@/components/landing/SectionHeader.astro";
 import StoryCard from "@/components/stories/StoryCard.astro";
+import ScoresList from "@/components/stories/ScoresList.astro";
 // Content
 import { getStories } from "@/lib/stories";
 import { sportSlug, type Sport } from "@/lib/sports";
-import { scores } from "@/lib/scores";
 const grid: Sport[] = ["Basketball", "Tennis", "Cycling", "Formula 1", "Athletics"];
 const stories = await getStories();
 const blocks = grid.map((sport) => {
@@ -30,28 +30,7 @@ const blocks = grid.map((sport) => {
           </div>
         ))
       }
-      <div>
-        <SectionHeader title="Scores" />
-        <ul class="flex flex-col mt-2 divide-y divide-muted">
-          {
-            scores.map((match) => (
-              <li class="flex items-center justify-between gap-4 py-3 text-sm">
-                <span class="flex flex-col">
-                  <span class="text-foreground">{match.home}</span>
-                  <span class="text-foreground">{match.away}</span>
-                </span>
-                <span class="flex flex-col items-end">
-                  <span class="font-semibold tabular-nums text-foreground">{match.score}</span>
-                  <span class="flex items-center gap-1.5 text-xs text-muted-foreground">
-                    {match.live && <span class="rounded-full size-1.5 bg-foreground" />}
-                    {match.sport}, {match.status}
-                  </span>
-                </span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <ScoresList />
     </div>
   </Wrapper>
 </section>

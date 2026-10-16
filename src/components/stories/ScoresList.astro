@@ -1,0 +1,36 @@
+---
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+// Content
+import { scores } from "@/lib/scores";
+interface Props {
+  sport?: string;
+}
+const { sport } = Astro.props;
+const matches = sport ? scores.filter((match) => match.sport === sport) : scores;
+---
+
+{
+  matches.length > 0 && (
+    <div>
+      <SectionHeader title="Scores" />
+      <ul class="flex flex-col mt-2 divide-y divide-muted">
+        {matches.map((match) => (
+          <li class="flex items-center justify-between gap-4 py-3 text-sm">
+            <span class="flex flex-col">
+              <span class="text-foreground">{match.home}</span>
+              <span class="text-foreground">{match.away}</span>
+            </span>
+            <span class="flex flex-col items-end">
+              <span class="font-semibold tabular-nums text-foreground">{match.score}</span>
+              <span class="flex items-center gap-1.5 text-xs text-muted-foreground">
+                {match.live && <span class="rounded-full size-1.5 bg-foreground" />}
+                {sport ? match.status : `${match.sport}, ${match.status}`}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

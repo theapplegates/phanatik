@@ -1,0 +1,63 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+import StoryCard from "@/components/stories/StoryCard.astro";
+import ScoresList from "@/components/stories/ScoresList.astro";
+import MostRead from "@/components/stories/MostRead.astro";
+// Content
+import { getEntry } from "astro:content";
+import { getStories } from "@/lib/stories";
+import type { Sport } from "@/lib/sports";
+interface Props {
+  sport: Sport;
+}
+const { sport } = Astro.props;
+const inSport = (await getStories()).filter((story) => story.data.sport === sport);
+const [lead, ...rest] = inSport;
+const writerIds = [...new Set(inSport.map((story) => story.data.writer.id))];
+const desk = (await Promise.all(writerIds.map((id) => getEntry("writers", id)))).filter((writer) => writer !== undefined);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+        {lead && <StoryCard story={lead} size="large" />}
+        {
+          rest.length > 0 && (
+            <div class="mt-12">
+              <SectionHeader title="All stories" />
+              <ul class="flex flex-col mt-2 divide-y divide-muted">
+                {rest.map((story) => <li class="py-6"><StoryCard story={story} size="compact" /></li>)}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+      <aside class="flex flex-col gap-12 lg:col-span-4 lg:pl-8 lg:border-l lg:border-muted">
+        <ScoresList sport={sport} />
+        <div>
+          <SectionHeader title="The desk" />
+          <ul class="flex flex-col mt-2 divide-y divide-muted">
+            {
+              desk.map((writer) => (
+                <li class="flex items-center gap-3 py-4">
+                  <Image src={writer.data.image.url} alt="" width={96} height={96} class="object-cover rounded-md size-10" />
+                  <span class="flex flex-col">
+                    <span class="text-sm font-medium text-foreground">{writer.data.name}</span>
+                    <span class="text-xs text-muted-foreground">{writer.data.role}</span>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <MostRead />
+      </aside>
+    </div>
+  </Wrapper>
+</section>

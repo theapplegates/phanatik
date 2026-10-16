@@ -1,0 +1,18 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import SportHeader from "@/components/sports/SportHeader.astro";
+import SportFront from "@/components/sports/SportFront.astro";
+// Content
+import { sports, sportSlug } from "@/lib/sports";
+export function getStaticPaths() {
+  return sports.map((sport) => ({ params: { sport: sportSlug(sport) }, props: { sport } }));
+}
+const { sport } = Astro.props;
+---
+
+<BaseLayout>
+  <SportHeader sport={sport} />
+  <SportFront sport={sport} />
+</BaseLayout>
