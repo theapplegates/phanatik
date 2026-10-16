@@ -1,0 +1,62 @@
+---
+// Fundations
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+const desks = [
+  { name: "News tips", email: "tips@absurdist.test", note: "Something we should know. We protect our sources." },
+  { name: "Corrections", email: "corrections@absurdist.test", note: "We got something wrong. We will fix it and say so." },
+  { name: "Membership", email: "members@absurdist.test", note: "Billing, gifts, student prices and your account." },
+  { name: "Partnerships", email: "partners@absurdist.test", note: "Syndication and events. We do not sell betting adverts." },
+];
+const field =
+  "w-full px-3 text-sm border rounded-lg bg-background border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10";
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <SectionHeader title="Desks" />
+        <ul class="flex flex-col mt-2 divide-y divide-muted">
+          {
+            desks.map((desk) => (
+              <li class="flex flex-col gap-1 py-4">
+                <span class="text-base font-medium text-foreground">{desk.name}</span>
+                <a href="#_" class="text-sm text-foreground duration-300 hover:text-muted-foreground">{desk.email}</a>
+                <span class="text-sm text-muted-foreground text-pretty">{desk.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="lg:col-span-7">
+        <SectionHeader title="Write to us" />
+        <form action="#_" class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2">
+          <div class="flex flex-col gap-2">
+            <label for="name" class="text-sm font-medium text-foreground">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Lucía Ortega" class:list={[field, "h-9"]} />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="email" class="text-sm font-medium text-foreground">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@absurdist.test" class:list={[field, "h-9"]} />
+          </div>
+          <div class="flex flex-col gap-2 sm:col-span-2">
+            <label for="desk" class="text-sm font-medium text-foreground">Desk</label>
+            <select id="desk" name="desk" class:list={[field, "h-9"]}>
+              {desks.map((desk) => <option>{desk.name}</option>)}
+            </select>
+          </div>
+          <div class="flex flex-col gap-2 sm:col-span-2">
+            <label for="message" class="text-sm font-medium text-foreground">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="What is it about?" class:list={[field, "py-2"]}></textarea>
+          </div>
+          <div class="flex sm:col-span-2">
+            <Button type="submit" size="sm" variant="default">Send message</Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </Wrapper>
+</section>

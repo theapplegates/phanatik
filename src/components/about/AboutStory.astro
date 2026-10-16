@@ -1,0 +1,43 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import newsroom from "@/images/placeholders/story.webp";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const facts = [
+  { value: "2019", label: "First story published" },
+  { value: "6", label: "Writers on the desk" },
+  { value: "41", label: "Countries reported from" },
+  { value: "18,400", label: "Members paying for it" },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <Image src={newsroom} alt="The Absurdist desk in a small office above a bar in Valencia" width={1800} height={1200} loading="eager" class="object-cover w-full rounded-xl aspect-21/9" />
+    <div class="grid grid-cols-1 gap-12 mt-12 lg:grid-cols-12">
+      <div class="flex flex-col gap-6 lg:col-span-8">
+        <Text tag="p" variant="textXL" class="font-medium tracking-tight text-foreground text-pretty">
+          The Absurdist started as a newsletter Henrik Solvang sent to forty friends after a cup final nobody else wrote about properly.
+        </Text>
+        <Text tag="p" variant="textBase" class="max-w-2xl text-muted-foreground text-pretty">
+          It grew into a desk of six writers who travel to the games, stand in the mixed zone and stay after the press conference. We cover football, basketball, tennis, cycling, Formula 1 and athletics, and we write about them the way you talk about them with friends: with the facts first and the opinions clearly labelled.
+        </Text>
+        <Text tag="p" variant="textBase" class="max-w-2xl text-muted-foreground text-pretty">
+          There are no betting adverts and no auto playing videos. The news is free. Members pay for the long reads, and that pays for the trains, the flights and the time it takes to get a story right.
+        </Text>
+      </div>
+      <dl class="grid grid-cols-2 gap-x-8 gap-y-8 lg:col-span-4 lg:grid-cols-1 lg:pl-8 lg:border-l lg:border-muted">
+        {
+          facts.map((fact) => (
+            <div class="flex flex-col gap-1">
+              <dt class="order-2 text-sm text-muted-foreground">{fact.label}</dt>
+              <dd class="order-1 text-3xl font-semibold tracking-tight tabular-nums text-foreground">{fact.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </Wrapper>
+</section>

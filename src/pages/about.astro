@@ -1,0 +1,14 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import PageHeader from "@/components/global/PageHeader.astro";
+import AboutStory from "@/components/about/AboutStory.astro";
+import WritersGrid from "@/components/writers/WritersGrid.astro";
+---
+
+<BaseLayout>
+  <PageHeader title="About" intro="World sport, reported by people who were there." />
+  <AboutStory />
+  <WritersGrid />
+</BaseLayout>

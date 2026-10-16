@@ -1,0 +1,66 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import Check from "@/components/fundations/icons/Check.astro";
+const plans = [
+  {
+    name: "Reader",
+    price: "Free",
+    note: "With an account",
+    features: ["Every news story and match report", "Live scores and results", "The morning briefing, every weekday"],
+    cta: { label: "Create an account", href: "/signup", variant: "muted" as const },
+  },
+  {
+    name: "Member",
+    price: "€5 a month",
+    note: "Or €50 a year, cancel any time",
+    features: [
+      "Everything for readers",
+      "Long reads, analysis and members stories",
+      "Every newsletter, including the Sunday long read",
+      "No adverts, on any page",
+    ],
+    cta: { label: "Become a member", href: "/signup", variant: "default" as const },
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {
+        plans.map((plan) => (
+          <div class="flex flex-col gap-6 pt-6 border-t border-muted">
+            <div class="flex flex-col gap-1">
+              <Text tag="h2" variant="textBase" class="font-semibold text-foreground">
+                {plan.name}
+              </Text>
+              <Text tag="p" variant="displayMD" class="font-semibold tracking-tight text-foreground">
+                {plan.price}
+              </Text>
+              <Text tag="p" variant="textSM" class="text-muted-foreground">
+                {plan.note}
+              </Text>
+            </div>
+            <ul class="flex flex-col gap-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-3 text-base text-foreground">
+                  <Check size="sm" class="mt-1 shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <div class="flex mt-auto">
+              <Button isLink href={plan.cta.href} size="sm" variant={plan.cta.variant}>
+                {plan.cta.label}
+              </Button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Wrapper>
+</section>

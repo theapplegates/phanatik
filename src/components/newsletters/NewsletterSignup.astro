@@ -1,0 +1,88 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const newsletters = [
+  {
+    id: "briefing",
+    name: "The morning briefing",
+    cadence: "Weekdays at 7:00",
+    description: "Last night's results, today's fixtures and the one story worth your coffee.",
+    checked: true,
+  },
+  {
+    id: "football",
+    name: "Monday football",
+    cadence: "Mondays",
+    description: "Marta Quiroga on the weekend in football, with the table that matters and the one that does not.",
+    checked: false,
+  },
+  {
+    id: "race-week",
+    name: "Race week",
+    cadence: "Before every Grand Prix",
+    description: "Davide Moretti on the track, the weather and the garage gossip, the Thursday before lights out.",
+    checked: false,
+  },
+  {
+    id: "long-read",
+    name: "The Sunday long read",
+    cadence: "Sundays, members",
+    description: "One long story, start to finish, with no scores and no news.",
+    checked: false,
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <form action="#_" class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <ul class="flex flex-col border-t divide-y divide-muted border-muted lg:col-span-8">
+        {
+          newsletters.map((item) => (
+            <li>
+              <label for={item.id} class="flex items-start gap-4 py-6 cursor-pointer">
+                <input
+                  id={item.id}
+                  name="newsletters"
+                  value={item.id}
+                  type="checkbox"
+                  checked={item.checked}
+                  class="mt-1 rounded size-4 border-muted text-foreground focus:ring-foreground/20"
+                />
+                <span class="flex flex-col gap-1">
+                  <span class="flex flex-wrap items-baseline gap-x-3">
+                    <span class="text-lg font-semibold tracking-tight text-foreground">{item.name}</span>
+                    <span class="text-sm text-muted-foreground">{item.cadence}</span>
+                  </span>
+                  <span class="max-w-xl text-base text-muted-foreground text-pretty">{item.description}</span>
+                </span>
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex flex-col gap-4 lg:col-span-4">
+        <Text tag="h2" variant="textBase" class="font-semibold text-foreground">
+          Sign up
+        </Text>
+        <Text tag="p" variant="textSM" class="text-muted-foreground text-pretty">
+          Tick the ones you want and leave your email. One click in any email unsubscribes you.
+        </Text>
+        <label for="newsletter-email" class="sr-only">Email address</label>
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          required
+          placeholder="you@absurdist.test"
+          class="w-full px-3 text-sm border rounded-lg h-9 bg-background border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10"
+        />
+        <div class="flex">
+          <Button type="submit" size="sm" variant="default">Subscribe</Button>
+        </div>
+      </div>
+    </form>
+  </Wrapper>
+</section>

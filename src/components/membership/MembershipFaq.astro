@@ -1,0 +1,51 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+// Icons
+import Plus from "@/components/fundations/icons/Plus.astro";
+const questions = [
+  {
+    question: "What do members get that readers do not?",
+    answer: "Long reads, analysis, every newsletter and a site with no adverts. News, reports and scores stay free for everyone.",
+  },
+  {
+    question: "Can I cancel at any time?",
+    answer: "Yes. Cancel from your account and you keep membership until the end of the period you paid for.",
+  },
+  {
+    question: "Is there a student price?",
+    answer: "Students pay €25 a year with a university email address. Write to us from that address and we will set it up.",
+  },
+  {
+    question: "Can I give membership as a gift?",
+    answer: "You can buy a year for someone else. They get an email on the date you choose, with everything they need to start.",
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <SectionHeader title="Questions" />
+      </div>
+      <ul class="flex flex-col divide-y divide-muted lg:col-span-8 lg:border-t lg:border-muted">
+        {
+          questions.map((item) => (
+            <li>
+              <details class="group">
+                <summary class="flex items-center justify-between gap-4 py-4 text-base font-medium list-none cursor-pointer text-foreground">
+                  {item.question}
+                  <Plus size="sm" class="duration-300 shrink-0 text-muted-foreground group-open:rotate-45" />
+                </summary>
+                <p class="max-w-2xl pb-6 text-base text-muted-foreground text-pretty">{item.answer}</p>
+              </details>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Wrapper>
+</section>
