@@ -1,8 +1,6 @@
 ---
 // Fundations
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Components
-import SectionHeader from "@/components/landing/SectionHeader.astro";
 // Icons
 import Plus from "@/components/fundations/icons/Plus.astro";
 const questions = [
@@ -29,9 +27,9 @@ const questions = [
   <Wrapper variant="standard" class="py-12">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
       <div class="lg:col-span-4">
-        <SectionHeader title="Questions" />
+        <h2 class="pt-4 text-xl font-semibold tracking-tight text-foreground">Questions</h2>
       </div>
-      <ul class="flex flex-col divide-y divide-muted lg:col-span-8 lg:border-t lg:border-muted">
+      <ul class="flex flex-col divide-y divide-muted lg:col-span-8">
         {
           questions.map((item) => (
             <li>
