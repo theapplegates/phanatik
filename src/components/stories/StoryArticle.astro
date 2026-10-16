@@ -95,7 +95,7 @@ const latest = (await getStories()).filter((item) => item.data.sport === sport &
         {
           latest.length > 0 && (
             <div>
-              <SectionHeader title={`Latest in ${sport}`} href={`/sports/${sportSlug(sport)}`} label="More" />
+              <SectionHeader title={`Latest in ${sport}`} href={`/sports/${sportSlug(sport)}`} label="More" divider={false} />
               <ul class="flex flex-col mt-2 divide-y divide-muted">
                 {latest.map((item) => <li class="py-4"><StoryCard story={item} size="row" /></li>)}
               </ul>

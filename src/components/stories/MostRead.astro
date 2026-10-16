@@ -13,7 +13,7 @@ const mostRead = (await getStories())
 ---
 
 <div>
-  <SectionHeader title="Most read" />
+  <SectionHeader title="Most read" divider={false} />
   <ol class="flex flex-col mt-2 divide-y divide-muted">
     {
       mostRead.map((story, index) => (

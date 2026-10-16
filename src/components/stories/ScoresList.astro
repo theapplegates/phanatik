@@ -5,15 +5,16 @@ import SectionHeader from "@/components/landing/SectionHeader.astro";
 import { scores } from "@/lib/scores";
 interface Props {
   sport?: string;
+  divider?: boolean;
 }
-const { sport } = Astro.props;
+const { sport, divider = true } = Astro.props;
 const matches = sport ? scores.filter((match) => match.sport === sport) : scores;
 ---
 
 {
   matches.length > 0 && (
     <div>
-      <SectionHeader title="Scores" />
+      <SectionHeader title="Scores" divider={divider} />
       <ul class="flex flex-col mt-2 divide-y divide-muted">
         {matches.map((match) => (
           <li class="flex items-center justify-between gap-4 py-3 text-sm">

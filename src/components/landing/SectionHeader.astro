@@ -5,11 +5,12 @@ interface Props {
   title: string;
   href?: string;
   label?: string;
+  divider?: boolean;
 }
-const { title, href, label } = Astro.props;
+const { title, href, label, divider = true } = Astro.props;
 ---
 
-<div class="flex items-baseline justify-between gap-4 pt-4 border-t border-muted">
+<div class:list={["flex items-baseline justify-between gap-4 pt-4", divider && "border-t border-muted"]}>
   <h2 class="text-xl font-semibold tracking-tight text-foreground">{title}</h2>
   {
     href && (

@@ -40,9 +40,9 @@ const desk = (await Promise.all(writerIds.map((id) => getEntry("writers", id))))
         }
       </div>
       <aside class="flex flex-col gap-12 lg:col-span-4 lg:pl-8 lg:border-l lg:border-muted">
-        <ScoresList sport={sport} />
+        <ScoresList sport={sport} divider={false} />
         <div>
-          <SectionHeader title="The desk" />
+          <SectionHeader title="The desk" divider={false} />
           <ul class="flex flex-col mt-2 divide-y divide-muted">
             {
               desk.map((writer) => (
