@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import LegalLayout from "../../layouts/LegalLayout.astro";
+import LegalLayout from "@/layouts/LegalLayout.astro";
 export async function getStaticPaths() {
   const legal = await getCollection("legal");
   const paths = legal.map((page) => {
