@@ -1,0 +1,24 @@
+---
+description: Phanatik content collections: Zod schemas, image(), references, frontmatter templates
+globs:
+  - src/content/**
+  - src/content.config.ts
+  - src/lib/sports.ts
+alwaysApply: false
+---
+
+# Content collections (Phanatik)
+
+- **Config source of truth:** `src/content.config.ts`: collection names `writers`, `stories`, `legal`.
+- **References:** `stories.writer` references `writers` by id (`chiara-benassi`). Resolve it with `getEntry`.
+- **Sports:** `sport` is an enum from `src/lib/sports.ts`. Adding a sport means adding it there with an intro; `/sports/[sport]` and the navigation build from that list.
+- **Placement:** one story is `lead` (the front page opener), a few are `featured`, the rest `standard`. `live` adds the live mark, `members` the members label.
+- **Image fields:** Use Astro's `image()` shape: `url` must resolve to a real asset (existing entries use `/src/images/...` paths).
+- **IDs:** Entry `id` is the filename without `.md`; URLs use these ids.
+- **Before changing schemas:** Every new required field must be satisfied in all existing markdown files; optional fields are safer. Update every page, layout and component that reads `entry.data`.
+
+**Copy-paste templates (real files):**
+
+- Writers: `src/content/writers/chiara-benassi.md`: name, role, bio, image
+- Stories: `src/content/stories/matteo-valsecchi-wins-il-lombardia-alone-in-the-rain.md`: title, pubDate, description, sport, writer, image, placement, live, members
+- Legal: `src/content/legal/terms.md`: page, pubDate

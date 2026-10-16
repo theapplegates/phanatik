@@ -1,0 +1,15 @@
+---
+description: Global conventions for Lexington Phanatik: imports, fundations folder, minimal diffs
+alwaysApply: true
+---
+
+# Lexington Phanatik: global conventions
+
+- **Imports:** Use the `@/` alias (`@/components/...`, `@/layouts/...`, `@/styles/...`) as in existing files; it maps to `src/` via `tsconfig.json`.
+- **Design system location:** Shared primitives live under `src/components/fundations/`: keep the directory name **`fundations`** exactly (project spelling).
+- **Layouts:** `BaseLayout` for every page; `StoryLayout`, `WriterLayout` and `LegalLayout` only for their detail pages.
+- **Content:** Collections are defined only in `src/content.config.ts` with loaders under `src/content/{writers,stories,legal}/`. Sports live in `src/lib/sports.ts`, scores in `src/lib/scores.ts`. Do not invent new npm dependencies; mirror `package.json`.
+- **Pages:** Every page only composes section components from `src/components/<area>/`; no inline sections in `src/pages`.
+- **Colours:** Only the tokens in `src/styles/colors.css` (`background`, `foreground`, `muted`, `muted-foreground`; no accent), with opacity modifiers for tints.
+- **Classes:** No arbitrary Tailwind values, no `@apply`, no `mb-*`, one spacing value per property. A `<section>` only takes ground classes; layout and spacing go on the `Wrapper` or an inner `div`.
+- **Changes:** Keep edits minimal and consistent with neighboring files; avoid drive-by refactors or unrelated file churn.
