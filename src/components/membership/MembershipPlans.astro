@@ -77,9 +77,6 @@ const billing = ["monthly", "yearly"] as const;
                   </Text>
                 </div>
               ))}
-              <Button isLink href={plan.cta.href} size="base" variant="default" class="w-full">
-                {plan.cta.label}
-              </Button>
               <ul class="flex flex-col gap-3">
                 {plan.features.map((feature) => (
                   <li class="flex items-start gap-3 text-base">
@@ -88,6 +85,9 @@ const billing = ["monthly", "yearly"] as const;
                   </li>
                 ))}
               </ul>
+              <Button isLink href={plan.cta.href} size="base" variant="default" class="w-fit mt-auto">
+                {plan.cta.label}
+              </Button>
             </div>
           ))
         }
