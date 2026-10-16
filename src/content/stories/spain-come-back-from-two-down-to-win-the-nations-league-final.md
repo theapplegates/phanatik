@@ -7,7 +7,7 @@ writer: marta-quiroga
 image:
   url: "/src/images/stories/football-celebration.webp"
   alt: "Spain players in red running towards their goalkeeper after the winning penalty"
-placement: lead
+placement: featured
 ---
 
 With eleven minutes left in Lisbon, Spain were two goals down and the stadium had started to sing the home songs. Forty minutes later, Lucía Ortega walked to the spot for the fifth penalty, waited for the whistle and put the ball in the top corner.

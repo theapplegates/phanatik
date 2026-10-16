@@ -11,7 +11,7 @@ import { sportSlug, type Sport } from "@/lib/sports";
 const grid: Sport[] = ["Basketball", "Tennis", "Cycling", "Formula 1", "Athletics"];
 const stories = await getStories();
 const blocks = grid.map((sport) => {
-  const [main, ...rest] = stories.filter((story) => story.data.sport === sport);
+  const [main, ...rest] = stories.filter((story) => story.data.sport === sport && story.data.placement !== "lead");
   return { sport, main, more: rest.slice(0, 2) };
 });
 ---
