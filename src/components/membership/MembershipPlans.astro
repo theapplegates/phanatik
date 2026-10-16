@@ -19,7 +19,6 @@ const plans = [
       "Three members stories a month",
     ],
     cta: { label: "Create an account", href: "/signup" },
-    featured: false,
   },
   {
     name: "Member",
@@ -35,7 +34,6 @@ const plans = [
       "Questions to the desk in the monthly live chat",
     ],
     cta: { label: "Become a member", href: "/signup" },
-    featured: true,
   },
 ];
 ---
@@ -45,36 +43,33 @@ const plans = [
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {
         plans.map((plan) => (
-          <div
-            class:list={[
-              "flex flex-col gap-8 p-8 rounded-2xl",
-              plan.featured ? "bg-foreground text-background" : "shadow-button-muted text-foreground",
-            ]}
-          >
-            <div class="flex flex-col gap-2">
-              <Text tag="h2" variant="textLG" class="font-semibold tracking-tight">
-                {plan.name}
-              </Text>
-              <Text tag="p" variant="textSM" class={plan.featured ? "text-background/60" : "text-muted-foreground"}>
-                {plan.description}
-              </Text>
+          <div class="flex flex-col p-2 rounded-3xl shadow-button-muted text-foreground">
+            <div class="flex flex-col gap-8 p-6 rounded-2xl bg-linear-to-b from-muted to-background">
+              <div class="flex flex-col gap-2">
+                <Text tag="h2" variant="textLG" class="font-semibold tracking-tight">
+                  {plan.name}
+                </Text>
+                <Text tag="p" variant="textSM" class="text-muted-foreground">
+                  {plan.description}
+                </Text>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="flex items-baseline gap-2">
+                  <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan.price}</span>
+                  <span class="text-base text-muted-foreground">{plan.period}</span>
+                </p>
+                <Text tag="p" variant="textSM" class="text-muted-foreground">
+                  {plan.note}
+                </Text>
+              </div>
+              <Button isLink href={plan.cta.href} size="base" variant="default" class="w-full">
+                {plan.cta.label}
+              </Button>
             </div>
-            <div class="flex flex-col gap-2">
-              <p class="flex items-baseline gap-2">
-                <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan.price}</span>
-                <span class:list={["text-base", plan.featured ? "text-background/60" : "text-muted-foreground"]}>{plan.period}</span>
-              </p>
-              <Text tag="p" variant="textSM" class={plan.featured ? "text-background/60" : "text-muted-foreground"}>
-                {plan.note}
-              </Text>
-            </div>
-            <Button isLink href={plan.cta.href} size="base" variant={plan.featured ? "muted" : "default"} class="w-full">
-              {plan.cta.label}
-            </Button>
-            <ul class:list={["flex flex-col gap-3 pt-8 border-t", plan.featured ? "border-background/15" : "border-muted"]}>
+            <ul class="flex flex-col gap-3 p-6">
               {plan.features.map((feature) => (
                 <li class="flex items-start gap-3 text-base">
-                  <Check size="sm" class:list={["mt-1 shrink-0", plan.featured ? "text-background/60" : "text-muted-foreground"]} />
+                  <Check size="sm" class="mt-1 shrink-0 text-muted-foreground" />
                   {feature}
                 </li>
               ))}
