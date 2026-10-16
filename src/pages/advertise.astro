@@ -1,0 +1,19 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+// Components
+import PageHeader from "@/components/global/PageHeader.astro";
+import AdvertiseAudience from "@/components/advertise/AdvertiseAudience.astro";
+import AdvertiseFormats from "@/components/advertise/AdvertiseFormats.astro";
+import AdvertiseRules from "@/components/advertise/AdvertiseRules.astro";
+---
+
+<BaseLayout>
+  <PageHeader title="Advertise" intro="Reach people who read sport to the end. Few partners, clearly labelled, and never a betting advert.">
+    <Button slot="action" isLink href="/contact" size="sm" variant="default">Talk to partnerships</Button>
+  </PageHeader>
+  <AdvertiseAudience />
+  <AdvertiseFormats />
+  <AdvertiseRules />
+</BaseLayout>

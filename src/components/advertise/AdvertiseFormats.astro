@@ -1,0 +1,52 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import newsletter from "@/images/stories/cycling-gravel.webp";
+import display from "@/images/stories/football-striker.webp";
+import series from "@/images/stories/athletics-marathon.webp";
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const formats = [
+  {
+    name: "Newsletter sponsorship",
+    description: "One line and one link at the top of the morning briefing, written with you by the desk. One sponsor a week, never two.",
+    price: "From €2,400 a week",
+    image: newsletter,
+    alt: "Riders on a gravel road between wheat fields",
+  },
+  {
+    name: "Sport page partner",
+    description: "A single display slot on one sport page for a month, beside the scores. Static images only, nothing that moves or plays.",
+    price: "From €3,800 a month",
+    image: display,
+    alt: "A striker shooting across a wet pitch",
+  },
+  {
+    name: "Supported series",
+    description: "Fund a long read series on a subject you care about. You choose the subject, we choose the stories and keep the final word.",
+    price: "From €12,000 a series",
+    image: series,
+    alt: "Marathon runners crossing a city bridge at sunrise",
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <h2 class="text-xl font-semibold tracking-tight text-foreground">Formats</h2>
+    <ul class="grid grid-cols-1 gap-8 mt-6 md:grid-cols-3">
+      {
+        formats.map((format) => (
+          <li class="flex flex-col gap-4">
+            <Image src={format.image} alt={format.alt} width={800} height={533} class="object-cover w-full rounded-lg aspect-3/2" />
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold tracking-tight text-foreground">{format.name}</h3>
+              <p class="text-sm text-muted-foreground text-pretty">{format.description}</p>
+              <p class="text-sm font-medium text-foreground">{format.price}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </Wrapper>
+</section>

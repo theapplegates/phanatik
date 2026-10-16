@@ -1,0 +1,30 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const rules = [
+  { title: "No betting", text: "No bookmakers, no odds, no free bets. Not on the site, not in the newsletters, not in a series." },
+  { title: "Nothing that moves", text: "No autoplay video, no pop ups and no adverts that follow you down the page." },
+  { title: "No say over the stories", text: "Partners never see a story before it is published and never decide what we cover." },
+  { title: "Always labelled", text: "Every partner slot says who paid for it, in plain words, in the same place every time." },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class="pt-4 text-xl font-semibold tracking-tight text-foreground">What we do not take</h2>
+      </div>
+      <ul class="flex flex-col divide-y divide-muted lg:col-span-8">
+        {
+          rules.map((rule) => (
+            <li class="flex flex-col gap-1 py-4">
+              <span class="text-base font-medium text-foreground">{rule.title}</span>
+              <span class="max-w-2xl text-base text-muted-foreground text-pretty">{rule.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Wrapper>
+</section>

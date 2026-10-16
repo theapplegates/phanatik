@@ -1,0 +1,25 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const stats = [
+  { value: "2.1M", label: "Readers a month" },
+  { value: "240,000", label: "Newsletter subscribers" },
+  { value: "18,400", label: "Paying members" },
+  { value: "6 min", label: "Average time on a story" },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <dl class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+      {
+        stats.map((stat) => (
+          <div class="flex flex-col gap-1">
+            <dt class="order-2 text-sm text-muted-foreground">{stat.label}</dt>
+            <dd class="order-1 text-4xl font-semibold tracking-tight tabular-nums text-foreground">{stat.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Wrapper>
+</section>
