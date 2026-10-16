@@ -55,16 +55,17 @@ const showImage = size !== "row";
   >
     <h3
       class:list={[
-        "font-semibold leading-snug tracking-tight text-foreground text-pretty duration-300 group-hover:text-muted-foreground",
-        size === "large" && "text-2xl md:text-3xl",
-        size === "standard" && "text-lg",
-        (size === "compact" || size === "row") && "text-base",
+        "font-semibold leading-snug text-foreground text-pretty duration-300 group-hover:text-muted-foreground",
+        size === "large" && "text-2xl tracking-tight md:text-3xl",
+        size === "standard" && "text-lg tracking-tight",
+        size === "compact" && "text-xl tracking-tight",
+        size === "row" && "text-base",
       ]}
     >
       {story.data.title}
     </h3>
     {
-      (size === "large" || size === "standard") && (
+      size !== "row" && (
         <p class:list={["text-muted-foreground text-pretty", size === "large" ? "text-base" : "text-sm"]}>
           {story.data.description}
         </p>
