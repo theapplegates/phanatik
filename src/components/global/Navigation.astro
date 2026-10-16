@@ -24,8 +24,8 @@ const today = new Date().toLocaleDateString("en-GB", {
 ---
 
 <header class="sticky top-0 z-50 bg-background">
-  <div class="border-b border-muted">
-    <Wrapper variant="standard" class="flex items-center gap-6 h-10 text-xs">
+  <Wrapper variant="standard">
+    <div class="flex items-center gap-6 h-10 text-xs border-b border-muted">
       <p class="hidden shrink-0 text-muted-foreground md:block" data-today>{today}</p>
       <ul class="flex items-center flex-1 min-w-0 gap-6 overflow-x-auto scrollbar-hide">
         {
@@ -41,8 +41,8 @@ const today = new Date().toLocaleDateString("en-GB", {
         }
       </ul>
       <a href="/signin" class="hidden font-medium shrink-0 text-foreground hover:text-muted-foreground sm:block">Sign in</a>
-    </Wrapper>
-  </div>
+    </div>
+  </Wrapper>
   <Wrapper variant="standard">
     <nav class="flex items-center justify-between gap-8 h-16">
       <a href="/" aria-label="The Absurdist home" class="text-foreground"><Logo /></a>
