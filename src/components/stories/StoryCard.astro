@@ -1,0 +1,87 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Content
+import { getEntry, type CollectionEntry } from "astro:content";
+import { formatShortDate } from "@/lib/format";
+import { storyHref } from "@/lib/stories";
+interface Props {
+  story: CollectionEntry<"stories">;
+  size?: "large" | "standard" | "compact" | "row";
+}
+const { story, size = "standard" } = Astro.props;
+const writer = await getEntry(story.data.writer);
+const showImage = size !== "row";
+---
+
+<a
+  href={storyHref(story.id)}
+  class:list={[
+    "group",
+    size === "large" && "grid grid-cols-1 gap-6 md:grid-cols-12",
+    size === "standard" && "flex flex-col gap-4",
+    size === "compact" && "grid grid-cols-3 gap-4",
+    size === "row" && "flex flex-col gap-2",
+  ]}
+>
+  {
+    showImage && (
+      <span
+        class:list={[
+          "block overflow-hidden",
+          size === "large" && "rounded-xl md:col-span-7",
+          size === "standard" && "rounded-lg",
+          size === "compact" && "rounded-md",
+        ]}
+      >
+        <Image
+          src={story.data.image.url}
+          alt={story.data.image.alt}
+          width={size === "large" ? 1400 : 800}
+          height={size === "large" ? 933 : 533}
+          loading="lazy"
+          decoding="async"
+          class="object-cover w-full duration-500 ease-out aspect-3/2 group-hover:scale-102"
+        />
+      </span>
+    )
+  }
+  <div
+    class:list={[
+      "flex flex-col",
+      size === "large" ? "gap-3 md:col-span-5" : "gap-2",
+      size === "compact" && "col-span-2",
+    ]}
+  >
+    <h3
+      class:list={[
+        "font-semibold leading-snug tracking-tight text-foreground text-pretty duration-300 group-hover:text-muted-foreground",
+        size === "large" && "text-2xl md:text-3xl",
+        size === "standard" && "text-lg",
+        (size === "compact" || size === "row") && "text-base",
+      ]}
+    >
+      {story.data.title}
+    </h3>
+    {
+      (size === "large" || size === "standard") && (
+        <p class:list={["text-muted-foreground text-pretty", size === "large" ? "text-base" : "text-sm"]}>
+          {story.data.description}
+        </p>
+      )
+    }
+    <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+      {
+        story.data.live && (
+          <span class="flex items-center gap-1.5 font-medium text-foreground">
+            <span class="rounded-full size-1.5 bg-foreground" />
+            Live
+          </span>
+        )
+      }
+      {size !== "row" && <span class="font-medium text-foreground">{writer?.data.name}</span>}
+      <span>{story.data.sport}{story.data.members && ", members"}</span>
+      <time datetime={story.data.pubDate.toISOString()}>{formatShortDate(story.data.pubDate)}</time>
+    </p>
+  </div>
+</a>

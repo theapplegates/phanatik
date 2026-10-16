@@ -1,0 +1,19 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+import StoryCard from "@/components/stories/StoryCard.astro";
+// Content
+import { getStories } from "@/lib/stories";
+const featured = (await getStories()).filter((story) => story.data.placement === "featured").slice(0, 4);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <SectionHeader title="Featured" />
+    <ul class="grid grid-cols-1 gap-8 mt-6 sm:grid-cols-2 lg:grid-cols-4">
+      {featured.map((story) => <li><StoryCard story={story} /></li>)}
+    </ul>
+  </Wrapper>
+</section>

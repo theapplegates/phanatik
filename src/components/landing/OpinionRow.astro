@@ -1,0 +1,52 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+// Content
+import { getEntry } from "astro:content";
+import { getStories, storyHref } from "@/lib/stories";
+const columns = await Promise.all(
+  (await getStories())
+    .filter((story) => story.data.sport === "Opinion")
+    .slice(0, 4)
+    .map(async (story) => ({ story, writer: await getEntry(story.data.writer) }))
+);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <SectionHeader title="Opinion" href="/sports/opinion" label="All opinion" />
+    <ul class="grid grid-cols-1 gap-8 mt-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        columns.map(({ story, writer }) => (
+          <li>
+            <a href={storyHref(story.id)} class="flex flex-col h-full gap-4 group">
+              <h3 class="text-xl font-semibold leading-snug tracking-tight text-foreground text-pretty duration-300 group-hover:text-muted-foreground">
+                {story.data.title}
+              </h3>
+              <p class="text-sm text-muted-foreground text-pretty">{story.data.description}</p>
+              {writer && (
+                <span class="flex items-center gap-3 mt-auto">
+                  <Image
+                    src={writer.data.image.url}
+                    alt=""
+                    width={96}
+                    height={96}
+                    class="object-cover rounded-full size-10"
+                  />
+                  <span class="flex flex-col">
+                    <span class="text-sm font-medium text-foreground">{writer.data.name}</span>
+                    <span class="text-xs text-muted-foreground">{writer.data.role}</span>
+                  </span>
+                </span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Wrapper>
+</section>

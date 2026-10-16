@@ -1,0 +1,22 @@
+---
+// Icons
+import ChevronRight from "@/components/fundations/icons/ChevronRight.astro";
+interface Props {
+  title: string;
+  href?: string;
+  label?: string;
+}
+const { title, href, label } = Astro.props;
+---
+
+<div class="flex items-baseline justify-between gap-4 pt-4 border-t border-foreground">
+  <h2 class="text-xl font-semibold tracking-tight text-foreground">{title}</h2>
+  {
+    href && (
+      <a href={href} class="flex items-center gap-1 text-sm font-medium text-muted-foreground duration-300 hover:text-foreground">
+        {label}
+        <ChevronRight size="xs" />
+      </a>
+    )
+  }
+</div>
