@@ -9,9 +9,8 @@ const plans = [
   {
     name: "Reader",
     description: "For following the scores and the news, every day.",
-    price: "€0",
-    period: "for ever",
-    note: "Just an email address, no card needed",
+    monthly: { price: "€0", period: "for ever", note: "Just an email address, no card needed" },
+    yearly: { price: "€0", period: "for ever", note: "Just an email address, no card needed" },
     features: [
       "Every news story and match report",
       "Live scores and results",
@@ -23,9 +22,8 @@ const plans = [
   {
     name: "Member",
     description: "For the long reads and the stories behind the results.",
-    price: "€5",
-    period: "a month",
-    note: "Or €50 a year, two months free. Cancel any time",
+    monthly: { price: "€5", period: "a month", note: "Billed every month. Cancel any time" },
+    yearly: { price: "€50", period: "a year", note: "Two months free. Cancel any time" },
     features: [
       "Everything for readers, without the limit",
       "Long reads, analysis and every members story",
@@ -36,15 +34,30 @@ const plans = [
     cta: { label: "Become a member", href: "/signup" },
   },
 ];
+const billing = ["monthly", "yearly"] as const;
 ---
 
 <section>
   <Wrapper variant="standard" class="py-12">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      {
-        plans.map((plan) => (
-          <div class="flex flex-col p-2 rounded-3xl shadow-button-muted text-foreground">
-            <div class="flex flex-col gap-8 p-6 rounded-2xl bg-linear-to-b from-muted to-background">
+    <div data-billing="monthly" class="flex flex-col gap-12">
+      <div role="group" aria-label="Billing period" class="flex self-start gap-1 p-1 rounded-lg bg-muted">
+        {
+          billing.map((period) => (
+            <button
+              type="button"
+              data-billing-option={period}
+              aria-pressed={period === "monthly" ? "true" : "false"}
+              class="h-8 px-4 text-sm font-medium capitalize duration-300 rounded-sm text-muted-foreground hover:text-foreground aria-pressed:bg-background aria-pressed:text-foreground"
+            >
+              {period}
+            </button>
+          ))
+        }
+      </div>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+        {
+          plans.map((plan) => (
+            <div class="flex flex-col gap-8 text-foreground">
               <div class="flex flex-col gap-2">
                 <Text tag="h2" variant="textLG" class="font-semibold tracking-tight">
                   {plan.name}
@@ -53,30 +66,46 @@ const plans = [
                   {plan.description}
                 </Text>
               </div>
-              <div class="flex flex-col gap-2">
-                <p class="flex items-baseline gap-2">
-                  <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan.price}</span>
-                  <span class="text-base text-muted-foreground">{plan.period}</span>
-                </p>
-                <Text tag="p" variant="textSM" class="text-muted-foreground">
-                  {plan.note}
-                </Text>
-              </div>
+              {billing.map((period) => (
+                <div data-billing-panel={period} hidden={period !== "monthly"} class="flex flex-col gap-2">
+                  <p class="flex items-baseline gap-2">
+                    <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan[period].price}</span>
+                    <span class="text-base text-muted-foreground">{plan[period].period}</span>
+                  </p>
+                  <Text tag="p" variant="textSM" class="text-muted-foreground">
+                    {plan[period].note}
+                  </Text>
+                </div>
+              ))}
               <Button isLink href={plan.cta.href} size="base" variant="default" class="w-full">
                 {plan.cta.label}
               </Button>
+              <ul class="flex flex-col gap-3">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-base">
+                    <Check size="sm" class="mt-1 shrink-0 text-muted-foreground" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul class="flex flex-col gap-3 p-6">
-              {plan.features.map((feature) => (
-                <li class="flex items-start gap-3 text-base">
-                  <Check size="sm" class="mt-1 shrink-0 text-muted-foreground" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </Wrapper>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-billing]").forEach((root) => {
+    const options = root.querySelectorAll<HTMLButtonElement>("[data-billing-option]");
+    const panels = root.querySelectorAll<HTMLElement>("[data-billing-panel]");
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        const period = option.dataset.billingOption;
+        options.forEach((item) => item.setAttribute("aria-pressed", String(item === option)));
+        panels.forEach((panel) => (panel.hidden = panel.dataset.billingPanel !== period));
+      });
+    });
+  });
+</script>
