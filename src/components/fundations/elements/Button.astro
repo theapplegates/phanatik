@@ -9,44 +9,38 @@ const {
   class: className,
   ...rest
 } = Astro.props;
-const primaryClass = [
+const defaultClass = [
   "text-background",
-  "bg-foreground",
-  "hover:bg-foreground/90",
-  "focus:outline-foreground",
-];
-const accentClass = [
-  "text-background",
-  "bg-accent",
-  "hover:bg-accent/90",
-  "focus:outline-accent",
+  "bg-linear-to-b from-foreground/80 to-foreground",
+  "shadow-button-default",
+  "hover:brightness-125",
 ];
 const mutedClass = [
   "text-foreground",
-  "bg-muted",
-  "hover:bg-muted/70",
-  "focus:outline-foreground",
+  "bg-linear-to-b from-background to-muted",
+  "shadow-button-muted",
+  "hover:brightness-97",
 ];
 
 // Size
 const sizes = {
-  xxs: ["h-7.5", "px-5", "py-2", "text-xs"],
-  xs: ["h-8", "px-6", "py-3", "text-xs"],
-  sm: ["h-9", "px-6", "py-3", "text-sm"],
-  base: ["h-10", "px-8", "py-4", "text-base"],
-  md: ["h-11", "px-8", "py-4", "text-base"],
-  lg: ["h-12", "px-8", "py-4", "text-lg"],
-  xl: ["h-13", "px-8", "py-4", "text-lg"],
+  xxs: ["h-7", "px-3", "text-xs", "rounded-md"],
+  xs: ["h-8", "px-3.5", "text-xs", "rounded-md"],
+  sm: ["h-9", "px-4", "text-sm", "rounded-lg"],
+  base: ["h-10", "px-5", "text-sm", "rounded-lg"],
+  md: ["h-11", "px-5", "text-base", "rounded-lg"],
+  lg: ["h-12", "px-6", "text-base", "rounded-lg"],
+  xl: ["h-13", "px-7", "text-lg", "rounded-lg"],
 };
 // Icon size
 const iconSizes = {
-  xxs: ["size-7.5", "py-2", "text-xs"],
-  xs: ["size-8", "text-xs"],
-  sm: ["size-9", "text-sm"],
-  base: ["size-10", "text-base"],
-  md: ["size-11", "text-base"],
-  lg: ["size-12", "text-lg"],
-  xl: ["size-13", "text-base"],
+  xxs: ["size-7", "text-xs", "rounded-md"],
+  xs: ["size-8", "text-xs", "rounded-md"],
+  sm: ["size-9", "text-sm", "rounded-lg"],
+  base: ["size-10", "text-base", "rounded-lg"],
+  md: ["size-11", "text-md", "rounded-lg"],
+  lg: ["size-12", "text-lg", "rounded-lg"],
+  xl: ["size-13", "text-base", "rounded-lg"],
 };
 // Gaps
 const gapMap = {
@@ -57,8 +51,7 @@ const gapMap = {
   lg: ["gap-12"],
 };
 const variantClass = {
-  primary: primaryClass,
-  accent: accentClass,
+  default: defaultClass,
   muted: mutedClass,
   none: [],
 };
@@ -71,11 +64,14 @@ const baseClass = [
   "text-center",
   "font-medium",
   "items-center",
-  "duration-500",
-  "ease-in-out",
-  "transition-all",
-  "focus:outline-2",
-  "focus:outline-offset-4",
+  "whitespace-nowrap",
+  "duration-200",
+  "ease-out",
+  "transition",
+  "active:scale-98",
+  "focus-visible:outline-none",
+  "focus-visible:ring-3",
+  "focus-visible:ring-foreground/20",
 ];
 ---
 

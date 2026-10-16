@@ -2,6 +2,4 @@
 const { class: className = "", ...rest } = Astro.props;
 ---
 
-<span class:list={["inline-flex items-baseline gap-1 text-3xl font-black leading-none tracking-tight font-stretch-condensed", className]} {...rest}>
-  Tifo<span class="size-2 bg-accent"></span>
-</span>
+<span class:list={["text-2xl font-semibold leading-none tracking-tight", className]} {...rest}>Tifo</span>

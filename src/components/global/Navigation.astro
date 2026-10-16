@@ -31,9 +31,9 @@ const today = new Date().toLocaleDateString("en-GB", {
         {
           scores.map((match) => (
             <li class="flex items-center gap-2 shrink-0">
-              {match.live && <span class="size-1.5 rounded-full bg-accent" aria-label="Live" />}
+              {match.live && <span class="size-1.5 rounded-full bg-foreground" aria-label="Live" />}
               <span class="text-foreground">{match.home}</span>
-              <span class:list={["font-semibold tabular-nums", match.live ? "text-accent" : "text-foreground"]}>{match.score}</span>
+              <span class="font-semibold tabular-nums text-foreground">{match.score}</span>
               <span class="text-foreground">{match.away}</span>
               <span class="text-muted-foreground">{match.status}</span>
             </li>
@@ -53,7 +53,7 @@ const today = new Date().toLocaleDateString("en-GB", {
               <a
                 href={link.href}
                 aria-current={path.startsWith(link.href) ? "page" : undefined}
-                class="text-sm font-semibold text-foreground duration-300 hover:text-accent current:text-accent"
+                class="text-sm font-medium text-muted-foreground duration-300 hover:text-foreground current:text-foreground"
               >
                 {link.label}
               </a>
@@ -63,7 +63,7 @@ const today = new Date().toLocaleDateString("en-GB", {
       </ul>
       <div class="flex items-center gap-4">
         <a href="/system/overview" class="hidden text-sm font-medium text-foreground hover:text-muted-foreground sm:block">Overview</a>
-        <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="xs" variant="primary" class="hidden sm:flex">
+        <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="xs" variant="default" class="hidden sm:flex">
           Buy Phanatik
         </Button>
         <button
@@ -89,7 +89,7 @@ const today = new Date().toLocaleDateString("en-GB", {
               <a
                 href={link.href}
                 aria-current={path.startsWith(link.href) ? "page" : undefined}
-                class="text-sm font-semibold text-foreground current:text-accent"
+                class="text-sm font-medium text-muted-foreground current:text-foreground"
               >
                 {link.label}
               </a>
@@ -103,7 +103,7 @@ const today = new Date().toLocaleDateString("en-GB", {
     <Wrapper variant="standard" class="flex flex-col gap-4 py-6">
       <a href="/signin" class="text-base font-medium text-foreground">Sign in</a>
       <a href="/system/overview" class="text-base font-medium text-foreground">Overview</a>
-      <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="sm" variant="primary">
+      <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="sm" variant="default">
         Buy Phanatik
       </Button>
     </Wrapper>
