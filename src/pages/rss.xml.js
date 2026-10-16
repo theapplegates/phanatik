@@ -1,11 +1,19 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
+
 export async function GET(context) {
+  const stories = (await getCollection("stories")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
   return rss({
-     title: 'Lexington Themes',
-    description: 'Free and premium multipage themes and UI Kits For freelancers, developers, businesses, and personal use.Beautifully crafted with Astro.js, and Tailwind CSS — Simple & easy to customise.',
+    title: "Tifo",
+    description: "World sports news, every day: football, basketball, tennis, cycling, Formula 1 and athletics.",
     site: context.site,
-    items: await pagesGlobToRssItems(
-      import.meta.glob('./blog/*.{md,mdx}'),
-    ),
+    items: stories.map((story) => ({
+      title: story.data.title,
+      pubDate: story.data.pubDate,
+      description: story.data.description,
+      link: `/stories/${story.id}/`,
+    })),
   });
 }

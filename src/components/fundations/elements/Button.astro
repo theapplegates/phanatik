@@ -10,13 +10,13 @@ const {
   ...rest
 } = Astro.props;
 const primaryClass = [
-  "text-primary-foreground",
-  "bg-primary",
-  "hover:bg-primary/90",
-  "focus:outline-ring",
+  "text-background",
+  "bg-foreground",
+  "hover:bg-foreground/90",
+  "focus:outline-foreground",
 ];
 const accentClass = [
-  "text-accent-foreground",
+  "text-background",
   "bg-accent",
   "hover:bg-accent/90",
   "focus:outline-accent",
@@ -24,8 +24,8 @@ const accentClass = [
 const mutedClass = [
   "text-foreground",
   "bg-muted",
-  "hover:bg-border",
-  "focus:outline-ring",
+  "hover:bg-muted/70",
+  "focus:outline-foreground",
 ];
 
 // Size
@@ -69,7 +69,6 @@ const baseClass = [
   "flex",
   "justify-center",
   "text-center",
-  "rounded-full",
   "font-medium",
   "items-center",
   "duration-500",

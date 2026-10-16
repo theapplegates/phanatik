@@ -148,7 +148,16 @@ declare module 'astro:content' {
   id: string;
   body?: string;
   collection: "posts";
-  data: InferEntrySchema<"posts">;
+  data: any;
+  rendered?: RenderedContent;
+  filePath?: string;
+  digest?: string | number;
+}>;
+"stories": Record<string, {
+  id: string;
+  body?: string;
+  collection: "stories";
+  data: InferEntrySchema<"stories">;
   rendered?: RenderedContent;
   filePath?: string;
   digest?: string | number;
@@ -157,7 +166,16 @@ declare module 'astro:content' {
   id: string;
   body?: string;
   collection: "team";
-  data: InferEntrySchema<"team">;
+  data: any;
+  rendered?: RenderedContent;
+  filePath?: string;
+  digest?: string | number;
+}>;
+"writers": Record<string, {
+  id: string;
+  body?: string;
+  collection: "writers";
+  data: InferEntrySchema<"writers">;
   rendered?: RenderedContent;
   filePath?: string;
   digest?: string | number;

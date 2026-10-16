@@ -9,7 +9,7 @@ import Navigation from "@/components/global/Navigation.astro";
 // <BaseLayout hideNavigation={true} hideFooter={true}>
 const {  hideNavigation = false, hideFooter = false } = Astro.props;
 ---
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <BaseHead />
   </head>
@@ -17,5 +17,9 @@ const {  hideNavigation = false, hideFooter = false } = Astro.props;
     {!hideNavigation && <Navigation />}
     <main class="grow"><slot /></main>
     {!hideFooter && <Footer />}
+    <script>
+      import Lenis from "lenis";
+      new Lenis({ autoRaf: true });
+    </script>
   </body>
 </html>

@@ -1,41 +1,38 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { sports } from "@/lib/sports";
 
-const team = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
+const writers = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/writers" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      role: z.string().optional(),
-      bio: z.string().optional(),
+      role: z.string(),
+      bio: z.string(),
       image: z.object({
         url: image(),
         alt: z.string(),
       }),
-      socials: z
-        .array(
-          z.object({
-            label: z.string(),
-            href: z.string(),
-          })
-        )
-        .optional(),
     }),
 });
 
-const posts = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
+const stories = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/stories" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      pubDate: z.date(),
+      pubDate: z.coerce.date(),
       description: z.string(),
+      sport: z.enum(sports),
+      writer: reference("writers"),
       image: z.object({
         url: image(),
         alt: z.string(),
       }),
-      tags: z.array(z.string()),
+      placement: z.enum(["lead", "featured", "standard"]).default("standard"),
+      live: z.boolean().default(false),
+      members: z.boolean().default(false),
     }),
 });
 
@@ -43,12 +40,12 @@ const legal = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/legal" }),
   schema: z.object({
     page: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
   }),
 });
 
 export const collections = {
-  team,
-  posts,
+  writers,
+  stories,
   legal,
 };
