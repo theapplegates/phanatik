@@ -14,10 +14,15 @@ const pageSections = [
           { text: "About", href: "/about" },
           { text: "Membership", href: "/membership" },
           { text: "Newsletters", href: "/newsletters" },
+          { text: "404", href: "/404" },
+        ],
+      },
+      {
+        category: "Forms",
+        links: [
           { text: "Contact", href: "/contact" },
           { text: "Sign in", href: "/signin" },
           { text: "Sign up", href: "/signup" },
-          { text: "404", href: "/404" },
         ],
       },
       {
@@ -49,8 +54,15 @@ const pageSections = [
     title: "Content Collections",
     columns: [
       {
-        category: "Sports",
-        links: [{ text: "Sport", href: "/sports/football" }],
+        category: "News",
+        links: [
+          { text: "Sport", href: "/sports/football" },
+          {
+            text: "Story",
+            href: "/stories/spain-come-back-from-two-down-to-win-the-nations-league-final",
+          },
+          { text: "RSS", href: "/rss.xml" },
+        ],
       },
       {
         category: "Writers",
@@ -60,21 +72,8 @@ const pageSections = [
         ],
       },
       {
-        category: "Stories",
-        links: [
-          {
-            text: "Story",
-            href: "/stories/spain-come-back-from-two-down-to-win-the-nations-league-final",
-          },
-        ],
-      },
-      {
         category: "Legal",
         links: [{ text: "Legal page", href: "/legal/privacy" }],
-      },
-      {
-        category: "Feeds",
-        links: [{ text: "RSS", href: "/rss.xml" }],
       },
     ],
   },
