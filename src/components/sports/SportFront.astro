@@ -12,6 +12,7 @@ import MostRead from "@/components/stories/MostRead.astro";
 import { getEntry } from "astro:content";
 import { getStories } from "@/lib/stories";
 import type { Sport } from "@/lib/sports";
+import { writerHref } from "@/lib/writers";
 interface Props {
   sport: Sport;
 }
@@ -45,12 +46,14 @@ const desk = (await Promise.all(writerIds.map((id) => getEntry("writers", id))))
           <ul class="flex flex-col mt-2 divide-y divide-muted">
             {
               desk.map((writer) => (
-                <li class="flex items-center gap-3 py-4">
-                  <Image src={writer.data.image.url} alt="" width={96} height={96} class="object-cover rounded-md size-10" />
-                  <span class="flex flex-col">
-                    <span class="text-sm font-medium text-foreground">{writer.data.name}</span>
-                    <span class="text-xs text-muted-foreground">{writer.data.role}</span>
-                  </span>
+                <li>
+                  <a href={writerHref(writer.id)} class="flex items-center gap-3 py-4 group">
+                    <Image src={writer.data.image.url} alt="" width={96} height={96} class="object-cover rounded-md size-10" />
+                    <span class="flex flex-col">
+                      <span class="text-sm font-medium text-foreground duration-300 group-hover:text-muted-foreground">{writer.data.name}</span>
+                      <span class="text-xs text-muted-foreground">{writer.data.role}</span>
+                    </span>
+                  </a>
                 </li>
               ))
             }

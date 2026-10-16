@@ -1,0 +1,51 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+import StoryCard from "@/components/stories/StoryCard.astro";
+// Content
+import type { CollectionEntry } from "astro:content";
+import { getStories } from "@/lib/stories";
+interface Props {
+  writer: CollectionEntry<"writers">;
+}
+const { writer } = Astro.props;
+const { name, role, bio, image } = writer.data;
+const stories = (await getStories()).filter((story) => story.data.writer.id === writer.id);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <div class="flex flex-col gap-6">
+          <Image
+            src={image.url}
+            alt={image.alt}
+            width={800}
+            height={1000}
+            loading="eager"
+            class="object-cover w-full rounded-xl aspect-4/5"
+          />
+          <div class="flex flex-col gap-2">
+            <Text tag="h1" variant="displayMD" class="font-semibold leading-tight tracking-tight text-foreground">
+              {name}
+            </Text>
+            <Text tag="p" variant="textBase" class="text-muted-foreground">{role}</Text>
+          </div>
+          <Text tag="p" variant="textBase" class="text-foreground text-pretty">{bio}</Text>
+        </div>
+      </div>
+      <div class="lg:col-span-8">
+        <SectionHeader title={`Stories by ${name.split(" ")[0]}`} />
+        <ul class="flex flex-col mt-2 divide-y divide-muted">
+          {stories.map((story) => <li class="py-6"><StoryCard story={story} size="compact" /></li>)}
+        </ul>
+      </div>
+    </div>
+  </Wrapper>
+</section>

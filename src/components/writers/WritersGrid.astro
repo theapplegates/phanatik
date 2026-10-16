@@ -1,0 +1,46 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Content
+import { getStories } from "@/lib/stories";
+import { getWriters, writerHref } from "@/lib/writers";
+const stories = await getStories();
+const writers = (await getWriters()).map((writer) => ({
+  writer,
+  count: stories.filter((story) => story.data.writer.id === writer.id).length,
+}));
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <ul class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        writers.map(({ writer, count }) => (
+          <li>
+            <a href={writerHref(writer.id)} class="flex flex-col gap-4 group">
+              <span class="block overflow-hidden rounded-xl">
+                <Image
+                  src={writer.data.image.url}
+                  alt={writer.data.image.alt}
+                  width={800}
+                  height={1000}
+                  class="object-cover w-full duration-500 ease-out aspect-4/5 group-hover:scale-102"
+                />
+              </span>
+              <span class="flex flex-col gap-1">
+                <span class="text-xl font-semibold tracking-tight text-foreground duration-300 group-hover:text-muted-foreground">
+                  {writer.data.name}
+                </span>
+                <span class="text-sm text-muted-foreground">
+                  {writer.data.role}, {count} {count === 1 ? "story" : "stories"}
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Wrapper>
+</section>

@@ -1,0 +1,16 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import WriterProfile from "@/components/writers/WriterProfile.astro";
+// Content
+import { getWriters } from "@/lib/writers";
+export async function getStaticPaths() {
+  return (await getWriters()).map((writer) => ({ params: { id: writer.id }, props: { writer } }));
+}
+const { writer } = Astro.props;
+---
+
+<BaseLayout>
+  <WriterProfile writer={writer} />
+</BaseLayout>

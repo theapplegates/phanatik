@@ -2,23 +2,26 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Content
-import { sportIntros, type Sport } from "@/lib/sports";
 interface Props {
-  sport: Sport;
+  title: string;
+  intro?: string;
 }
-const { sport } = Astro.props;
+const { title, intro } = Astro.props;
 ---
 
 <section>
   <Wrapper variant="standard" class="pt-12">
     <div class="flex flex-col gap-4 pb-8 border-b border-muted">
       <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground">
-        {sport}
+        {title}
       </Text>
-      <Text tag="p" variant="textLG" class="max-w-xl text-muted-foreground text-pretty">
-        {sportIntros[sport]}
-      </Text>
+      {
+        intro && (
+          <Text tag="p" variant="textLG" class="max-w-xl text-muted-foreground text-pretty">
+            {intro}
+          </Text>
+        )
+      }
     </div>
   </Wrapper>
 </section>
