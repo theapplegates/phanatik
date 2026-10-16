@@ -8,22 +8,34 @@ import Check from "@/components/fundations/icons/Check.astro";
 const plans = [
   {
     name: "Reader",
-    price: "Free",
-    note: "With an account",
-    features: ["Every news story and match report", "Live scores and results", "The morning briefing, every weekday"],
-    cta: { label: "Create an account", href: "/signup", variant: "muted" as const },
+    description: "For following the scores and the news, every day.",
+    price: "€0",
+    period: "for ever",
+    note: "Just an email address, no card needed",
+    features: [
+      "Every news story and match report",
+      "Live scores and results",
+      "The morning briefing, every weekday",
+      "Three members stories a month",
+    ],
+    cta: { label: "Create an account", href: "/signup" },
+    featured: false,
   },
   {
     name: "Member",
-    price: "€5 a month",
-    note: "Or €50 a year, cancel any time",
+    description: "For the long reads and the stories behind the results.",
+    price: "€5",
+    period: "a month",
+    note: "Or €50 a year, two months free. Cancel any time",
     features: [
-      "Everything for readers",
-      "Long reads, analysis and members stories",
-      "Every newsletter, including the Sunday long read",
+      "Everything for readers, without the limit",
+      "Long reads, analysis and every members story",
+      "All four newsletters, including the Sunday long read",
       "No adverts, on any page",
+      "Questions to the desk in the monthly live chat",
     ],
-    cta: { label: "Become a member", href: "/signup", variant: "default" as const },
+    cta: { label: "Become a member", href: "/signup" },
+    featured: true,
   },
 ];
 ---
@@ -33,31 +45,40 @@ const plans = [
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {
         plans.map((plan) => (
-          <div class="flex flex-col gap-6 pt-6 border-t border-muted">
-            <div class="flex flex-col gap-1">
-              <Text tag="h2" variant="textBase" class="font-semibold text-foreground">
+          <div
+            class:list={[
+              "flex flex-col gap-8 p-8 rounded-2xl",
+              plan.featured ? "bg-foreground text-background" : "shadow-button-muted text-foreground",
+            ]}
+          >
+            <div class="flex flex-col gap-2">
+              <Text tag="h2" variant="textLG" class="font-semibold tracking-tight">
                 {plan.name}
               </Text>
-              <Text tag="p" variant="displayMD" class="font-semibold tracking-tight text-foreground">
-                {plan.price}
+              <Text tag="p" variant="textSM" class={plan.featured ? "text-background/60" : "text-muted-foreground"}>
+                {plan.description}
               </Text>
-              <Text tag="p" variant="textSM" class="text-muted-foreground">
+            </div>
+            <div class="flex flex-col gap-2">
+              <p class="flex items-baseline gap-2">
+                <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan.price}</span>
+                <span class:list={["text-base", plan.featured ? "text-background/60" : "text-muted-foreground"]}>{plan.period}</span>
+              </p>
+              <Text tag="p" variant="textSM" class={plan.featured ? "text-background/60" : "text-muted-foreground"}>
                 {plan.note}
               </Text>
             </div>
-            <ul class="flex flex-col gap-3">
+            <Button isLink href={plan.cta.href} size="base" variant={plan.featured ? "muted" : "default"} class="w-full">
+              {plan.cta.label}
+            </Button>
+            <ul class:list={["flex flex-col gap-3 pt-8 border-t", plan.featured ? "border-background/15" : "border-muted"]}>
               {plan.features.map((feature) => (
-                <li class="flex items-start gap-3 text-base text-foreground">
-                  <Check size="sm" class="mt-1 shrink-0" />
+                <li class="flex items-start gap-3 text-base">
+                  <Check size="sm" class:list={["mt-1 shrink-0", plan.featured ? "text-background/60" : "text-muted-foreground"]} />
                   {feature}
                 </li>
               ))}
             </ul>
-            <div class="flex mt-auto">
-              <Button isLink href={plan.cta.href} size="sm" variant={plan.cta.variant}>
-                {plan.cta.label}
-              </Button>
-            </div>
           </div>
         ))
       }
