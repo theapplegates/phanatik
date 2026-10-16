@@ -1,10 +1,15 @@
 ---
+// Assets
+import { Image } from "astro:assets";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Icons
 import Check from "@/components/fundations/icons/Check.astro";
+// Content
+import { getStories, storyHref } from "@/lib/stories";
+const [lead] = (await getStories()).filter((story) => story.data.members);
 const plans = [
   {
     name: "Reader",
@@ -17,7 +22,7 @@ const plans = [
       "The morning briefing, every weekday",
       "Three members stories a month",
     ],
-    cta: { label: "Create an account", href: "/signup" },
+    cta: { label: "Create an account", href: "/signup", variant: "muted" },
   },
   {
     name: "Member",
@@ -31,7 +36,7 @@ const plans = [
       "No adverts, on any page",
       "Questions to the desk in the monthly live chat",
     ],
-    cta: { label: "Become a member", href: "/signup" },
+    cta: { label: "Become a member", href: "/signup", variant: "default" },
   },
 ];
 const billing = ["monthly", "yearly"] as const;
@@ -39,22 +44,41 @@ const billing = ["monthly", "yearly"] as const;
 
 <section>
   <Wrapper variant="standard" class="py-12">
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <a href={storyHref(lead.id)} class="flex flex-col gap-4 group lg:col-span-5">
+        <span class="block overflow-hidden rounded-xl">
+          <Image
+            src={lead.data.image.url}
+            alt={lead.data.image.alt}
+            width={1000}
+            height={1250}
+            loading="eager"
+            class="object-cover w-full duration-500 ease-out aspect-4/5 group-hover:scale-102"
+          />
+        </span>
+        <span class="flex flex-col gap-1">
+          <span class="text-sm text-muted-foreground">Members read this week</span>
+          <span class="text-xl font-semibold leading-snug tracking-tight text-foreground text-pretty duration-300 group-hover:text-muted-foreground">
+            {lead.data.title}
+          </span>
+        </span>
+      </a>
+      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:col-span-7">
         {
           plans.map((plan) => (
             <div class="flex flex-col gap-8 text-foreground">
               <div class="flex flex-col gap-2">
-                <Text tag="h2" variant="textLG" class="font-semibold tracking-tight">
+                <Text tag="h2" variant="textXL" class="font-semibold tracking-tight">
                   {plan.name}
                 </Text>
-                <Text tag="p" variant="textSM" class="text-muted-foreground">
+                <Text tag="p" variant="textSM" class="text-muted-foreground text-pretty">
                   {plan.description}
                 </Text>
               </div>
               {billing.map((period) => (
                 <div data-billing-panel={period} hidden={period !== "monthly"} class="flex flex-col gap-2">
                   <p class="flex items-baseline gap-2">
-                    <span class="text-5xl font-semibold tracking-tight tabular-nums">{plan[period].price}</span>
+                    <span class="text-6xl font-semibold tracking-tight tabular-nums">{plan[period].price}</span>
                     <span class="text-base text-muted-foreground">{plan[period].period}</span>
                   </p>
                   <Text tag="p" variant="textSM" class="text-muted-foreground">
@@ -64,18 +88,19 @@ const billing = ["monthly", "yearly"] as const;
               ))}
               <ul class="flex flex-col gap-3">
                 {plan.features.map((feature) => (
-                  <li class="flex items-start gap-3 text-base">
+                  <li class="flex items-start gap-3 text-base text-pretty">
                     <Check size="sm" class="mt-1 shrink-0 text-muted-foreground" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <Button isLink href={plan.cta.href} size="base" variant="default" class="w-fit mt-auto">
+              <Button isLink href={plan.cta.href} size="base" variant={plan.cta.variant} class="w-fit mt-auto">
                 {plan.cta.label}
               </Button>
             </div>
           ))
         }
       </div>
+    </div>
   </Wrapper>
 </section>
