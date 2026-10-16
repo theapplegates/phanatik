@@ -1,0 +1,22 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="py-24">
+    <div class="flex flex-col max-w-xl gap-6">
+      <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground text-balance">
+        This page was offside
+      </Text>
+      <Text tag="p" variant="textLG" class="text-muted-foreground text-pretty">
+        The link is broken or the story has moved. The front page has everything from today.
+      </Text>
+      <div class="flex">
+        <Button isLink href="/" size="sm" variant="default">Back to the front page</Button>
+      </div>
+    </div>
+  </Wrapper>
+</section>

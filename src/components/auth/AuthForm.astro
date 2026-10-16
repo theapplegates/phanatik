@@ -1,0 +1,84 @@
+---
+// Assets
+import Logo from "@/components/assets/Logo.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+interface Props {
+  mode: "signin" | "signup";
+}
+const { mode } = Astro.props;
+const isSignup = mode === "signup";
+const copy = isSignup
+  ? {
+      title: "Create an account",
+      intro: "Free, with the morning briefing. Upgrade to membership whenever you like.",
+      submit: "Create account",
+      switchText: "Already have an account?",
+      switchLabel: "Sign in",
+      switchHref: "/signin",
+    }
+  : {
+      title: "Sign in",
+      intro: "Welcome back. Pick up where you left off.",
+      submit: "Sign in",
+      switchText: "New to The Absurdist?",
+      switchLabel: "Create an account",
+      switchHref: "/signup",
+    };
+const field =
+  "w-full px-3 text-sm border rounded-lg h-9 bg-background border-muted text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-3 focus:ring-foreground/10";
+---
+
+<section>
+  <Wrapper variant="standard" class="py-24">
+    <div class="flex flex-col w-full max-w-sm gap-8 mx-auto">
+      <a href="/" class="text-foreground">
+        <Logo />
+      </a>
+      <div class="flex flex-col gap-2">
+        <Text tag="h1" variant="displaySM" class="font-semibold tracking-tight text-foreground">
+          {copy.title}
+        </Text>
+        <Text tag="p" variant="textSM" class="text-muted-foreground text-pretty">
+          {copy.intro}
+        </Text>
+      </div>
+      <form action="#_" class="flex flex-col gap-4">
+        {
+          isSignup && (
+            <div class="flex flex-col gap-2">
+              <label for="name" class="text-sm font-medium text-foreground">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" placeholder="Lucía Ortega" class={field} />
+            </div>
+          )
+        }
+        <div class="flex flex-col gap-2">
+          <label for="email" class="text-sm font-medium text-foreground">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@absurdist.test" class={field} />
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="flex items-baseline justify-between gap-4">
+            <label for="password" class="text-sm font-medium text-foreground">Password</label>
+            {!isSignup && <a href="#_" class="text-sm text-muted-foreground duration-300 hover:text-foreground">Forgot it?</a>}
+          </div>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autocomplete={isSignup ? "new-password" : "current-password"}
+            placeholder="At least 8 characters"
+            class={field}
+          />
+        </div>
+        <Button type="submit" size="sm" variant="default" class="w-full">{copy.submit}</Button>
+      </form>
+      <p class="text-sm text-muted-foreground">
+        {copy.switchText}
+        <a href={copy.switchHref} class="font-medium text-foreground duration-300 hover:text-muted-foreground">{copy.switchLabel}</a>
+      </p>
+    </div>
+  </Wrapper>
+</section>

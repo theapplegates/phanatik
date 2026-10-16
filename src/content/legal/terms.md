@@ -1,9 +1,7 @@
 ---
-page: Terms
-pubDate: 2024-01-01
+page: Terms of Service
+pubDate: 2026-01-01
 ---
-
-# Terms of Service
 
 By accessing or using the service, you agree to these Terms of Service and any related policies we reference. If you do not agree, do not use the service.
 

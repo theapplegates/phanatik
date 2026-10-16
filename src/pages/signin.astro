@@ -1,0 +1,10 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Components
+import AuthForm from "@/components/auth/AuthForm.astro";
+---
+
+<BaseLayout hideNavigation={true} hideFooter={true}>
+  <AuthForm mode="signin" />
+</BaseLayout>
