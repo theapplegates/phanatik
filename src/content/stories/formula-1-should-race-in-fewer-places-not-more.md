@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Twenty-four races is too many for the teams, the drivers and the planet.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Players now fetch their own towels. Some of them hate it.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

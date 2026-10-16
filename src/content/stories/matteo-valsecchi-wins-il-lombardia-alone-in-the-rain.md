@@ -10,8 +10,6 @@ image:
 placement: featured
 ---
 
-He attacked on the last climb, 18 kilometres from Bergamo, and nobody followed.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

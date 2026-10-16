@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-He was fourth with ten laps to go. A crash ahead changed everything.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

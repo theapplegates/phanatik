@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-The Dane ran the last lap in 53 seconds and finished three metres clear.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

@@ -11,8 +11,6 @@ placement: standard
 live: true
 ---
 
-Every minute from Turin, where Italy need a win to stay top of the group.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Coaching from the box is already happening. The rule only punishes the honest ones.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

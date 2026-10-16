@@ -11,8 +11,6 @@ placement: standard
 members: true
 ---
 
-Four people in a room in Vitoria decide where every shot should come from.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

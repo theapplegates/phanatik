@@ -1,0 +1,26 @@
+---
+// Fundations
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+import StoryCard from "@/components/stories/StoryCard.astro";
+// Content
+import type { CollectionEntry } from "astro:content";
+import { getStories } from "@/lib/stories";
+interface Props {
+  story: CollectionEntry<"stories">;
+}
+const { story } = Astro.props;
+const related = (await getStories())
+  .filter((item) => item.data.sport !== story.data.sport && item.data.sport !== "Opinion")
+  .slice(0, 4);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <SectionHeader title="Elsewhere in sport" href="/" label="Front page" />
+    <ul class="grid grid-cols-1 gap-8 mt-6 sm:grid-cols-2 lg:grid-cols-4">
+      {related.map((item) => <li><StoryCard story={item} /></li>)}
+    </ul>
+  </Wrapper>
+</section>

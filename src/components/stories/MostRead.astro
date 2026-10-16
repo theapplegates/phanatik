@@ -1,0 +1,34 @@
+---
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+// Content
+import { getStories, storyHref } from "@/lib/stories";
+interface Props {
+  exclude?: string;
+}
+const { exclude } = Astro.props;
+const mostRead = (await getStories())
+  .filter((story) => story.id !== exclude && story.data.sport !== "Opinion")
+  .slice(2, 7);
+---
+
+<div>
+  <SectionHeader title="Most read" />
+  <ol class="flex flex-col mt-2 divide-y divide-muted">
+    {
+      mostRead.map((story, index) => (
+        <li>
+          <a href={storyHref(story.id)} class="flex gap-4 py-4 group">
+            <span class="text-2xl font-semibold leading-none tracking-tight tabular-nums text-muted-foreground">{index + 1}</span>
+            <span class="flex flex-col gap-1">
+              <span class="text-base font-medium leading-snug text-foreground text-pretty duration-300 group-hover:text-muted-foreground">
+                {story.data.title}
+              </span>
+              <span class="text-xs text-muted-foreground">{story.data.sport}</span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</div>

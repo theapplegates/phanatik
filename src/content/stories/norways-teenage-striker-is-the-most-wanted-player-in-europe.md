@@ -10,8 +10,6 @@ image:
 placement: featured
 ---
 
-Sindre Haugland is 18, has scored 21 goals this season and has not signed a professional contract.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

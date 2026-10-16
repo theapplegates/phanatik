@@ -11,8 +11,6 @@ placement: standard
 members: true
 ---
 
-Elena Rojas has no stadium near home, so she throws in a supermarket car park at dawn.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

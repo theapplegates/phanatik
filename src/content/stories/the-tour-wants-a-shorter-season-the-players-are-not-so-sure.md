@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Fewer tournaments means fewer chances to earn ranking points, and less prize money.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

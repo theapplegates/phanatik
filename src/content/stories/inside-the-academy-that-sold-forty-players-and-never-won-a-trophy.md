@@ -11,8 +11,6 @@ placement: standard
 members: true
 ---
 
-A small club on the Basque coast has built its business on letting its best players go.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

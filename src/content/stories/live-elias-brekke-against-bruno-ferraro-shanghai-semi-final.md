@@ -11,8 +11,6 @@ placement: standard
 live: true
 ---
 
-The Norwegian has not dropped a set all week. Ferraro saved four match points in the quarter-final.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

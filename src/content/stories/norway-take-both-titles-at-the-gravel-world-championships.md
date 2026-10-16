@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Ingrid Vold and Ola Brekken won on the same afternoon in Belgium.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

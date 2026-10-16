@@ -1,0 +1,108 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SectionHeader from "@/components/landing/SectionHeader.astro";
+import StoryCard from "@/components/stories/StoryCard.astro";
+import MostRead from "@/components/stories/MostRead.astro";
+// Content
+import { getEntry, type CollectionEntry } from "astro:content";
+import { formatDate } from "@/lib/format";
+import { getStories } from "@/lib/stories";
+import { sportSlug } from "@/lib/sports";
+interface Props {
+  story: CollectionEntry<"stories">;
+}
+const { story } = Astro.props;
+const { title, description, sport, pubDate, image, live, members } = story.data;
+const writer = await getEntry(story.data.writer);
+const latest = (await getStories()).filter((item) => item.data.sport === sport && item.id !== story.id).slice(0, 4);
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+      <article class="lg:col-span-8">
+        <header class="flex flex-col gap-4">
+          <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground text-balance">
+            {title}
+          </Text>
+          <Text tag="p" variant="textLG" class="max-w-2xl text-muted-foreground text-pretty">
+            {description}
+          </Text>
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-4">
+            {
+              writer && (
+                <div class="flex items-center gap-3">
+                  <Image src={writer.data.image.url} alt="" width={96} height={96} class="object-cover rounded-md size-10" />
+                  <div class="flex flex-col">
+                    <span class="text-sm font-medium text-foreground">{writer.data.name}</span>
+                    <span class="text-xs text-muted-foreground">{writer.data.role}</span>
+                  </div>
+                </div>
+              )
+            }
+            <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+              {
+                live && (
+                  <span class="flex items-center gap-1.5 font-medium text-foreground">
+                    <span class="rounded-full size-1.5 bg-foreground" />
+                    Live
+                  </span>
+                )
+              }
+              <a href={`/sports/${sportSlug(sport)}`} class="duration-300 hover:text-foreground">{sport}</a>
+              {members && <span>Members</span>}
+              <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+            </p>
+          </div>
+        </header>
+        <figure class="mt-8">
+          <Image
+            src={image.url}
+            alt={image.alt}
+            width={1800}
+            height={1200}
+            loading="eager"
+            fetchpriority="high"
+            class="object-cover w-full rounded-xl aspect-3/2"
+          />
+          <figcaption class="mt-3 text-xs text-muted-foreground">{image.alt}</figcaption>
+        </figure>
+        <div
+          class="max-w-2xl mt-8 prose prose-lg text-foreground prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-blockquote:border-muted prose-blockquote:font-medium prose-blockquote:not-italic prose-blockquote:text-foreground"
+        >
+          <slot />
+        </div>
+        {
+          writer && (
+            <div class="flex max-w-2xl gap-4 pt-8 mt-12 border-t border-muted">
+              <Image src={writer.data.image.url} alt={writer.data.image.alt} width={160} height={160} class="object-cover rounded-lg size-16 shrink-0" />
+              <div class="flex flex-col gap-1">
+                <span class="text-base font-semibold text-foreground">{writer.data.name}</span>
+                <span class="text-sm text-muted-foreground">{writer.data.role}</span>
+                <p class="mt-2 text-sm text-muted-foreground text-pretty">{writer.data.bio}</p>
+              </div>
+            </div>
+          )
+        }
+      </article>
+      <aside class="flex flex-col gap-12 lg:col-span-4 lg:pl-8 lg:border-l lg:border-muted">
+        {
+          latest.length > 0 && (
+            <div>
+              <SectionHeader title={`Latest in ${sport}`} href={`/sports/${sportSlug(sport)}`} label="More" />
+              <ul class="flex flex-col mt-2 divide-y divide-muted">
+                {latest.map((item) => <li class="py-4"><StoryCard story={item} size="row" /></li>)}
+              </ul>
+            </div>
+          )
+        }
+        <MostRead exclude={story.id} />
+      </aside>
+    </div>
+  </Wrapper>
+</section>

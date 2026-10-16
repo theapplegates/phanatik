@@ -11,8 +11,6 @@ placement: standard
 members: true
 ---
 
-Up to 7,000 calories a day, most of it on the bike.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

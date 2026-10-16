@@ -4,18 +4,17 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import SectionHeader from "@/components/landing/SectionHeader.astro";
 import StoryCard from "@/components/stories/StoryCard.astro";
+import MostRead from "@/components/stories/MostRead.astro";
 // Content
-import { getStories, storyHref } from "@/lib/stories";
+import { getStories } from "@/lib/stories";
 import { sportSlug, type Sport } from "@/lib/sports";
 interface Props {
   sport?: Sport;
 }
 const { sport = "Football" } = Astro.props;
-const stories = await getStories();
-const inSport = stories.filter((story) => story.data.sport === sport && story.data.placement !== "lead");
+const inSport = (await getStories()).filter((story) => story.data.sport === sport && story.data.placement !== "lead");
 const [main, ...rest] = inSport;
 const more = rest.slice(0, 3);
-const mostRead = stories.filter((story) => story.data.sport !== sport && story.data.sport !== "Opinion").slice(2, 7);
 ---
 
 <section>
@@ -29,24 +28,7 @@ const mostRead = stories.filter((story) => story.data.sport !== sport && story.d
         </ul>
       </div>
       <aside class="lg:col-span-4">
-        <SectionHeader title="Most read" />
-        <ol class="flex flex-col mt-2 divide-y divide-muted">
-          {
-            mostRead.map((story, index) => (
-              <li>
-                <a href={storyHref(story.id)} class="flex gap-4 py-4 group">
-                  <span class="text-2xl font-semibold leading-none tracking-tight tabular-nums text-muted-foreground">{index + 1}</span>
-                  <span class="flex flex-col gap-1">
-                    <span class="text-base font-medium leading-snug text-foreground text-pretty duration-300 group-hover:text-muted-foreground">
-                      {story.data.title}
-                    </span>
-                    <span class="text-xs text-muted-foreground">{story.data.sport}</span>
-                  </span>
-                </a>
-              </li>
-            ))
-          }
-        </ol>
+        <MostRead />
       </aside>
     </div>
   </Wrapper>

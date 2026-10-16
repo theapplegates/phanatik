@@ -10,8 +10,6 @@ image:
 placement: featured
 ---
 
-The Spanish guard stays in Europe for five more years and turns down two offers from the NBA.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

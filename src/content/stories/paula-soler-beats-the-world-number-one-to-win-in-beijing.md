@@ -10,8 +10,6 @@ image:
 placement: featured
 ---
 
-Three sets, three hours and her first title at this level, at 29.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next

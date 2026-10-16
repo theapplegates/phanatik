@@ -10,8 +10,6 @@ image:
 placement: standard
 ---
 
-Mattia Rinaldi, 19, was on the bench until the 85th minute.
-
 The full report follows the match, the race or the decision from the first minute to the last, with the voices of the people who were there.
 
 ## What happens next
