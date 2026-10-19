@@ -15,3 +15,5 @@ The full report follows the match, the race or the decision from the first minut
 ## What happens next
 
 The next fixture is already in the calendar, and the questions raised here will not go away before it.
+
+<cloudinary-picture src="images/blog/resource-database-hDGU7nl8q6I-unsplash" cloud-name="paulapplegate-com" alt="Duh, a ghost" width="4000" height="5000" sizes="(max-width: 720px) calc(100vw - 3rem), 672px"></cloudinary-picture>
