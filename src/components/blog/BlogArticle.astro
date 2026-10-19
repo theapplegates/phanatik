@@ -1,0 +1,59 @@
+---
+// Assets
+import CloudinaryImage from "@/components/CloudinaryImage.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import AuthorBox from "@/components/blog/AuthorBox.astro";
+// Content
+import type { Post } from "@/lib/blog";
+import { formatDate } from "@/lib/format";
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, coverImage, coverAlt, coverCloudName, tags } = post.data;
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <article class="max-w-3xl mx-auto">
+      <header class="flex flex-col gap-4">
+        <Text tag="h1" variant="displayXL" class="font-semibold leading-tight tracking-tight text-foreground text-balance">
+          {title}
+        </Text>
+        <Text tag="p" variant="textLG" class="text-muted-foreground text-pretty">
+          {description}
+        </Text>
+        <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+          {updatedDate && <span>Updated {formatDate(updatedDate)}</span>}
+          {tags.length > 0 && <span>{tags.join(", ")}</span>}
+        </p>
+      </header>
+      {
+        coverImage && (
+          <figure class="mt-8">
+            <CloudinaryImage
+              publicId={coverImage}
+              cloudName={coverCloudName}
+              alt={coverAlt ?? ""}
+              width={1600}
+              height={1067}
+              sizes="(max-width: 768px) 100vw, 768px"
+              loading="eager"
+              fetchpriority="high"
+              pictureClass="block overflow-hidden rounded-xl"
+              class="object-cover w-full aspect-3/2"
+            />
+          </figure>
+        )
+      }
+      <div class="mt-8 prose prose-lg max-w-none text-foreground prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-blockquote:border-muted prose-blockquote:font-medium prose-blockquote:not-italic prose-blockquote:text-foreground">
+        <slot />
+      </div>
+      <AuthorBox />
+    </article>
+  </Wrapper>
+</section>

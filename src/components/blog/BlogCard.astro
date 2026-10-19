@@ -1,0 +1,39 @@
+---
+// Assets
+import CloudinaryImage from "@/components/CloudinaryImage.astro";
+// Content
+import { postHref, type Post } from "@/lib/blog";
+import { formatShortDate } from "@/lib/format";
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, coverImage, coverAlt, coverCloudName, tags } = post.data;
+---
+
+<a href={postHref(post.id)} class="group flex flex-col gap-4">
+  {
+    coverImage && (
+      <CloudinaryImage
+        publicId={coverImage}
+        cloudName={coverCloudName}
+        alt={coverAlt ?? ""}
+        width={1200}
+        height={800}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+        pictureClass="block overflow-hidden rounded-lg"
+        class="object-cover w-full aspect-3/2 duration-500 ease-out group-hover:scale-102"
+      />
+    )
+  }
+  <div class="flex flex-col gap-2">
+    <h3 class="text-lg font-semibold leading-snug tracking-tight text-foreground text-pretty duration-300 group-hover:text-muted-foreground">
+      {title}
+    </h3>
+    <p class="text-sm text-muted-foreground text-pretty">{description}</p>
+    <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+      <time datetime={pubDate.toISOString()}>{formatShortDate(pubDate)}</time>
+      {tags.length > 0 && <span>{tags.join(", ")}</span>}
+    </p>
+  </div>
+</a>

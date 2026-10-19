@@ -1,0 +1,294 @@
+---
+// Icons
+import ArrowSquareOut from "@/components/fundations/icons/ArrowSquareOut.astro";
+import CaretDown from "@/components/fundations/icons/CaretDown.astro";
+import Copy from "@/components/fundations/icons/Copy.astro";
+
+interface Props {
+  /** Raw Markdown for this page. When omitted, the page is converted at click time. */
+  markdown?: string;
+}
+const { markdown } = Astro.props;
+
+const button =
+  "inline-flex items-center gap-2 h-9 px-3 text-sm font-medium rounded-lg border border-muted bg-background text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-foreground/20";
+const item =
+  "flex w-full items-start gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-foreground/20";
+---
+
+<div class="relative" data-copy-page>
+  <div class="inline-flex items-stretch">
+    <button type="button" data-copy-action class:list={[button, "rounded-r-none border-r-0"]}>
+      <Copy size="sm" />
+      <span data-copy-label>Copy page</span>
+    </button>
+    <button
+      type="button"
+      data-copy-toggle
+      aria-label="Copy options"
+      aria-haspopup="menu"
+      aria-expanded="false"
+      class:list={[button, "px-2 rounded-l-none"]}
+    >
+      <CaretDown size="sm" />
+    </button>
+  </div>
+
+  <div
+    data-copy-menu
+    hidden
+    role="menu"
+    class="absolute right-0 z-50 mt-2 w-72 rounded-xl border border-muted bg-background p-1.5"
+  >
+    <button type="button" role="menuitem" data-copy-action class:list={[item]}>
+      <Copy size="sm" class="mt-0.5 shrink-0 text-muted-foreground" />
+      <span class="flex flex-col">
+        <span class="text-sm font-medium text-foreground">Copy page</span>
+        <span class="text-xs text-muted-foreground">Copy page as Markdown for LLMs</span>
+      </span>
+    </button>
+    <a
+      role="menuitem"
+      data-open-chatgpt
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[item]}
+    >
+      <ArrowSquareOut size="sm" class="mt-0.5 shrink-0 text-muted-foreground" />
+      <span class="flex flex-col">
+        <span class="text-sm font-medium text-foreground">Open in ChatGPT</span>
+        <span class="text-xs text-muted-foreground">Ask questions about this page</span>
+      </span>
+    </a>
+    <a
+      role="menuitem"
+      data-open-claude
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[item]}
+    >
+      <ArrowSquareOut size="sm" class="mt-0.5 shrink-0 text-muted-foreground" />
+      <span class="flex flex-col">
+        <span class="text-sm font-medium text-foreground">Open in Claude</span>
+        <span class="text-xs text-muted-foreground">Ask questions about this page</span>
+      </span>
+    </a>
+  </div>
+
+  {
+    markdown !== undefined && (
+      <textarea data-copy-source class="hidden" aria-hidden="true" tabindex="-1" readonly>{markdown}</textarea>
+    )
+  }
+</div>
+
+<script>
+  /** Turns the rendered page into Markdown for pages without an authored source. */
+  const pageToMarkdown = () => {
+    const root =
+      document.querySelector<HTMLElement>("[data-copy-content]") ??
+      document.querySelector<HTMLElement>("main") ??
+      document.body;
+
+    const absolute = (url: string) => {
+      try {
+        return new URL(url, window.location.href).href;
+      } catch {
+        return url;
+      }
+    };
+
+    const walk = (node: Node): string => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        return (node.textContent ?? "").replace(/\s+/g, " ");
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) return "";
+
+      const element = node as HTMLElement;
+      const tag = element.tagName;
+
+      if (["SCRIPT", "STYLE", "NOSCRIPT", "SVG", "TEMPLATE"].includes(tag)) return "";
+      if (element.hasAttribute("hidden") || element.closest("[data-copy-page]")) return "";
+      if (element.tagName === "NAV" || element.tagName === "FOOTER") return "";
+
+      const children = (parent: Element = element) =>
+        Array.from(parent.childNodes)
+          .map(walk)
+          .reduce((text, part) => {
+            if (!part) return text;
+            if (!text) return part;
+            const previous = text.slice(-1);
+            const next = part.slice(0, 1);
+            const needsSpace = !/\s/.test(previous) && !/\s/.test(next);
+            return text + (needsSpace ? " " : "") + part;
+          }, "");
+
+      switch (tag) {
+        case "H1":
+        case "H2":
+        case "H3":
+        case "H4":
+        case "H5":
+        case "H6":
+          return `\n\n${"#".repeat(Number(tag[1]))} ${children().trim()}\n\n`;
+        case "P":
+          return `\n\n${children().trim()}\n\n`;
+        case "BR":
+          return "  \n";
+        case "HR":
+          return "\n\n---\n\n";
+        case "STRONG":
+        case "B":
+          return `**${children()}**`;
+        case "EM":
+        case "I":
+          return `*${children()}*`;
+        case "DEL":
+        case "S":
+          return `~~${children()}~~`;
+        case "CODE":
+          if (element.closest("pre")) return element.textContent ?? "";
+          return `\`${(element.textContent ?? "").replace(/`/g, "\\`")}\``;
+        case "PRE": {
+          const code = element.querySelector("code");
+          const text = (code ?? element).textContent?.replace(/\n$/, "") ?? "";
+          const language = code?.className.match(/language-([\w-]+)/)?.[1] ?? "";
+          return `\n\n\`\`\`${language}\n${text}\n\`\`\`\n\n`;
+        }
+        case "BLOCKQUOTE": {
+          const quote = children()
+            .trim()
+            .split("\n")
+            .map((line) => `> ${line}`)
+            .join("\n");
+          return `\n\n${quote}\n\n`;
+        }
+        case "A": {
+          const text = children().trim();
+          const href = element.getAttribute("href");
+          if (!href || href.startsWith("#")) return text;
+          const url = absolute(href);
+          // A link wrapping block content cannot be a Markdown link; keep the
+          // content and list the destination after it instead.
+          if (text.includes("\n")) return `${text}\n\n${url}\n\n`;
+          return `[${text}](${url})`;
+        }
+        case "IMG": {
+          const image = element as HTMLImageElement;
+          const src = image.currentSrc || image.getAttribute("src") || "";
+          if (!src) return "";
+          return `![${image.alt ?? ""}](${absolute(src)})`;
+        }
+        case "PICTURE": {
+          const image = element.querySelector("img");
+          return image ? walk(image) : "";
+        }
+        case "FIGURE": {
+          const caption = element.querySelector("figcaption");
+          const body = children().trim();
+          if (!caption) return `\n\n${body}\n\n`;
+          return `\n\n${body}\n\n*${caption.textContent?.trim() ?? ""}*\n\n`;
+        }
+        case "UL":
+        case "OL": {
+          const items = Array.from(element.children).filter((child) => child.tagName === "LI");
+          const lines = items.map((li, index) => {
+            const marker = tag === "OL" ? `${index + 1}. ` : "- ";
+            const text = Array.from(li.childNodes)
+              .map(walk)
+              .join("")
+              .trim()
+              .replace(/\n{2,}/g, "\n");
+            return marker + text.replace(/\n/g, "\n  ");
+          });
+          return `\n\n${lines.join("\n")}\n\n`;
+        }
+        case "LI":
+          return children();
+        default:
+          return children();
+      }
+    };
+
+    return walk(root)
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  };
+
+  const roots = document.querySelectorAll("[data-copy-page]");
+
+  roots.forEach((root) => {
+    const source = root.querySelector("[data-copy-source]") as HTMLTextAreaElement | null;
+    const menu = root.querySelector("[data-copy-menu]") as HTMLElement | null;
+    const toggle = root.querySelector("[data-copy-toggle]") as HTMLButtonElement | null;
+    const actions = root.querySelectorAll("[data-copy-action]");
+    const label = root.querySelector("[data-copy-label]");
+    const chatgpt = root.querySelector("[data-open-chatgpt]") as HTMLAnchorElement | null;
+    const claude = root.querySelector("[data-open-claude]") as HTMLAnchorElement | null;
+    const originalLabel = label?.textContent ?? "Copy page";
+    let resetLabel: number | undefined;
+
+    const url = window.location.href;
+    const prompt = `Read this page and answer my questions about it: ${url}`;
+    if (chatgpt) chatgpt.href = `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`;
+    if (claude) claude.href = `https://claude.ai/new?q=${encodeURIComponent(prompt)}`;
+
+    const closeMenu = () => {
+      if (menu) menu.hidden = true;
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    };
+
+    const copy = async () => {
+      const text = source?.value ?? pageToMarkdown();
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const scratch = document.createElement("textarea");
+        scratch.value = text;
+        scratch.setAttribute("readonly", "");
+        scratch.style.position = "fixed";
+        scratch.style.opacity = "0";
+        document.body.appendChild(scratch);
+        scratch.select();
+        document.execCommand("copy");
+        scratch.remove();
+      }
+
+      if (label) {
+        label.textContent = "Copied";
+        window.clearTimeout(resetLabel);
+        resetLabel = window.setTimeout(() => {
+          label.textContent = originalLabel;
+        }, 2000);
+      }
+    };
+
+    actions.forEach((element) =>
+      element.addEventListener("click", () => {
+        void copy();
+        closeMenu();
+      }),
+    );
+
+    toggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (menu?.hidden) {
+        menu.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+      } else {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!root.contains(event.target as Node)) closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+  });
+</script>

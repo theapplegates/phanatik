@@ -1,14 +1,25 @@
 ---
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import PageHeader from "@/components/global/PageHeader.astro";
-import AboutStory from "@/components/about/AboutStory.astro";
-import WritersGrid from "@/components/writers/WritersGrid.astro";
+// Content
+import { site } from "@/site.config";
 ---
 
-<BaseLayout>
-  <PageHeader title="About" intro="World sport, reported by people who were there." />
-  <AboutStory />
-  <WritersGrid />
+<BaseLayout title="About" description={site.description}>
+  <PageHeader title="About" intro={site.tagline} />
+  <section>
+    <Wrapper variant="standard" class="py-12">
+      <div class="max-w-2xl prose prose-lg text-foreground prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground">
+        <p>{site.author.bio}</p>
+        <p>
+          Living Life is where I keep notes on software, tools, and the work of
+          making things. Some posts are short and practical. Some are longer and
+          slower. All of them are things I wanted to write down.
+        </p>
+      </div>
+    </Wrapper>
+  </section>
 </BaseLayout>
