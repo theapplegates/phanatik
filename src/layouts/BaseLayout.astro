@@ -2,38 +2,20 @@
 // Fundations
 import "@/styles/global.css";
 import BaseHead from "@/components/fundations/head/BaseHead.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import CopyPageButton from "@/components/blog/CopyPageButton.astro";
 import Footer from "@/components/global/Footer.astro";
 import Navigation from "@/components/global/Navigation.astro";
-// Hides the navigation or footer on selected screens by passing props:
+// Hides the  navigation, or footer on selected screens by passing props:
 // <BaseLayout hideNavigation={true} hideFooter={true}>
-interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
-  type?: string;
-  canonical?: string;
-  markdown?: string;
-  hideNavigation?: boolean;
-  hideFooter?: boolean;
-}
-const { hideNavigation = false, hideFooter = false, markdown, ...head } = Astro.props;
+const {  hideNavigation = false, hideFooter = false } = Astro.props;
 ---
-
 <html lang="en">
   <head>
-    <BaseHead {...head} />
+    <BaseHead />
   </head>
   <body class="flex flex-col bg-background min-h-svh">
     {!hideNavigation && <Navigation />}
-    <main class="grow">
-      <Wrapper variant="standard" class="flex justify-end pt-6">
-        <CopyPageButton markdown={markdown} />
-      </Wrapper>
-      <slot />
-    </main>
+    <main class="grow"><slot /></main>
     {!hideFooter && <Footer />}
     <script>
       import Lenis from "lenis";

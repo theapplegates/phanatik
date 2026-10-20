@@ -1,6 +1,5 @@
 ---
-import { site } from "@/site.config";
 const { class: className = "", ...rest } = Astro.props;
 ---
 
-<span class:list={["text-2xl font-semibold leading-none tracking-tight", className]} {...rest}>{site.name}</span>
+<span class:list={["text-2xl font-semibold leading-none tracking-tight", className]} {...rest}>The Absurdist</span>

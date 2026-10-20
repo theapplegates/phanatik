@@ -1,18 +1,19 @@
 import rss from "@astrojs/rss";
-import { getPosts } from "../lib/blog";
-import { site } from "../site.config";
+import { getCollection } from "astro:content";
 
 export async function GET(context) {
-  const posts = await getPosts();
+  const stories = (await getCollection("stories")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
   return rss({
-    title: site.name,
-    description: site.description,
+    title: "The Absurdist",
+    description: "World sports news, every day: football, basketball, tennis, cycling, Formula 1 and athletics.",
     site: context.site,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.pubDate,
-      description: post.data.description,
-      link: `/blog/${post.id}/`,
+    items: stories.map((story) => ({
+      title: story.data.title,
+      pubDate: story.data.pubDate,
+      description: story.data.description,
+      link: `/stories/${story.id}/`,
     })),
   });
 }

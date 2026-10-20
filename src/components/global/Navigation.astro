@@ -2,26 +2,57 @@
 // Assets
 import Logo from "@/components/assets/Logo.astro";
 // Fundations
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import List from "@/components/fundations/icons/List.astro";
+import Plus from "@/components/fundations/icons/Plus.astro";
 // Data
-import { site } from "@/site.config";
+import { sports, sportSlug } from "@/lib/sports";
+import { scores } from "@/lib/scores";
 const path = Astro.url.pathname;
-const links = site.nav;
-const isCurrent = (href: string) =>
-  href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`);
+const links = sports.map((sport) => ({
+  label: sport,
+  href: `/sports/${sportSlug(sport)}`,
+}));
+const today = new Date().toLocaleDateString("en-GB", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 ---
 
-<header class="sticky top-0 z-50 bg-background border-b border-muted">
+<header class="sticky top-0 z-50 bg-background">
   <Wrapper variant="standard">
-    <nav class="flex items-center justify-between gap-6 h-16">
-      <a href="/" aria-label={`${site.name} home`} class="text-foreground"><Logo /></a>
-      <ul class="flex items-center gap-6">
+    <div class="flex items-center gap-6 h-10 text-xs border-b border-muted">
+      <p class="hidden shrink-0 text-muted-foreground md:block" data-today>{today}</p>
+      <ul class="flex items-center flex-1 min-w-0 gap-6 overflow-x-auto scrollbar-hide">
+        {
+          scores.map((match) => (
+            <li class="flex items-center gap-2 shrink-0">
+              {match.live && <span class="size-1.5 rounded-full bg-foreground" aria-label="Live" />}
+              <span class="text-foreground">{match.home}</span>
+              <span class="font-semibold tabular-nums text-foreground">{match.score}</span>
+              <span class="text-foreground">{match.away}</span>
+              <span class="text-muted-foreground">{match.status}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="/signin" class="hidden font-medium shrink-0 text-foreground hover:text-muted-foreground sm:block">Sign in</a>
+    </div>
+  </Wrapper>
+  <Wrapper variant="standard">
+    <nav class="flex items-center justify-between gap-8 h-16">
+      <a href="/" aria-label="The Absurdist home" class="text-foreground"><Logo /></a>
+      <ul class="items-center hidden gap-6 lg:flex">
         {
           links.map((link) => (
             <li>
               <a
                 href={link.href}
-                aria-current={isCurrent(link.href) ? "page" : undefined}
+                aria-current={path.startsWith(link.href) ? "page" : undefined}
                 class="text-sm font-medium text-muted-foreground duration-300 hover:text-foreground current:text-foreground"
               >
                 {link.label}
@@ -30,6 +61,71 @@ const isCurrent = (href: string) =>
           ))
         }
       </ul>
+      <div class="flex items-center gap-4">
+        <a href="/system/overview" class="hidden text-sm font-medium text-foreground hover:text-muted-foreground sm:block">Overview</a>
+        <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="xs" variant="default" class="hidden sm:flex">
+          Buy Phanatik
+        </Button>
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open menu"
+          class="flex items-center justify-center group size-9 text-foreground sm:hidden"
+          data-menu-toggle
+        >
+          <List size="base" class="group-aria-expanded:hidden" />
+          <Plus size="base" class="hidden rotate-45 group-aria-expanded:block" />
+        </button>
+      </div>
     </nav>
   </Wrapper>
+  <div class="border-t border-muted lg:hidden">
+    <Wrapper variant="standard">
+      <ul class="flex items-center gap-6 h-12 overflow-x-auto scrollbar-hide">
+        {
+          links.map((link) => (
+            <li class="shrink-0">
+              <a
+                href={link.href}
+                aria-current={path.startsWith(link.href) ? "page" : undefined}
+                class="text-sm font-medium text-muted-foreground current:text-foreground"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Wrapper>
+  </div>
+  <div id="mobile-menu" class="hidden border-t border-muted sm:hidden" data-menu>
+    <Wrapper variant="standard" class="flex flex-col gap-4 py-6">
+      <a href="/signin" class="text-base font-medium text-foreground">Sign in</a>
+      <a href="/system/overview" class="text-base font-medium text-foreground">Overview</a>
+      <Button isLink href="https://lexingtonthemes.com/templates/phanatik" size="sm" variant="default">
+        Buy Phanatik
+      </Button>
+    </Wrapper>
+  </div>
 </header>
+
+<script>
+  const today = document.querySelector<HTMLElement>("[data-today]");
+  if (today) {
+    today.textContent = new Date().toLocaleDateString("en-GB", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  }
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-menu]");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    menu?.classList.toggle("hidden", open);
+  });
+</script>

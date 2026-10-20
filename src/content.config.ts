@@ -36,27 +36,6 @@ const stories = defineCollection({
     }),
 });
 
-const blog = defineCollection({
-  loader: glob({ pattern: ["**/*.md", "!**/_*"], base: "./src/content/blog" }),
-  schema: z
-    .object({
-      title: z.string(),
-      description: z.string(),
-      pubDate: z.coerce.date(),
-      updatedDate: z.coerce.date().optional(),
-      coverImage: z.string().optional(),
-      coverAlt: z.string().optional(),
-      coverCloudName: z.string().optional(),
-      tags: z.array(z.string()).default([]),
-      draft: z.boolean().default(false),
-      featured: z.boolean().default(false),
-    })
-    .refine((data) => !data.coverImage || Boolean(data.coverAlt), {
-      message: "coverAlt is required when coverImage is set",
-      path: ["coverAlt"],
-    }),
-});
-
 const legal = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/legal" }),
   schema: z.object({
@@ -68,6 +47,5 @@ const legal = defineCollection({
 export const collections = {
   writers,
   stories,
-  blog,
   legal,
 };

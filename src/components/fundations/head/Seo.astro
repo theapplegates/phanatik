@@ -1,46 +1,31 @@
 ---
 import { AstroSeo } from "@lexingtonthemes/seo";
-import { site } from "@/site.config";
-import { getOgImageUrl } from "@/lib/cloudinary";
-interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
-  type?: string;
-  canonical?: string;
-}
-const {
-  title = site.name,
-  description = site.description,
-  ogImage,
-  type = "website",
-  canonical,
-} = Astro.props;
-const base = Astro.site ?? new URL("http://localhost:4321");
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, base).href;
-const image = ogImage ?? getOgImageUrl(site.ogImage, { cloudName: site.ogCloudName });
 ---
 
 <AstroSeo
-  title={title}
-  description={description}
-  canonical={canonicalUrl}
+  title="Your Page Title"
+  description="A detailed description of your page content."
+  canonical="https://yourwebsite.com/current-page"
   openGraph={{
-    url: canonicalUrl,
-    title,
-    description,
+    url: "https://yourwebsite.com/current-page",
+    title: "Your Page Title",
+    description: "A detailed description of your page content.",
     images: [
       {
-        url: image,
+        url: "https://yourwebsite.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: site.name,
+        alt: "Open Graph Image Alt",
         type: "image/jpeg",
       },
     ],
-    site_name: site.name,
-    type,
+    site_name: "Your Site Name",
+    type: "website",
     locale: "en_US",
   }}
-  twitter={{ cardType: "summary_large_image" }}
+  twitter={{
+    handle: "@yourhandle",
+    site: "@yourwebsite",
+    cardType: "summary_large_image",
+  }}
 />
